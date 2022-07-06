@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,17 +14,30 @@ namespace TodoApi.Controllers
     {
         private readonly TodoContext _context;
 
-        public TodoItemsController(TodoContext context)
+        private readonly ILogger<TodoItemsController> logger;
+
+        public TodoItemsController(TodoContext context, ILogger<TodoItemsController> _logger)
         {
             _context = context;
+            logger = _logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems
+            var result = await _context.TodoItems
                 .Select(x => ItemToDTO(x))
                 .ToListAsync();
+            if (result != null)
+            {
+                logger.LogInformation($"Returned null array of Items on path {HttpContext.Request.Path}");
+            }
+            else
+            {
+                logger.LogInformation($"Returned {result.Count} Item(s) on path {HttpContext.Request.Path}");
+            }
+
+            return result;
         }
 
         [HttpGet("{id}")]
@@ -33,23 +47,28 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
+                logger.LogInformation($"Path {HttpContext.Request.Path}: No item found for id: {id}.");
                 return NotFound();
             }
 
+            logger.LogInformation($"Item found for id: {id}.");
             return ItemToDTO(todoItem);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
         {
+
             if (id != todoItemDTO.Id)
             {
+                logger.LogInformation($"{nameof(UpdateTodoItem)} action: Attempt to modify item failed. ItemID ({todoItemDTO.Id}) does not matches path Id parameter: {id}.");
                 return BadRequest();
             }
 
             var todoItem = await _context.TodoItems.FindAsync(id);
             if (todoItem == null)
             {
+                logger.LogInformation($"{nameof(UpdateTodoItem)} action: Attempt to modify item failed. ItemID ({todoItemDTO.Id}) has no matches any id on the database: {id}.");
                 return NotFound();
             }
 
@@ -59,9 +78,11 @@ namespace TodoApi.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                logger.LogInformation($"{nameof(UpdateTodoItem)} action: Item with {id} has been successfully updated.");
             }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
+            catch (DbUpdateConcurrencyException e) when (!TodoItemExists(id))
             {
+                logger.LogInformation($"{nameof(UpdateTodoItem)} catch block on db entry update: Item with {id}. - \n{e.Message}");
                 return NotFound();
             }
 
@@ -79,6 +100,7 @@ namespace TodoApi.Controllers
 
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
+            logger.LogInformation($"{nameof(CreateTodoItem)} action: New item added to DB: Name: {todoItem.Name}, Completed: {todoItem.IsComplete}");
 
             return CreatedAtAction(
                 nameof(GetTodoItem),
@@ -93,11 +115,13 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
+                logger.LogInformation($"{nameof(DeleteTodoItem)} action: Attempt to delete item failed. ItemID ({id}) has no matches in the database.");
                 return NotFound();
             }
 
             _context.TodoItems.Remove(todoItem);
             await _context.SaveChangesAsync();
+            logger.LogInformation($"{nameof(DeleteTodoItem)} action: New item deleted from DB: Name: {todoItem.Name}, Completed: {todoItem.IsComplete}");
 
             return NoContent();
         }
@@ -111,6 +135,6 @@ namespace TodoApi.Controllers
                 Id = todoItem.Id,
                 Name = todoItem.Name,
                 IsComplete = todoItem.IsComplete
-            };       
+            };
     }
 }
