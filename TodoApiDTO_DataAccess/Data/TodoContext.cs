@@ -1,7 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TodoApiDTO_Models;
 
-namespace TodoApi.Models
+namespace TodoApiDTO_DataAccess.Data
 {
+    /// <summary>
+    /// Класс контекст БД
+    /// </summary>
     public class TodoContext : DbContext
     {
         public TodoContext(DbContextOptions<TodoContext> options)
@@ -9,6 +13,9 @@ namespace TodoApi.Models
         {
         }
 
+        /// <summary>
+        /// Задачи
+        /// </summary>
         public DbSet<TodoItem> TodoItems { get; set; }
     }
 }
