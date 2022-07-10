@@ -10,6 +10,7 @@ namespace TodoApi.Data
     {
         private readonly TodoContext _context;
         private readonly DbSet<TEntity> _table = null;
+        private bool _disposed = false;
 
         public Repository(TodoContext context)
         {
@@ -78,6 +79,24 @@ namespace TodoApi.Data
                 }
 
             } while (saveFailed);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this._disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            this._disposed = true;
         }
     }
 }

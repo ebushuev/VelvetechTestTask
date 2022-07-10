@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace TodoApi.Data.Interfaces
 {
-    public interface IRepository<TEntity, TKey> where TEntity : class
+    public interface IRepository<TEntity, TKey> : IDisposable where TEntity : class 
     {
         public Task<IReadOnlyCollection<TEntity>> GetAsync();
 
