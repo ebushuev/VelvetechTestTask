@@ -37,15 +37,14 @@ namespace TodoApiDTO.Controllers.Tests
             var items = fixture.Create<IReadOnlyCollection<TodoItem>>();
             _todoItemService.GetAsync().Returns(items);
 
-
+            // Act
             var actionResult = await _controller.GetTodoItems();
-            var result = actionResult.Result as OkObjectResult;
 
             // Assert
-
+            var result = actionResult.Result as OkObjectResult;
             Assert.IsNotNull(actionResult);
             Assert.AreEqual(StatusCodes.Status200OK, result.StatusCode);
-            _todoItemMappingService.Received(1);
+            _todoItemMappingService.Received(1).MapTodoItemToDTO(items);
         }
 
 
@@ -66,6 +65,7 @@ namespace TodoApiDTO.Controllers.Tests
             Assert.IsNotNull(actionResult);
             Assert.AreEqual(StatusCodes.Status200OK, result.StatusCode);
             Assert.AreEqual(result.Value, itemDTO);
+            _todoItemMappingService.Received(1).MapTodoItemToDTO(item);
         }
 
         [TestMethod]
@@ -99,7 +99,6 @@ namespace TodoApiDTO.Controllers.Tests
             Fixture fixture = new Fixture();
             var newItemDTO = fixture.Create<TodoItemDTO>();
             var updateItem = fixture.Create<TodoItem>();
-
             _todoItemService.UpdateAsync(newItemDTO.Id, newItemDTO).Returns(updateItem);
 
             // Act
@@ -140,7 +139,6 @@ namespace TodoApiDTO.Controllers.Tests
             Fixture fixture = new Fixture();
             var itemDTO = fixture.Create<TodoItemDTO>();
             var createdItem = fixture.Create<TodoItem>();
-
             _todoItemService.CreateAsync(itemDTO).Returns(createdItem);
 
             // Act
