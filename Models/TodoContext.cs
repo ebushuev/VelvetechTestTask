@@ -10,5 +10,11 @@ namespace TodoApi.Models
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+
     }
 }
