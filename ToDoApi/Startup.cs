@@ -8,7 +8,7 @@ using TodoApi.Data;
 using TodoApi.Data.Interfaces;
 using TodoApi.Services.Services;
 using TodoApi.Services.Services.Interfaces;
-using TodoApiDTO.Extension;
+using TodoApiDTO.Filters;
 
 namespace TodoApiDTO
 {
@@ -30,6 +30,7 @@ namespace TodoApiDTO
             services.AddControllers(options =>
             {
                 options.Filters.Add<ArgumentExceptionFilter>();
+                options.Filters.Add<NotFoundExceptionFilter>();
             });
 
             // Register the Swagger services

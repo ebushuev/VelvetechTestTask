@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using TodoApi.Data.Interfaces;
 using TodoApi.Data.Models;
+using TodoApi.Services.Exceptions;
 using TodoApi.Services.Models;
 using TodoApi.Services.Services;
 
@@ -76,7 +77,6 @@ namespace TodoApi.UnitTests.Services
         {
             //Arrange
             var newItem = new Fixture().Create<TodoItemDTO>();
-            _repository.CreateAsync(default).Returns(Task.CompletedTask);
             _repository.SaveAsync().Returns(Task.CompletedTask);
 
             // Act
@@ -87,7 +87,7 @@ namespace TodoApi.UnitTests.Services
             Assert.AreEqual(result.Name, newItem.Name);
             Assert.AreEqual(result.IsComplete, newItem.IsComplete);
 
-            await _repository.Received(1).CreateAsync(Arg.Any<TodoItem>());
+            _repository.Received(1).Create(Arg.Any<TodoItem>());
             await _repository.Received(1).SaveAsync();
         }
 
@@ -98,7 +98,7 @@ namespace TodoApi.UnitTests.Services
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(async () => await _service.CreateAsync(null));
 
             // Assert
-            await _repository.DidNotReceive().CreateAsync(default);
+            _repository.DidNotReceive().Create(default);
             await _repository.DidNotReceive().SaveAsync();
         }
 
@@ -124,7 +124,7 @@ namespace TodoApi.UnitTests.Services
         }
 
         [TestMethod]
-        public async Task UpdateAsync_ShouldReturnException_IfTodoItemNotExists()
+        public async Task UpdateAsync_ShouldReturnNotFoundException_IfTodoItemNotExists()
         {
             //Arrange
             var existedItem = new Fixture().Create<TodoItem>();
@@ -132,7 +132,7 @@ namespace TodoApi.UnitTests.Services
             _repository.GetAsync(newItem.Id).Returns<TodoItem>(l => null);
 
             // Act
-            await Assert.ThrowsExceptionAsync<Exception>(async () => await _service.UpdateAsync(newItem.Id, newItem));
+            await Assert.ThrowsExceptionAsync<NotFoundException>(async () => await _service.UpdateAsync(newItem.Id, newItem));
 
             // Assert
             await _repository.Received(1).GetAsync(newItem.Id);
@@ -177,23 +177,23 @@ namespace TodoApi.UnitTests.Services
             await Assert.ThrowsExceptionAsync<ArgumentException>(async () => await _service.DeleteAsync(id));
 
             //Assert
-            await _repository.DidNotReceive().DeleteAsync(id);
+            _repository.DidNotReceive().Delete(Arg.Any<TodoItem>());
             await _repository.DidNotReceive().SaveAsync();
         }
 
         [TestMethod]
-        public async Task DeleteAsyncc_ShouldReturnException_IfTodoItemNotExists()
+        public async Task DeleteAsync_ShouldReturnNotFoundException_IfTodoItemNotExists()
         {
             //Arrange
             var item = new Fixture().Create<TodoItem>();
             _repository.GetAsync(item.Id).Returns<TodoItem>(l => null);
 
             // Act
-            await Assert.ThrowsExceptionAsync<Exception>(async () => await _service.DeleteAsync(item.Id));
+            await Assert.ThrowsExceptionAsync<NotFoundException>(async () => await _service.DeleteAsync(item.Id));
 
             // Assert
             await _repository.Received(1).GetAsync(item.Id);
-            await _repository.DidNotReceive().DeleteAsync(item.Id);
+            _repository.DidNotReceive().Delete(item);
         }
 
         [TestMethod]
@@ -202,13 +202,12 @@ namespace TodoApi.UnitTests.Services
             //Arrange
             var item = new Fixture().Create<TodoItem>();
             _repository.GetAsync(item.Id).Returns(item);
-            _repository.DeleteAsync(item.Id).Returns(Task.CompletedTask);
 
             // Act
             await _service.DeleteAsync(item.Id);
 
             //Assert
-            await _repository.Received(1).DeleteAsync(item.Id);
+            _repository.Received(1).Delete(item);
             await _repository.Received(1).SaveAsync();
         }
     }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TodoApi.Data.Interfaces;
 using TodoApi.Data.Models;
+using TodoApi.Services.Exceptions;
 using TodoApi.Services.Extensions;
 using TodoApi.Services.Models;
 using TodoApi.Services.Services.Interfaces;
@@ -40,7 +40,7 @@ namespace TodoApi.Services.Services
                 Secret = item.GetHashCode().ToString(),
             };
 
-            await _repository.CreateAsync(newItem);
+            _repository.Create(newItem);
             await _repository.SaveAsync();
             return newItem;
         }
@@ -53,7 +53,7 @@ namespace TodoApi.Services.Services
             var existedItem = await GetAsync(id);
 
             if (existedItem == null)
-                throw new Exception($"TodoItem with id = {id} not found.");
+                throw new NotFoundException(nameof(TodoItem), id);
 
             existedItem.Name = item.Name;
             existedItem.IsComplete = item.IsComplete;
@@ -69,9 +69,9 @@ namespace TodoApi.Services.Services
             var existedItem = await GetAsync(id);
 
             if (existedItem == null)
-                throw new Exception($"TodoItem with id = {id} not found.");
+                throw new NotFoundException(nameof(TodoItem), id);
 
-            await _repository.DeleteAsync(id);
+            _repository.Delete(existedItem);
             await _repository.SaveAsync();
         }
     }

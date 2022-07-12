@@ -67,6 +67,9 @@ namespace TodoApiDTO.Controllers
             Argument.Id(id);
             Argument.NotNull(todoItemDTO);
 
+            if (!ModelState.IsValid)
+                return BadRequest();
+
             await _service.UpdateAsync(id, todoItemDTO);
             return Ok();
         }
@@ -77,9 +80,12 @@ namespace TodoApiDTO.Controllers
         /// <param name="todoItemDTO">New TodoItem</param>
         /// <returns>New TodoItem</returns>
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
+        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem([FromBody] TodoItemDTO todoItemDTO)
         {
             Argument.NotNull(todoItemDTO);
+
+            if (!ModelState.IsValid)
+                return BadRequest();
 
             var result = await _service.CreateAsync(todoItemDTO);
 
@@ -100,6 +106,8 @@ namespace TodoApiDTO.Controllers
             Argument.Id(id);
 
             await _service.DeleteAsync(id);
+
+            //Probably should be Ok()
             return NoContent();
         }
     }

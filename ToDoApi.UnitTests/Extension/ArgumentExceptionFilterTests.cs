@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TodoApiDTO.Extension;
+using TodoApiDTO.Filters;
 
 namespace TodoApi.UnitTests.Extension
 {

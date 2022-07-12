@@ -34,15 +34,14 @@ namespace TodoApi.Data
             _context.Update(item);
         }
 
-        public async Task CreateAsync(TEntity item)
+        public void Create(TEntity item)
         {
-            await _context.AddAsync(item);
+            _context.Add(item);
         }
 
-        public async Task DeleteAsync(TKey id)
+        public void Delete(TEntity item)
         {
-            TEntity existing = await GetAsync(id);
-            _table.Remove(existing);
+           _table.Remove(item);
         }
 
         /// <summary>

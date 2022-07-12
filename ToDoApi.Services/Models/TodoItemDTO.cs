@@ -12,6 +12,8 @@ namespace TodoApi.Services.Models
 
         [Required]
         public string Name { get; set; }
+
+        [Required]
         public bool IsComplete { get; set; }
     }
     #endregion

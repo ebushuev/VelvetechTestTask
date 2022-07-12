@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Threading.Tasks;
 
-namespace TodoApiDTO.Extension
+namespace TodoApiDTO.Filters
 {
     public sealed class ArgumentExceptionFilter : ExceptionFilterAttribute
     {
