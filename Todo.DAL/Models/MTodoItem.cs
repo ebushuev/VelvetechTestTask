@@ -1,9 +1,11 @@
-﻿namespace TodoApi.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Todo.DAL.Models
 {
     #region snippet
-    public class TodoItem
+    [Table("TodoItems")]
+    public class MTodoItem : BaseModel
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public bool IsComplete { get; set; }
         public string Secret { get; set; }
