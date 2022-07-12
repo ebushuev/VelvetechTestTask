@@ -1,0 +1,32 @@
+2022-07-12 14:38:47.9148 Info Message Template Auto Format enabled
+2022-07-12 14:38:47.9307 Info Loading assembly: NLog.Web.AspNetCore
+2022-07-12 14:38:47.9725 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error parsing layout startupdir
+ ---> System.ArgumentException: LayoutRenderer symbol-name is unknown: 'startupdir'
+   at NLog.Config.Factory`2.CreateInstance(String itemName)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+   --- End of inner exception stack trace ---
+2022-07-12 14:38:48.0455 Info Adding target FileTarget(Name=allfile)
+2022-07-12 14:38:48.0455 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error parsing layout startupdir
+ ---> System.ArgumentException: LayoutRenderer symbol-name is unknown: 'startupdir'
+   at NLog.Config.Factory`2.CreateInstance(String itemName)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+   --- End of inner exception stack trace ---
+2022-07-12 14:38:48.0576 Info Adding target FileTarget(Name=ownFile-web)
+2022-07-12 14:38:48.0947 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Projects\VelvetechTestTask\bin\Debug\netcoreapp3.1\nlog.config
+2022-07-12 14:38:48.8717 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Projects\VelvetechTestTask\bin\Debug\netcoreapp3.1\nlog.config
+2022-07-12 16:41:27.5405 Info Message Template Auto Format enabled
+2022-07-12 16:41:27.5669 Info Loading assembly: NLog.Web.AspNetCore
+2022-07-12 16:41:27.6309 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error parsing layout startupdir
+ ---> System.ArgumentException: LayoutRenderer symbol-name is unknown: 'startupdir'
+   at NLog.Config.Factory`2.CreateInstance(String itemName)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+   --- End of inner exception stack trace ---
+2022-07-12 16:41:27.7255 Info Adding target FileTarget(Name=allfile)
+2022-07-12 16:41:27.7281 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error parsing layout startupdir
+ ---> System.ArgumentException: LayoutRenderer symbol-name is unknown: 'startupdir'
+   at NLog.Config.Factory`2.CreateInstance(String itemName)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+   --- End of inner exception stack trace ---
+2022-07-12 16:41:27.7449 Info Adding target FileTarget(Name=ownFile-web)
+2022-07-12 16:41:27.8114 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Projects\VelvetechTestTask\Todo.API\bin\Debug\netcoreapp3.1\nlog.config
+2022-07-12 16:41:28.5251 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Projects\VelvetechTestTask\Todo.API\bin\Debug\netcoreapp3.1\nlog.config
