@@ -119,7 +119,7 @@ namespace TodoApi.UnitTests.Services
             Assert.AreEqual(result.IsComplete, newItem.IsComplete);
 
             await _repository.Received(1).GetAsync(existedItem.Id);
-            _repository.Received(1).Update(existedItem.Id, Arg.Any<TodoItem>());
+            _repository.Received(1).Update(Arg.Any<TodoItem>());
             await _repository.Received(1).SaveAsync();
         }
 
@@ -129,14 +129,14 @@ namespace TodoApi.UnitTests.Services
             //Arrange
             var existedItem = new Fixture().Create<TodoItem>();
             var newItem = new Fixture().Build<TodoItemDTO>().With(i => i.Id, existedItem.Id + 1).Create();
-            _repository.GetAsync(existedItem.Id).Returns(existedItem);
+            _repository.GetAsync(newItem.Id).Returns<TodoItem>(l => null);
 
             // Act
             await Assert.ThrowsExceptionAsync<Exception>(async () => await _service.UpdateAsync(newItem.Id, newItem));
 
             // Assert
             await _repository.Received(1).GetAsync(newItem.Id);
-            _repository.DidNotReceive().Update(newItem.Id, Arg.Any<TodoItem>());
+            _repository.DidNotReceive().Update(Arg.Any<TodoItem>());
         }
 
         [TestMethod]
@@ -182,10 +182,26 @@ namespace TodoApi.UnitTests.Services
         }
 
         [TestMethod]
+        public async Task DeleteAsyncc_ShouldReturnException_IfTodoItemNotExists()
+        {
+            //Arrange
+            var item = new Fixture().Create<TodoItem>();
+            _repository.GetAsync(item.Id).Returns<TodoItem>(l => null);
+
+            // Act
+            await Assert.ThrowsExceptionAsync<Exception>(async () => await _service.DeleteAsync(item.Id));
+
+            // Assert
+            await _repository.Received(1).GetAsync(item.Id);
+            await _repository.DidNotReceive().DeleteAsync(item.Id);
+        }
+
+        [TestMethod]
         public async Task DeleteAsync_ShouldReturnCompletedTask_IfOK()
         {
             //Arrange
             var item = new Fixture().Create<TodoItem>();
+            _repository.GetAsync(item.Id).Returns(item);
             _repository.DeleteAsync(item.Id).Returns(Task.CompletedTask);
 
             // Act

@@ -17,7 +17,7 @@ namespace TodoApi.Services.Services
             };
         }
 
-        public IEnumerable<TodoItemDTO> MapTodoItemToDTO(IReadOnlyCollection<TodoItem> todoItems)
+        public IEnumerable<TodoItemDTO> MapTodoItemToDTO(IEnumerable<TodoItem> todoItems)
         {
             foreach (var item in todoItems)
             {

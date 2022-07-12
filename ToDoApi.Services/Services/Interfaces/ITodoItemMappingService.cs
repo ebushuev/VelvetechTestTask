@@ -7,6 +7,6 @@ namespace TodoApi.Services.Services.Interfaces
     public interface ITodoItemMappingService
     {
         public TodoItemDTO MapTodoItemToDTO(TodoItem todoItem);
-        public IEnumerable<TodoItemDTO> MapTodoItemToDTO(IReadOnlyCollection<TodoItem> todoItems);
+        public IEnumerable<TodoItemDTO> MapTodoItemToDTO(IEnumerable<TodoItem> todoItems);
     }
 }

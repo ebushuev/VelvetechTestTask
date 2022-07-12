@@ -10,7 +10,7 @@ namespace TodoApi.Data.Interfaces
 
         public Task<TEntity> GetAsync(TKey id);
 
-        public void Update(TKey id, TEntity item);
+        public void Update(TEntity item);
         public Task CreateAsync(TEntity item);
         public Task DeleteAsync(TKey id);
 

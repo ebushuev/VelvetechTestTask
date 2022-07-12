@@ -28,7 +28,7 @@ namespace TodoApi.Data
             return await _table.FindAsync(id);
         }
 
-        public void Update(TKey id, TEntity item)
+        public void Update(TEntity item)
         {
             _table.Attach(item);
             _context.Update(item);

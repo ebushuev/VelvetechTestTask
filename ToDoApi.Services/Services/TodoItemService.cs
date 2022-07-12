@@ -58,7 +58,7 @@ namespace TodoApi.Services.Services
             existedItem.Name = item.Name;
             existedItem.IsComplete = item.IsComplete;
 
-            _repository.Update(id, existedItem);
+            _repository.Update(existedItem);
             await _repository.SaveAsync();
             return existedItem;
         }
@@ -66,6 +66,10 @@ namespace TodoApi.Services.Services
         public async Task DeleteAsync(long id)
         {
             Argument.Id(id);
+            var existedItem = await GetAsync(id);
+
+            if (existedItem == null)
+                throw new Exception($"TodoItem with id = {id} not found.");
 
             await _repository.DeleteAsync(id);
             await _repository.SaveAsync();
