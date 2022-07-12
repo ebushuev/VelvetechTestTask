@@ -4,7 +4,9 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using TodoApiDTO.TodoApiDTO.Infrastructure.DataLayer;
+using TodoApiDTO.ToDoApiModels.Models;
+using TodoApiDTO.ToDoApiModels.ModelsDTO;
 
 namespace TodoApi.Controllers
 {
