@@ -42,7 +42,7 @@ namespace TodoApi.Services.Services
 
             await _repository.CreateAsync(newItem);
             await _repository.SaveAsync();
-            return await Task.FromResult(newItem);
+            return newItem;
         }
 
         public async Task<TodoItem> UpdateAsync(long id, TodoItemDTO item)
