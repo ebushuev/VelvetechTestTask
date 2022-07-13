@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TodoApiDTO.TodoApiDTO.Infrastructure.Loggers;
 using TodoApiDTO.TodoApiDTO.Infrastructure.DataLayer;
+using TodoApiDTO.Service;
 
 namespace TodoApi
 {
@@ -28,6 +29,8 @@ namespace TodoApi
                opt.UseSqlServer(connectionStr));
             services.AddControllers();
             services.AddSwaggerGen();
+            services.AddTransient<ToDoService>();
+
         }
 
 
