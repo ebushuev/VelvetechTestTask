@@ -12,24 +12,39 @@ namespace TodoApi.Services.Services
     public class TodoItemService : ITodoItemService
     {
         private readonly IRepository<TodoItem, long> _repository;
-        public TodoItemService(IRepository<TodoItem, long> repository)
+        private readonly ITodoItemMappingService _mappingService;
+
+        public TodoItemService(IRepository<TodoItem, long> repository, ITodoItemMappingService mappingService)
         {
             _repository = repository;
+            _mappingService = mappingService;
         }
 
-        public async Task<IReadOnlyCollection<TodoItem>> GetAsync()
+        public async Task<IEnumerable<TodoItemDTO>> GetAsync()
         {
-            return await _repository.GetAsync();
+            var result = await _repository.GetAsync();
+            return await Task.FromResult(_mappingService.MapTodoItemToDTO(result));
         }
 
-        public async Task<TodoItem> GetAsync(long id)
+        protected internal async Task<TodoItem> GetByIdAsync(long id)
         {
             Argument.Id(id);
 
             return await _repository.GetAsync(id);
         }
 
-        public async Task<TodoItem> CreateAsync(TodoItemDTO item)
+        public async Task<TodoItemDTO> GetAsync(long id)
+        {
+            Argument.Id(id);
+
+            var result = await GetByIdAsync(id);
+            if (result == null)
+                throw new NotFoundException(nameof(TodoItem), id);
+
+            return await Task.FromResult(_mappingService.MapTodoItemToDTO(result));
+        }
+
+        public async Task<TodoItemDTO> CreateAsync(TodoItemDTO item)
         {
             Argument.NotNull(item);
 
@@ -42,15 +57,16 @@ namespace TodoApi.Services.Services
 
             _repository.Create(newItem);
             await _repository.SaveAsync();
-            return newItem;
+
+            return await Task.FromResult(_mappingService.MapTodoItemToDTO(newItem));
         }
 
-        public async Task<TodoItem> UpdateAsync(long id, TodoItemDTO item)
+    public async Task UpdateAsync(long id, TodoItemDTO item)
         {
             Argument.Id(id);
             Argument.NotNull(item);
 
-            var existedItem = await GetAsync(id);
+            var existedItem = await GetByIdAsync(id);
 
             if (existedItem == null)
                 throw new NotFoundException(nameof(TodoItem), id);
@@ -60,13 +76,12 @@ namespace TodoApi.Services.Services
 
             _repository.Update(existedItem);
             await _repository.SaveAsync();
-            return existedItem;
         }
 
         public async Task DeleteAsync(long id)
         {
             Argument.Id(id);
-            var existedItem = await GetAsync(id);
+            var existedItem = await GetByIdAsync(id);
 
             if (existedItem == null)
                 throw new NotFoundException(nameof(TodoItem), id);

@@ -15,12 +15,10 @@ namespace TodoApiDTO.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly ITodoItemService _service;
-        private readonly ITodoItemMappingService _mapping;
 
-        public TodoItemsController(ITodoItemService service, ITodoItemMappingService mapping)
+        public TodoItemsController(ITodoItemService service)
         {
             _service = service;
-            _mapping = mapping;
         }
 
         /// <summary>
@@ -31,7 +29,7 @@ namespace TodoApiDTO.Controllers
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
             var items = await _service.GetAsync();
-            return Ok(_mapping.MapTodoItemToDTO(items));
+            return Ok(items);
         }
 
         /// <summary>
@@ -51,8 +49,7 @@ namespace TodoApiDTO.Controllers
                 return NotFound();
             }
 
-            var result = _mapping.MapTodoItemToDTO(todoItem);
-            return Ok(result);
+            return Ok(todoItem);
         }
 
         /// <summary>
@@ -92,7 +89,7 @@ namespace TodoApiDTO.Controllers
             return CreatedAtAction(
                 nameof(GetTodoItem),
                 new { id = result.Id },
-                _mapping.MapTodoItemToDTO(result));
+                result);
         }
 
         /// <summary>

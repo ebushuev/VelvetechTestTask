@@ -9,6 +9,7 @@ using TodoApi.Data.Models;
 using TodoApi.Services.Exceptions;
 using TodoApi.Services.Models;
 using TodoApi.Services.Services;
+using TodoApi.Services.Services.Interfaces;
 
 namespace TodoApi.UnitTests.Services
 {
@@ -17,12 +18,14 @@ namespace TodoApi.UnitTests.Services
     {
         private TodoItemService _service;
         private IRepository<TodoItem, long> _repository;
+        private ITodoItemMappingService _todoItemMappingService;
 
         [TestInitialize]
         public void SetUp()
         {
             _repository = Substitute.For<IRepository<TodoItem, long>>();
-            _service = new TodoItemService(_repository);
+            _todoItemMappingService = Substitute.For<ITodoItemMappingService>();
+            _service = new TodoItemService(_repository, _todoItemMappingService);
         }
 
         [TestCleanup]
@@ -36,13 +39,15 @@ namespace TodoApi.UnitTests.Services
         {
             //Arrange
             var items = new Fixture().Create<ReadOnlyCollection<TodoItem>>();
+            var itemsResult = new Fixture().Create<ReadOnlyCollection<TodoItemDTO>>();
             _repository.GetAsync().Returns(items);
+            _todoItemMappingService.MapTodoItemToDTO(items).Returns(itemsResult);
 
             // Act
             var result = await _service.GetAsync();
 
             //Assert
-            Assert.AreEqual(result, items);
+            Assert.AreEqual(result, itemsResult);
             await _repository.Received(1).GetAsync();
         }
 
@@ -51,13 +56,28 @@ namespace TodoApi.UnitTests.Services
         {
             //Arrange
             var item = new Fixture().Create<TodoItem>();
+            var itemResult = new Fixture().Create<TodoItemDTO>();
             _repository.GetAsync(item.Id).Returns(item);
+            _todoItemMappingService.MapTodoItemToDTO(item).Returns(itemResult);
 
             // Act
             var result = await _service.GetAsync(item.Id);
 
             //Assert
-            Assert.AreEqual(result, item);
+            Assert.AreEqual(result, itemResult);
+            await _repository.Received(1).GetAsync(item.Id);
+        }
+
+        [TestMethod]
+        public async Task GetAsync_ShouldReturnNotFoundException_IfNotExists()
+        {
+            //Arrange
+            var item = new Fixture().Create<TodoItem>();
+
+            // Act
+            await Assert.ThrowsExceptionAsync<NotFoundException>(async () => await _service.GetAsync(item.Id));
+
+            //Assert
             await _repository.Received(1).GetAsync(item.Id);
         }
 
@@ -78,6 +98,7 @@ namespace TodoApi.UnitTests.Services
             //Arrange
             var newItem = new Fixture().Create<TodoItemDTO>();
             _repository.SaveAsync().Returns(Task.CompletedTask);
+            _todoItemMappingService.MapTodoItemToDTO(Arg.Any<TodoItem>()).Returns(newItem);
 
             // Act
             var result = await _service.CreateAsync(newItem);
@@ -111,12 +132,9 @@ namespace TodoApi.UnitTests.Services
             _repository.GetAsync(existedItem.Id).Returns(existedItem);
 
             // Act
-            var result = await _service.UpdateAsync(existedItem.Id, newItem);
+            await _service.UpdateAsync(existedItem.Id, newItem);
 
             //Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result.Name, newItem.Name);
-            Assert.AreEqual(result.IsComplete, newItem.IsComplete);
 
             await _repository.Received(1).GetAsync(existedItem.Id);
             _repository.Received(1).Update(Arg.Any<TodoItem>());

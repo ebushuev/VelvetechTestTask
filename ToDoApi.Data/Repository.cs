@@ -41,7 +41,11 @@ namespace TodoApi.Data
 
         public void Delete(TEntity item)
         {
-           _table.Remove(item);
+            if (_context.Entry(item).State == EntityState.Detached)
+            {
+                _table.Attach(item);
+            }
+            _table.Remove(item);
         }
 
         /// <summary>
@@ -52,32 +56,30 @@ namespace TodoApi.Data
         /// <exception cref="NotSupportedException"></exception>
         public async Task SaveAsync()
         {
-            bool saveFailed;
-            do
+            try
             {
-                saveFailed = false;
-                try
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                // Update original values from the database
+                foreach (var entry in ex.Entries)
                 {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    saveFailed = true;
-
-                    // Update original values from the database
-                    foreach (var entry in ex.Entries)
+                    var databaseValues = entry.GetDatabaseValues();
+                    if (databaseValues == null)
                     {
-                        var databaseValues = entry.GetDatabaseValues();
-                        if (databaseValues == null)
-                        {
-                            throw ex;
-                        }
-
-                        entry.OriginalValues.SetValues(databaseValues);
+                        throw ex;
                     }
-                }
 
-            } while (saveFailed);
+                    entry.OriginalValues.SetValues(databaseValues);
+                }
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+            
+
         }
 
         public void Dispose()
