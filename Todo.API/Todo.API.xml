@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Todo.API</name>
+    </assembly>
+    <members>
+        <member name="M:TodoApi.Controllers.TodoItemsController.GetTodoItems">
+            <summary>
+            Получить список задач
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApi.Controllers.TodoItemsController.GetTodoItem(System.Int64)">
+            <summary>
+            Получить список задач по id
+            </summary>
+            <param name="id">id задачи</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApi.Controllers.TodoItemsController.UpdateTodoItem(System.Int64,Todo.BLL.Models.TodoItemDTO)">
+            <summary>
+            Обновить задачу по id
+            </summary>
+            <param name="id">id задачи</param>
+            <param name="todoItemDTO">задача</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApi.Controllers.TodoItemsController.CreateTodoItem(Todo.BLL.Models.TodoItemDTO)">
+            <summary>
+            Создать новую задачу
+            </summary>
+            <param name="todoItemDTO">задача</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApi.Controllers.TodoItemsController.DeleteTodoItem(System.Int64)">
+            <summary>
+            Удалить задачу 
+            </summary>
+            <param name="id">id задачи</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
