@@ -18,6 +18,7 @@ namespace Todo.BLL.Services
         public async Task<long> CreateAsync(TodoItemDTO item)
         {
             var todo = DtoToItem(item);
+            //todo.Secret = "Some Secret";
             // TODO: some business logic
             return await repository.CreateAsync(todo);
         }
