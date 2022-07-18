@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TodoApi.DAL.Models;
 
-namespace TodoApi.Models
+namespace TodoApi.DAL.Contexts
 {
-    public class TodoContext : DbContext
+    internal class TodoContext : DbContext
     {
         public TodoContext(DbContextOptions<TodoContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }
