@@ -44,11 +44,6 @@ namespace Todo.DAL.Repositories
 
         public async Task UpdateAsync(long id, TodoItem item)
         {
-            if (id != item.Id)
-            {
-                throw new KeyNotFoundException();
-            }
-
             var todoItem = await todoContext.TodoItems.FindAsync(id);
             if (todoItem == null)
             {
