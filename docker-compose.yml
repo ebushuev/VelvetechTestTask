@@ -1,0 +1,40 @@
+version: "3.8"
+
+networks:
+  todo_network:
+    driver: bridge
+
+services:
+  service_todo_webapi:
+    image: todo-web-api:latest
+    container_name: "todo-web-api"
+    depends_on:
+      - "service_todo_db_api"
+    build:
+      context: src/backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:5000"
+    environment:
+      ConnectionStrings:DefaultConnection: "Server=service_todo_db_api,1433;Database=${DB_NAME_API};Trusted_Connection=True;MultipleActiveResultSets=true;User ID=${DB_USER};Password=${DB_PASSWORD};Integrated Security=False;"
+      ASPNETCORE_ENVIRONMENT: Development
+    networks:
+      - todo_network
+
+  service_todo_db_api:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: todo-db-api
+    hostname: todo-db-api
+    restart: always
+    ports:
+      - "1401:1433"
+      - "135:135"
+      - "51999:51999"
+    environment:
+      SA_PASSWORD: ${DB_PASSWORD}
+      ACCEPT_EULA: "Y"
+      MSSQL_AGENT_ENABLED: "true"
+      MSSQL_RPC_PORT: 135
+      MSSQL_DTC_TCP_PORT: 51999
+    networks:
+      - todo_network
