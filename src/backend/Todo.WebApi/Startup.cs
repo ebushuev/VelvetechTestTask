@@ -40,7 +40,6 @@ namespace Todo.WebApi
                     },
                 });
             });
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

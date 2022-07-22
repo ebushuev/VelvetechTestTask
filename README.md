@@ -13,6 +13,10 @@
 
     Для запуска приложения используется docker-compose.
     По умолчанию приложение стартует на порту 8080.
+    Для работы приложения необходим файл .env, с примерно таким содержанием:
+        DB_USER=sa
+        DB_PASSWORD=Sql2019isfast
+        DB_NAME_API=todo_test_db
 
 ## API request screenshots
 
