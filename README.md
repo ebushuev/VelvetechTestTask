@@ -1,4 +1,6 @@
-# Todo Service Test Task
+<h1 align="center">РК, Нур-Султан, 2022Q2</h1>
+
+<h3 align="center">Todo Service Test Task</h3>
 
 ### Тестовое задание
 
@@ -20,7 +22,9 @@
 
 ![alt text](docs/todo-api-request-get-by_id.jpg "Get TodoItem by Id")
 
-## 2022-07 - РК, Нур-Султан
+## Swagger screenshots
+
+![alt text](docs/todo-api-swagger.jpg "Swagger")
 
 ### Контакты
 
