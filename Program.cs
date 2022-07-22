@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace TodoApi
 {
@@ -21,6 +22,12 @@ namespace TodoApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+            .ConfigureLogging(Logging =>
+            {
+                Logging.ClearProviders(); //Отключает любые средства логирование, оставляет только NLOG
+                Logging.SetMinimumLevel(LogLevel.Trace);
+            })
+            .UseNLog();
     }
 }
