@@ -1,21 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
-
+using TodoApiDTO.Context;
+using TodoApiDTO.Entities;
 namespace TodoApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
+        private readonly ILogger<TodoItemsController> _logger;
         private readonly TodoContext _context;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(TodoContext context, ILogger<TodoItemsController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -29,10 +32,12 @@ namespace TodoApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
+            
             var todoItem = await _context.TodoItems.FindAsync(id);
 
             if (todoItem == null)
             {
+                _logger.LogError("Записей не найдено");
                 return NotFound();
             }
 
@@ -44,6 +49,7 @@ namespace TodoApi.Controllers
         {
             if (id != todoItemDTO.Id)
             {
+                _logger.LogError("BadRequest");
                 return BadRequest();
             }
 
