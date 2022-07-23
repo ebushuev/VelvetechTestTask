@@ -30,7 +30,7 @@
 
 ![alt text](docs/todo-api-swagger.jpg "Swagger")
 
-## Loggger screenshots
+## Logger screenshots
 
 ![alt text](docs/todo-api-logger.jpg "Swagger")
 
