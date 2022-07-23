@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Reflection;
 using System.Threading.Tasks;
 using Todo.Domain.DataTransferObjects;
 using Todo.Domain.Entities;
@@ -11,15 +13,20 @@ namespace Todo.WebApi.Controllers
     public class TodoItemController : ControllerBase
     {
         private readonly ITodoItemService todoItemService;
+        private readonly ILogger<TodoItemController> logger;
 
-        public TodoItemController(ITodoItemService todoItemService)
+        public TodoItemController(ILogger<TodoItemController> logger, ITodoItemService todoItemService)
         {
+            this.logger = logger;
             this.todoItemService = todoItemService;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetTodoItems()
         {
+            var currentMethodName = MethodBase.GetCurrentMethod().DeclaringType.Name.Split(new char[] { '<', '>' })[1];
+            logger.LogInformation($"Action: {currentMethodName}; IP: {HttpContext.Request.Headers["X-Real-IP"]};");
+
             var items = await todoItemService.GetAsync();
             return Ok(new { items });
         }
@@ -27,6 +34,9 @@ namespace Todo.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTodoItem(long id)
         {
+            var currentMethodName = MethodBase.GetCurrentMethod().DeclaringType.Name.Split(new char[] { '<', '>' })[1];
+            logger.LogInformation($"[{currentMethodName}]: from {HttpContext.Request.Headers["X-Real-IP"]}");
+
             var item = await todoItemService.GetAsync(id);
             if (item != null)
             {
@@ -38,6 +48,9 @@ namespace Todo.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(long id, [FromBody] TodoItemDto dto)
         {
+            var currentMethodName = MethodBase.GetCurrentMethod().DeclaringType.Name.Split(new char[] { '<', '>' })[1];
+            logger.LogInformation($"[{currentMethodName}]: from {HttpContext.Request.Headers["X-Real-IP"]}");
+
             var item = await todoItemService.GetAsync(id);
             if (item != null)
             {
@@ -52,6 +65,9 @@ namespace Todo.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTodoItem([FromBody] TodoItemDto dto)
         {
+            var currentMethodName = MethodBase.GetCurrentMethod().DeclaringType.Name.Split(new char[] { '<', '>' })[1];
+            logger.LogInformation($"[{currentMethodName}]: from {HttpContext.Request.Headers["X-Real-IP"]}");
+
             var item = new TodoItem
             {
                 IsComplete = dto.IsComplete,
@@ -67,6 +83,9 @@ namespace Todo.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
+            var currentMethodName = MethodBase.GetCurrentMethod().DeclaringType.Name.Split(new char[] { '<', '>' })[1];
+            logger.LogInformation($"[{currentMethodName}]: from {HttpContext.Request.Headers["X-Real-IP"]}");
+
             var item = await todoItemService.GetAsync(id);
             if (item != null)
             {
