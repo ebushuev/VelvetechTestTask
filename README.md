@@ -30,6 +30,10 @@
 
 ![alt text](docs/todo-api-swagger.jpg "Swagger")
 
+## Loggger screenshots
+
+![alt text](docs/todo-api-logger.jpg "Swagger")
+
 ### Контакты
 
     Танкибаев Абзал | Abzal Tankibayev
