@@ -1,5 +1,7 @@
 <h1 align="center">РК, Нур-Султан, 2022Q2</h1>
 
+<h2 align="center">VelveTech</h2>
+
 <h3 align="center">Todo Service Test Task</h3>
 
 ### Тестовое задание
@@ -17,6 +19,7 @@
         DB_USER=sa
         DB_PASSWORD=Sql2019isfast
         DB_NAME_API=todo_test_db
+    Примечание - Строки соединений для запуска приложения из docker и из VS различаются портами.
 
 ## API request screenshots
 
