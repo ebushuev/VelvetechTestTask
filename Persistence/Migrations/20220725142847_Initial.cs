@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TodoApiDTO.Migrations
+namespace Persistence.Migrations
 {
     public partial class Initial : Migration
     {

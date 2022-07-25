@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TodoApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace TodoApiDTO
+namespace Persistence
 {
     public class SeedData
     {
@@ -16,4 +15,3 @@ namespace TodoApiDTO
         }
     }
 }
-

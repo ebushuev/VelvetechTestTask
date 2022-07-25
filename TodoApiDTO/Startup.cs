@@ -1,21 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Persistence;
 using Swashbuckle.AspNetCore.Filters;
-using TodoApi.Models;
-using TodoApiDTO;
+using MediatR;
+using Application.Items;
+using Application.Common;
 
 namespace TodoApi
 {
@@ -51,6 +46,8 @@ namespace TodoApi
             });
             services.AddSwaggerExamplesFromAssemblyOf<Startup>(); ;
             services.AddControllers();
+            services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
