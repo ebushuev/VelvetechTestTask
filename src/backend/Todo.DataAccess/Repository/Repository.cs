@@ -27,22 +27,22 @@ namespace Todo.DataAccess.Repository
             return await todoContext.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<long> CreateAsync(T item)
+        public async Task<long> CreateAsync(T entity)
         {
-            ValidateItem(item);
-            todoContext.Set<T>().Add(item);
+            ValidateItem(entity);
+            todoContext.Set<T>().Add(entity);
             await todoContext.SaveChangesAsync();
-            return item.Id;
+            return entity.Id;
         }
 
         public async Task DeleteAsync(long id)
         {
-            var todoItem = await todoContext.TodoItems.FindAsync(id);
-            if (todoItem == null)
+            var entity = await todoContext.Set<T>().FindAsync(id);
+            if (entity == null)
             {
                 throw new KeyNotFoundException();
             }
-            todoContext.TodoItems.Remove(todoItem);
+            todoContext.Set<T>().Remove(entity);
             await todoContext.SaveChangesAsync();
         }
 
