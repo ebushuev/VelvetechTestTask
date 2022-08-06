@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: "akstodoitem-a7ad"
+    labels:
+        app: "akstodoitem-a7ad"
+    annotations:
+        kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+    rules:
+        - host: aks-todoitem88e1-akstodoitem-a7ad.7042ec975ea748129135.eastus.aksapp.io
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: "akstodoitem-a7ad"
+                servicePort: 80
