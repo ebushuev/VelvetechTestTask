@@ -1,116 +1,122 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using Todo.Domain.Interfaces;
+using TodoApiDTO.Models;
+using System.Linq;
+using AutoMapper;
+using Todo.Domain.Models;
 
 namespace TodoApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
-
-        public TodoItemsController(TodoContext context)
+        private readonly ITodoRepository _todoRepository;
+        private readonly IMapper _mapper;
+        public TodoItemsController(ITodoRepository todoRepository, IMapper mapper)
         {
-            _context = context;
+            _todoRepository = todoRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
+        public async Task<IActionResult> GetItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            var items = _todoRepository.GetAll();
+            var result = items.Select(m => _mapper.Map<TodoItemDTO>(m)).ToList();
+
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
+        public async Task<IActionResult> GetItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _todoRepository.Get(id);
 
-            if (todoItem == null)
+            if (todoItem != null)
             {
-                return NotFound();
+                var result = _mapper.Map<TodoItemDTO>(todoItem);
+
+                return Ok(result);
             }
 
-            return ItemToDTO(todoItem);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
-        {
-            if (id != todoItemDTO.Id)
-            {
-                return BadRequest();
-            }
-
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
-            {
-                return NotFound();
-            }
-
-            return NoContent();
+            return NotFound();
         }
 
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
+        public async Task<IActionResult> Create([FromBody] TodoItemDTO todoItemDTO)
         {
-            var todoItem = new TodoItem
-            {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
+            var item = new TodoItemModel(null, todoItemDTO.Name);
 
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+            var result = await _todoRepository.Create(item);
 
-            return CreatedAtAction(
-                nameof(GetTodoItem),
-                new { id = todoItem.Id },
-                ItemToDTO(todoItem));
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoItem(long id)
+        public async Task<IActionResult> Delete(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            await _todoRepository.Delete(id);
 
-            if (todoItem == null)
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Complete(long id)
+        {
+            var todoItem = await _todoRepository.Get(id);
+
+            if (todoItem != null)
+            {
+                var model = new TodoItemModel(todoItem.Id, todoItem.Name, todoItem.IsComplete);
+                model.Complete();
+                await _todoRepository.Update(model);
+
+                return Ok();
+            }
+            else
             {
                 return NotFound();
             }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
         }
 
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UnComplete(long id)
+        {
+            var todoItem = await _todoRepository.Get(id);
 
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-            new TodoItemDTO
+            if (todoItem != null)
             {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };       
+                var model = new TodoItemModel(todoItem.Id, todoItem.Name, todoItem.IsComplete);
+                model.UnComplete();
+                await _todoRepository.Update(model);
+
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> ChangeName(long id, string name)
+        {
+            var todoItem = await _todoRepository.Get(id);
+
+            if (todoItem != null)
+            {
+                var model = new TodoItemModel(todoItem.Id, todoItem.Name, todoItem.IsComplete);
+                model.UpdateName(name);
+                await _todoRepository.Update(model);
+
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
