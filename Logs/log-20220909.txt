@@ -1,0 +1,6 @@
+2022-09-09T22:54:03.1921050+05:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-09-09T22:54:03.2050167+05:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-09-09T22:54:03.2071025+05:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-09-09T22:54:03.2071592+05:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-09-09T22:54:03.2071883+05:00  [INF] Content root path: "C:\Repos\VelvetechTestTask" (b5d60022)
+2022-09-09T22:54:54.0046274+05:00  [INF] Application is shutting down... (90f52c38)
