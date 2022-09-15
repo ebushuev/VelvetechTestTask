@@ -1,9 +1,14 @@
+using Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Persistence;
+using Serilog;
+using Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
 
 namespace TodoApi.Controllers
 {
@@ -12,31 +17,48 @@ namespace TodoApi.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly TodoContext _context;
-
-        public TodoItemsController(TodoContext context)
+        private readonly ILogger _logger;
+        public TodoItemsController(TodoContext context, ILogger logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems
+            try
+            {
+                return await _context.TodoItems
                 .Select(x => ItemToDTO(x))
                 .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.ToString());
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
+            try
             {
-                return NotFound();
-            }
+                var todoItem = await _context.TodoItems.FindAsync(id);
 
-            return ItemToDTO(todoItem);
+                if (todoItem == null)
+                {
+                    return NotFound();
+                }
+
+                return ItemToDTO(todoItem);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.ToString());
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPut("{id}")]

@@ -11,7 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using Persistence;
+using Serilog;
 
 namespace TodoApi
 {
@@ -27,9 +28,16 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            services.AddDbContext<TodoContext>(
+                options =>
+                options.UseSqlServer(Configuration.GetSection("MyDB").GetSection("ConnectionString").ToString()));
             services.AddControllers();
+            services.AddSwaggerGen();
+            services.AddSingleton<Serilog.ILogger>(m =>
+            {
+                Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(this.Configuration).CreateLogger();
+                return Log.Logger;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +58,9 @@ namespace TodoApi
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
     }
 }
