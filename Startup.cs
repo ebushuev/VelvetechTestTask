@@ -30,11 +30,21 @@ namespace TodoApi
             services.AddDbContext<TodoContext>(opt =>
                opt.UseInMemoryDatabase("TodoList"));
             services.AddControllers();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "TodoApi/swagger/{documentName}/swagger.json";
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/TodoApi/swagger/v1/swagger.json", "TodoAPI");
+                c.RoutePrefix = "TodoApi/swagger";
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
