@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-namespace TodoApiDTO.Application.log
+namespace TodoApiDTO.log
 {
     public static class FileLoggerExtensions
     {

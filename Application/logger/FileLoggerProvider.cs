@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace TodoApiDTO.Application.log
+namespace TodoApiDTO.log
 {
     public class FileLoggerProvider : ILoggerProvider
     {

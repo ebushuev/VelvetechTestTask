@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace TodoApiDTO.Application.log
+namespace TodoApiDTO.log
 {
     public class FileLogger : ILogger
     {
@@ -33,7 +33,7 @@ namespace TodoApiDTO.Application.log
                     var n = Environment.NewLine;
                     string exc = "";
                     if (exception != null) exc = n + exception.GetType() + ": " + exception.Message + n + exception.StackTrace + n;
-                    File.AppendAllText(fullFilePath+"\\logs", logLevel.ToString() + ": " + DateTime.Now.ToString() + " " + formatter(state, exception) + n + exc);
+                    File.AppendAllText(fullFilePath, logLevel.ToString() + ": " + DateTime.Now.ToString() + " " + formatter(state, exception) + n + exc);
                 }
             }
         }
