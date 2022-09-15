@@ -1,0 +1,9 @@
+Information: 9/15/2022 6:55:49 PM Application started. Press Ctrl+C to shut down.
+Information: 9/15/2022 6:55:49 PM Hosting environment: Development
+Information: 9/15/2022 6:55:49 PM Content root path: C:\Users\user\Source\Repos\VelvetechTestTask
+Information: 9/15/2022 6:57:06 PM Application started. Press Ctrl+C to shut down.
+Information: 9/15/2022 6:57:06 PM Hosting environment: Development
+Information: 9/15/2022 6:57:06 PM Content root path: C:\Users\user\Source\Repos\VelvetechTestTask
+Information: 9/15/2022 6:57:13 PM Application started. Press Ctrl+C to shut down.
+Information: 9/15/2022 6:57:13 PM Hosting environment: Development
+Information: 9/15/2022 6:57:13 PM Content root path: C:\Users\user\Source\Repos\VelvetechTestTask

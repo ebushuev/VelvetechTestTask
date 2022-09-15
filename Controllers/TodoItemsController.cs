@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
-
+using TodoApiDTO.Infrastructure.DbContexts;
+using TodoApiDTO.Domain.Models;
+using TodoApiDTO.Application.ToDo;
 namespace TodoApi.Controllers
 {
     [Route("api/[controller]")]
