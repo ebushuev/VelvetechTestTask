@@ -1,0 +1,17 @@
+#sqlcmd -S localhost -U <username> -P <password>
+
+version: "3.2"
+
+services:
+    #MS SQL Server Express edition
+    Todo.Database:
+        container_name: todo.db
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        hostname: todo.db
+        environment:
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: "Express"
+            SA_PASSWORD: "Qaz12345"
+        ports:
+            - "1433:1433"
+          

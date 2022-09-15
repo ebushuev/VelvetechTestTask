@@ -3,7 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Todo.Contexts.Models;
+using Todo.DAL.Models;
 using TodoApi.Models;
+
 
 namespace TodoApi.Controllers
 {
@@ -111,6 +114,6 @@ namespace TodoApi.Controllers
                 Id = todoItem.Id,
                 Name = todoItem.Name,
                 IsComplete = todoItem.IsComplete
-            };       
+            };
     }
 }
