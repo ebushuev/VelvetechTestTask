@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain;
+using Microsoft.EntityFrameworkCore;
 
-namespace TodoApi.Models
+namespace Persistence
 {
     public class TodoContext : DbContext
     {
