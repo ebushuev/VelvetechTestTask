@@ -60,14 +60,14 @@
     <Folder Include="Programmability\Stored Procedures\TodoItem" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Todo.Database.publish.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <Build Include="Tables\TodoItems.sql" />
     <Build Include="Programmability\Stored Procedures\TodoItem\GetTodoItemById.sql" />
     <Build Include="Programmability\Stored Procedures\TodoItem\GetAllTodoItems.sql" />
     <Build Include="Programmability\Stored Procedures\TodoItem\UpdateTodoItem.sql" />
     <Build Include="Programmability\Stored Procedures\TodoItem\DeleteTodoItem.sql" />
     <Build Include="Programmability\Stored Procedures\TodoItem\InsertTodoItem.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Todo.Database.publish.xml" />
   </ItemGroup>
 </Project>
