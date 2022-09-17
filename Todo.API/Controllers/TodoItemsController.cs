@@ -1,119 +1,118 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Todo.Contexts.Models;
+using Todo.API.Services;
 using Todo.DAL.Models;
 using TodoApi.Models;
 
 
 namespace TodoApi.Controllers
 {
+    /// <summary>API для работы с задачами</summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly ITodoService _todoService;
+        private readonly IMapper _mapper;
 
-        public TodoItemsController(TodoContext context)
+        /// <summary></summary>
+        public TodoItemsController(ITodoService todoService, IMapper mapper)
         {
-            _context = context;
+            _todoService = todoService;
+            _mapper = mapper;
         }
 
+        /// <summary>Получить все задачи</summary>
+        /// <response code="200">Задачи получены</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            var todoItems = await _todoService.GetAsync();
+            return _mapper.Map<List<TodoItem>, List<TodoItemDTO>>(todoItems);
         }
 
+        /// <summary>Получить задачу</summary>
+        /// <param name="id">идентификатор задачи</param>
+        /// <response code="200">Задача получена</response>
+        /// <response code="404">Задача не найдена</response>
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
+            var todoItem = await _todoService.GetAsync(id);
             if (todoItem == null)
-            {
                 return NotFound();
-            }
 
-            return ItemToDTO(todoItem);
+            return _mapper.Map<TodoItemDTO>(todoItem);
         }
 
+        /// <summary>Обновить задачу</summary>
+        /// <param name="id">идентификатор задачи</param>
+        /// <param name="todoItemDTO">объект задачи с данными для обновления</param>
+        /// <response code="204">Задача обновлена</response>
+        /// <response code="400">Некорректный запрос: входные идентификаторы не совпадают</response>
+        /// <response code="404">Задача не найдена</response>
         [HttpPut("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
         {
             if (id != todoItemDTO.Id)
-            {
                 return BadRequest();
-            }
-
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
 
             try
             {
-                await _context.SaveChangesAsync();
+                var todoItem = _mapper.Map<TodoItem>(todoItemDTO);
+                await _todoService.UpdateAsync(todoItem);
             }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
+            catch (ArgumentOutOfRangeException)
             {
                 return NotFound();
             }
-
             return NoContent();
         }
 
+        /// <summary>Создать задачу</summary>
+        /// <param name="todoItemDTO">объект задачи</param>
+        /// <response code="201">Задача создана</response>
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
+        [ProducesResponseType(201)]
+        [ProducesResponseType(500)]
+        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemCreateDTO todoItemDTO)
         {
-            var todoItem = new TodoItem
-            {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
-
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+            var todoItem = _mapper.Map<TodoItem>(todoItemDTO);
+            await _todoService.AddAsync(todoItem);
 
             return CreatedAtAction(
                 nameof(GetTodoItem),
                 new { id = todoItem.Id },
-                ItemToDTO(todoItem));
+                _mapper.Map<TodoItemDTO>(todoItem)
+            );
         }
 
+        /// <summary>Удалить задачу</summary>
+        /// <param name="id">идентификатор задачи</param>
+        /// <response code="204">Задача удалена</response>
+        /// <response code="404">Задача не найдена</response>
         [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
+            try
+            {
+                await _todoService.RemoveAsync(id);
+            }
+            catch (ArgumentOutOfRangeException)
             {
                 return NotFound();
             }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
             return NoContent();
         }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
-
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-            new TodoItemDTO
-            {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };
     }
 }

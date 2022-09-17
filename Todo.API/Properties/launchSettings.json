@@ -8,7 +8,14 @@
     }
   },
   "profiles": {
-    "IIS Express": {
+    "IIS Express Production": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
+    "IIS Express Development": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {

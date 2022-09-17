@@ -2,10 +2,8 @@
 {
     #region snippet
     /// <summary>DTO задачи</summary>
-    public class TodoItemDTO
+    public class TodoItemCreateDTO
     {
-        /// <summary>идентификатор</summary>
-        public long Id { get; set; }
         /// <summary>наименование</summary>
         public string Name { get; set; }
         /// <summary>выполнено</summary>
