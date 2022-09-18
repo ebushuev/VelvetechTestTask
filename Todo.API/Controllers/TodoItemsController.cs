@@ -27,6 +27,7 @@ namespace TodoApi.Controllers
 
         /// <summary>Получить все задачи</summary>
         /// <response code="200">Задачи получены</response>
+        /// <response code="500">Внутренняя ошибка</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
@@ -38,6 +39,7 @@ namespace TodoApi.Controllers
         /// <param name="id">идентификатор задачи</param>
         /// <response code="200">Задача получена</response>
         /// <response code="404">Задача не найдена</response>
+        /// <response code="500">Внутренняя ошибка</response>
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
@@ -54,6 +56,7 @@ namespace TodoApi.Controllers
         /// <response code="204">Задача обновлена</response>
         /// <response code="400">Некорректный запрос: входные идентификаторы не совпадают</response>
         /// <response code="404">Задача не найдена</response>
+        /// <response code="500">Внутренняя ошибка</response>
         [HttpPut("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -79,6 +82,7 @@ namespace TodoApi.Controllers
         /// <summary>Создать задачу</summary>
         /// <param name="todoItemDTO">объект задачи</param>
         /// <response code="201">Задача создана</response>
+        /// <response code="500">Внутренняя ошибка</response>
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(500)]
@@ -98,6 +102,7 @@ namespace TodoApi.Controllers
         /// <param name="id">идентификатор задачи</param>
         /// <response code="204">Задача удалена</response>
         /// <response code="404">Задача не найдена</response>
+        /// <response code="500">Внутренняя ошибка</response>
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]

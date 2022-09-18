@@ -14,7 +14,6 @@ namespace Todo.API.Services
     {
         private readonly ITodoRepository _todoRepository;
 
-        /// <summary></summary>
         public TodoService(ITodoRepository todoRepository) =>
             _todoRepository = todoRepository;
 
@@ -38,7 +37,7 @@ namespace Todo.API.Services
         {
             var item = await _todoRepository.GetAsync(todoItem.Id);
             if (item == null)
-                throw new ArgumentOutOfRangeException("Не найдена задача с указанным Id");
+                throw new ArgumentOutOfRangeException("Id", "Не найдена задача с указанным Id");
 
             item.Name = todoItem.Name;
             item.IsComplete = todoItem.IsComplete;
@@ -57,7 +56,7 @@ namespace Todo.API.Services
         {
             var todoItem = await _todoRepository.GetAsync(id);
             if (todoItem == null)
-                throw new ArgumentOutOfRangeException("Не найдена задача с указанным Id");
+                throw new ArgumentOutOfRangeException("Id", "Не найдена задача с указанным Id");
 
             _todoRepository.Remove(todoItem);
             await _todoRepository.SaveChangesAsync();

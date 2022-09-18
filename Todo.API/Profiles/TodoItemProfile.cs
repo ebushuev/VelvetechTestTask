@@ -8,7 +8,6 @@ namespace Todo.API.Profiles
     /// <summary>Маппер для TodoItem</summary>
     public class TodoItemProfile : Profile
     {
-        /// <inheritdoc/>
         public TodoItemProfile()
         {
             CreateMap<TodoItem, TodoItemDTO>().ReverseMap();
