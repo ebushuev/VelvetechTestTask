@@ -15,6 +15,7 @@
     <PackageReference Include="Microsoft.OpenApi" Version="1.4.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
     <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.4.0" />
@@ -26,6 +27,11 @@
     <ProjectReference Include="..\BLL\BLL.csproj" />
     <ProjectReference Include="..\DAL\DAL.csproj" />
     <ProjectReference Include="..\DataSeed\DataSeed.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="AppLogs.txt" />
+    <Content Include="AppLogs.txt" />
   </ItemGroup>
 
 

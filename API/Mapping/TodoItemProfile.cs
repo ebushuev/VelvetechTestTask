@@ -6,6 +6,7 @@ namespace TodoApi.Mapping {
 	public class TodoItemProfile : Profile {
 		public TodoItemProfile() {
 			CreateMap<TodoItem, TodoItemDTO>().ReverseMap();
+			CreateMap<TodoItem, TodoItemShortDTO>().ReverseMap();
 		}
 	}
 }
