@@ -52,7 +52,7 @@ namespace TodoApiDTO.BusinessLayer
         {
             if (id != todoItemDTO.Id)
             {
-                new OperationEventResult
+                return new OperationEventResult
                 {
                     Type = OperationEventType.BadRequest
                 };
