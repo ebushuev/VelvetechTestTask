@@ -21,7 +21,7 @@ namespace DataAccessLayer.Migrations
                     table.PrimaryKey("PK_TodoItems", x => x.Id);
                 });
         }
-
+    
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
