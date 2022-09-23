@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApi.Models;
+using TodoApiDTO.Context;
+using TodoApiDTO.DTOs;
 
 namespace TodoApi.Controllers
 {
@@ -67,14 +69,14 @@ namespace TodoApi.Controllers
 
             return NoContent();
         }
-
+ 
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
             var todoItem = new TodoItem
             {
                 IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
+                Name = todoItemDTO.Name,
             };
 
             _context.TodoItems.Add(todoItem);

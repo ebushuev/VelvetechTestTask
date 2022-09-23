@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TodoApi.Models;
+using TodoApiDTO.Context;
 
 namespace TodoApiDTO.Migrations
 {
