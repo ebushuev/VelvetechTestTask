@@ -11,6 +11,8 @@ namespace Application.IServices
 
         Task<TodoItemDTO> GetTodoItem(long id);
 
+        Task<TodoItem> GetTodoIt(long id);
+
         Task<bool> UpdateTodoItem(TodoItemDTO todoItemDTO);
 
         Task<TodoItemDTO> CreateTodoItem(TodoItemDTO todoItemDTO);

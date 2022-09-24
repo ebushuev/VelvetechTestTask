@@ -65,7 +65,7 @@ namespace Application.Services
                 Name = todoItemDTO.Name,
             };
             _todoListContext.AddAsync(todoItem);
-            
+
             bool result = await Save();
 
             if (result)
@@ -86,6 +86,13 @@ namespace Application.Services
         {
             var saved = await _todoListContext.SaveChangesAsync();
             return saved >= 0;
+        }
+
+        public async Task<TodoItem> GetTodoIt(long id)
+        {
+            var todoItem = await _todoListContext.TodoItems.FindAsync(id);
+
+            return todoItem;
         }
     }
 }

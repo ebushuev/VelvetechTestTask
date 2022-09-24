@@ -15,12 +15,13 @@ namespace TodoApi.Controllers
     public class TodoItemsController : ControllerBase
     {
         private ITodoListRepository _todoListRepository;
-        private TodoContext _todoContext;
+        //private TodoContext _todoContext;
+
 
         public TodoItemsController(ITodoListRepository todoListRepository, TodoContext todoContext)
         {
             _todoListRepository = todoListRepository;
-            _todoContext = todoContext;
+            //_todoContext = todoContext;
         }
 
         [HttpGet]
@@ -86,7 +87,7 @@ namespace TodoApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _todoContext.TodoItems.FindAsync(id);
+            var todoItem = await _todoListRepository.GetTodoIt(id);
 
             if (todoItem == null)
             {

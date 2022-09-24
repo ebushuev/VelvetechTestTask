@@ -1,10 +1,13 @@
 ﻿using Application.IServices;
 using Application.Services;
 using DataAccessLayer.Context;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using TodoApiDTO.Behaviors;
+using TodoApiDTO.Services;
 
 namespace TodoApiDTO.Extensions
 {
@@ -23,6 +26,12 @@ namespace TodoApiDTO.Extensions
       });
 
       services.AddScoped<ITodoListRepository, TodoListRepository>();
+      services.AddSingleton<ICurrentUserService, CurrentUserService>();
+      
+      services.AddHttpContextAccessor();
+
+      services.AddTransient(typeof(IPipelineBehavior<,>),
+          typeof(LoggingBehavior<,>));
 
       return services;
     }
