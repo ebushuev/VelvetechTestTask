@@ -272,3 +272,10 @@ FROM [TodoItems] AS [t]
 2022-09-24 14:58:06.041 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 8.1653ms
 2022-09-24 14:58:06.041 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
 2022-09-24 14:58:06.042 +06:00 [INF] Request finished in 10.8495ms 200 application/json; charset=utf-8
+2022-09-24 15:25:13.756 +06:00 [INF] Request starting HTTP/2.0 GET https://localhost:44331/swagger/index.html  
+2022-09-24 15:25:13.778 +06:00 [INF] Request finished in 21.7051ms 200 text/html;charset=utf-8
+2022-09-24 15:25:13.823 +06:00 [INF] Request starting HTTP/2.0 GET https://localhost:44331/_framework/aspnetcore-browser-refresh.js  
+2022-09-24 15:25:13.825 +06:00 [INF] Request finished in 2.1946ms 200 application/javascript; charset=utf-8
+2022-09-24 15:25:14.226 +06:00 [INF] Request starting HTTP/2.0 GET https://localhost:44331/swagger/v1/swagger.json  
+2022-09-24 15:25:14.253 +06:00 [INF] Request finished in 27.424ms 200 application/json;charset=utf-8
+2022-09-24 15:25:22.323 +06:00 [INF] Application is shutting down...
