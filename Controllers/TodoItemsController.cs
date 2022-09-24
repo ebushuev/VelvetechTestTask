@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using TodoApi.Models;
 using TodoApi.Services;
 
@@ -12,10 +13,12 @@ namespace TodoApi.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly ITodoListService _todoListService;
+        private readonly ILogger<TodoItemsController> _logger;
 
-        public TodoItemsController(ITodoListService todoListService)
+        public TodoItemsController(ITodoListService todoListService, ILogger<TodoItemsController> logger)
         {
             _todoListService = todoListService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -28,7 +31,11 @@ namespace TodoApi.Controllers
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
             var todoItem = await _todoListService.GetTodoItemAsync(id);
-            if (todoItem == null) return NotFound();
+            if (todoItem == null)
+            {
+                _logger.LogWarning($"Todo Item with id {id} not found");
+                return NotFound();
+            }
             return ItemToDTO(todoItem);
         }
 
@@ -38,10 +45,15 @@ namespace TodoApi.Controllers
             if (id != todoItemDTO.Id) return BadRequest();
             try
             {
-                if (!await _todoListService.UpdateTodoItemAsync(id, todoItemDTO)) return NotFound();
+                if (!await _todoListService.UpdateTodoItemAsync(id, todoItemDTO))
+                {
+                    _logger.LogWarning($"Unable to update Todo Item with id {id} - item not found");
+                    return NotFound();
+                }
             }
-            catch (DbUpdateConcurrencyException) when (!_todoListService.TodoItemExists(id))
+            catch (DbUpdateConcurrencyException ex) when (!_todoListService.TodoItemExists(id))
             {
+                _logger.LogTrace(ex, ex.Message);
                 return NotFound();
             }
 
@@ -57,7 +69,10 @@ namespace TodoApi.Controllers
                 Name = todoItemDTO.Name
             };
 
-            await _todoListService.CreateTodoItemAsync(todoItemDTO);
+            if (!await _todoListService.CreateTodoItemAsync(todoItemDTO))
+            {
+                _logger.LogWarning($"Error during saving Todo Item: {todoItem.Id} {todoItem.Name} {todoItem.IsComplete}");
+            }
 
             return CreatedAtAction(
                 nameof(GetTodoItem),
@@ -68,7 +83,11 @@ namespace TodoApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            if (!await _todoListService.DeleteTodoItemAsync(id)) return NotFound();
+            if (!await _todoListService.DeleteTodoItemAsync(id))
+            {
+                _logger.LogWarning($"Todo Item with id {id} not found");
+                return NotFound();
+            }
 
             return NoContent();
         }
