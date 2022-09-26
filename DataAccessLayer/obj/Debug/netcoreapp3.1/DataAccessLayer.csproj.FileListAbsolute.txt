@@ -1,0 +1,16 @@
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfo.cs
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.CopyComplete
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\ibrag\source\repos\Velve\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.genruntimeconfig.cache
