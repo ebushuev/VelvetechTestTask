@@ -52,7 +52,7 @@ namespace Todo.WebApi.Controllers
         {
             var newItem = await _todoItemService.CreateItemAsync(item);
 
-            return CreatedAtAction(nameof(GetTodoItem), new { id = newItem.Id }, newItem);
+            return CreatedAtAction(nameof(CreateTodoItem), new { id = newItem.Id }, newItem);
         }
 
         [HttpDelete("{id}")]
