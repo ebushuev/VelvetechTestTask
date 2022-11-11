@@ -1,0 +1,1261 @@
+2022-11-10 23:46:30.6539 Info Message Template Auto Format enabled
+2022-11-10 23:46:30.6903 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-10 23:46:31.0613 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-10 23:46:31.0720 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-10 23:46:31.0908 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-10 23:46:31.0998 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-10 23:46:31.0998 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-10 23:46:31.0998 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-10 23:46:31.0998 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-10 23:46:31.0998 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-10 23:46:31.1129 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-10 23:46:31.1129 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-10 23:46:31.1129 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-10 23:46:31.1129 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-10 23:46:31.1129 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-10 23:46:31.1129 Info Adding target FileTarget(Name=logfile)
+2022-11-10 23:46:31.1129 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-10 23:46:31.1129 Trace ParseRulesElement
+2022-11-10 23:46:31.1704 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\Source\Repos\VelvetechTestTask\bin\Debug\netcoreapp3.1
+2022-11-10 23:46:31.1704 Debug --- NLog configuration dump ---
+2022-11-10 23:46:31.1704 Debug Targets:
+2022-11-10 23:46:31.1774 Debug FileTarget(Name=logfile)
+2022-11-10 23:46:31.1774 Debug Rules:
+2022-11-10 23:46:31.1774 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-10 23:46:31.1774 Debug --- End of NLog configuration dump ---
+2022-11-10 23:46:31.1774 Trace FindReachableObject<System.Object>:
+2022-11-10 23:46:31.1934 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-10 23:46:31.1934 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-10 23:46:31.1934 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-10 23:46:31.1934 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-10 23:46:31.1934 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-10 23:46:31.1934 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-10 23:46:31.1934 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-10 23:46:31.1934 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-10 23:46:31.2093 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-10 23:46:31.2093 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-10 23:46:31.2093 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-10 23:46:31.2093 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-10 23:46:31.2093 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-10 23:46:31.2093 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-10 23:46:31.2093 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-10 23:46:31.2093 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-10 23:46:31.2093 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-10 23:46:31.2093 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-10 23:46:31.2093 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-10 23:46:31.2093 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-10 23:46:31.2093 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-10 23:46:31.2287 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\Source\Repos\VelvetechTestTask\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-10 23:46:31.2287 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-10 23:46:31.2496 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-10 23:46:31.2496 Trace Initializing Layout Renderer: ${message}
+2022-11-10 23:46:31.2496 Trace Initializing Layout Renderer: ${literal}
+2022-11-10 23:46:31.2546 Trace Initializing Layout Renderer: ${level}
+2022-11-10 23:46:31.2546 Trace Initializing Layout Renderer: ${literal}
+2022-11-10 23:46:31.2546 Trace Initializing Layout Renderer: ${longdate}
+2022-11-10 23:46:31.2546 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-10 23:46:31.2721 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-10 23:46:31.2721 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-10 23:46:31.2721 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-10 23:46:31.2721 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-10 23:46:31.2721 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-10 23:46:31.2721 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-10 23:46:31.2721 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-10 23:46:31.2721 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-10 23:46:31.2875 Trace Initializing Layout Renderer: ${literal}
+2022-11-10 23:46:31.2875 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-10 23:46:31.2875 Trace Initializing Layout Renderer: ${literal}
+2022-11-10 23:46:31.2875 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-10 23:46:31.2875 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-10 23:46:31.2875 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-10 23:46:31.2875 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-10 23:46:31.2875 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-10 23:46:31.2875 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-10 23:46:31.2875 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-10 23:46:31.2875 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-10 23:46:31.2875 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-10 23:46:31.2875 Trace Initializing FileTarget(Name=logfile)
+2022-11-10 23:46:31.3055 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-10 23:46:31.3055 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-10 23:46:31.3055 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-10 23:46:31.3055 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-10 23:46:31.3055 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-10 23:46:31.3055 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-10 23:46:31.3055 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-10 23:46:31.3055 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-10 23:46:31.3055 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-10 23:46:31.3213 Info Configuration initialized.
+2022-11-10 23:46:31.5736 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-10 23:46:31.5736 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-10 23:46:31.5736 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-10 23:46:31.5736 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-10 23:46:31.5822 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-10 23:46:31.5822 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-10 23:46:31.5822 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-10 23:46:31.6236 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\Source\Repos\VelvetechTestTask\Logs\nlog-todoApi-2022-11-10.log'
+2022-11-10 23:46:31.6382 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\Source\Repos\VelvetechTestTask\Logs\nlog-todoApi-2022-11-10.log
+2022-11-10 23:46:31.6382 Trace FileTarget(Name=logfile): Opening C:\Users\beant\Source\Repos\VelvetechTestTask\Logs\nlog-todoApi-2022-11-10.log with allowFileSharedWriting=False
+2022-11-11 17:40:29.9353 Info Message Template Auto Format enabled
+2022-11-11 17:40:29.9654 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 17:40:30.0235 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 17:40:30.0235 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:40:30.0400 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:40:30.0400 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:40:30.0400 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:40:30.0400 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:40:30.0400 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:40:30.0400 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:40:30.0400 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:40:30.0519 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:40:30.0519 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:40:30.0519 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:40:30.0519 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:40:30.0519 Info Adding target FileTarget(Name=logfile)
+2022-11-11 17:40:30.0519 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 17:40:30.0519 Trace ParseRulesElement
+2022-11-11 17:40:30.0756 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 17:40:30.0756 Debug --- NLog configuration dump ---
+2022-11-11 17:40:30.0756 Debug Targets:
+2022-11-11 17:40:30.0756 Debug FileTarget(Name=logfile)
+2022-11-11 17:40:30.0756 Debug Rules:
+2022-11-11 17:40:30.0833 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 17:40:30.0833 Debug --- End of NLog configuration dump ---
+2022-11-11 17:40:30.0833 Trace FindReachableObject<System.Object>:
+2022-11-11 17:40:30.0833 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 17:40:30.0833 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 17:40:30.0833 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 17:40:30.0985 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 17:40:30.0985 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:40:30.0985 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:40:30.0985 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:40:30.0985 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:40:30.0985 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:40:30.0985 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:40:30.0985 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 17:40:30.0985 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:40:30.0985 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:40:30.0985 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:40:30.0985 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:40:30.0985 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:40:30.0985 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:40:30.0985 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:40:30.0985 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 17:40:30.1138 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 17:40:30.1138 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 17:40:30.1138 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 17:40:30.1138 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 17:40:30.1375 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 17:40:30.1375 Trace Initializing Layout Renderer: ${message}
+2022-11-11 17:40:30.1375 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:40:30.1375 Trace Initializing Layout Renderer: ${level}
+2022-11-11 17:40:30.1375 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:40:30.1375 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 17:40:30.1444 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 17:40:30.1444 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:40:30.1444 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:40:30.1444 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:40:30.1444 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:40:30.1444 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:40:30.1444 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:40:30.1444 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:40:30.1444 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:40:30.1444 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:40:30.1609 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 17:40:30.1609 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:40:30.1609 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 17:40:30.1609 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 17:40:30.1609 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:40:30.1609 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:40:30.1609 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:40:30.1609 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:40:30.1609 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:40:30.1609 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:40:30.1609 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:40:30.1609 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 17:40:30.1609 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 17:40:30.1609 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 17:40:30.1609 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 17:40:30.1770 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:40:30.1770 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 17:40:30.1770 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:40:30.1770 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 17:40:30.1770 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 17:40:30.1770 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 17:40:30.1770 Info Configuration initialized.
+2022-11-11 17:40:30.2052 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 17:40:30.2125 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 17:40:30.2125 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 17:40:30.2125 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 17:40:30.2125 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 17:40:30.2125 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 17:40:30.2125 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 17:40:30.2478 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 17:40:30.2626 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 17:40:30.2626 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 17:45:45.2207 Info Message Template Auto Format enabled
+2022-11-11 17:45:45.2699 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 17:45:45.4105 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 17:45:45.4278 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:45:45.4450 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:45:45.4450 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:45:45.4450 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:45:45.4568 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:45:45.4568 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:45:45.4568 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:45:45.4568 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:45:45.4568 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:45:45.4568 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:45:45.4568 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:45:45.4568 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:45:45.4568 Info Adding target FileTarget(Name=logfile)
+2022-11-11 17:45:45.4743 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 17:45:45.4743 Trace ParseRulesElement
+2022-11-11 17:45:45.5088 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 17:45:45.5088 Debug --- NLog configuration dump ---
+2022-11-11 17:45:45.5088 Debug Targets:
+2022-11-11 17:45:45.5088 Debug FileTarget(Name=logfile)
+2022-11-11 17:45:45.5088 Debug Rules:
+2022-11-11 17:45:45.5224 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 17:45:45.5224 Debug --- End of NLog configuration dump ---
+2022-11-11 17:45:45.5224 Trace FindReachableObject<System.Object>:
+2022-11-11 17:45:45.5224 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 17:45:45.5224 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 17:45:45.5396 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 17:45:45.5396 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 17:45:45.5396 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:45:45.5396 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:45:45.5396 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:45:45.5396 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:45:45.5529 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:45:45.5529 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:45:45.5529 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 17:45:45.5529 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:45:45.5529 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:45:45.5529 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:45:45.5679 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:45:45.5679 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:45:45.5679 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:45:45.5679 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:45:45.5679 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 17:45:45.5679 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 17:45:45.5824 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 17:45:45.5824 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 17:45:45.5824 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 17:45:45.6160 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 17:45:45.6160 Trace Initializing Layout Renderer: ${message}
+2022-11-11 17:45:45.6348 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:45:45.6348 Trace Initializing Layout Renderer: ${level}
+2022-11-11 17:45:45.6348 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:45:45.6348 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 17:45:45.6451 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 17:45:45.6451 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:45:45.6451 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:45:45.6451 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:45:45.6594 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:45:45.6594 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:45:45.6594 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:45:45.6594 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:45:45.6594 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:45:45.6594 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:45:45.6594 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 17:45:45.6594 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:45:45.6594 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 17:45:45.6594 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 17:45:45.6594 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:45:45.6594 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:45:45.6754 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:45:45.6754 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:45:45.6754 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:45:45.6754 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:45:45.6754 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:45:45.6754 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 17:45:45.6754 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 17:45:45.6754 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 17:45:45.6754 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 17:45:45.6754 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:45:45.6754 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 17:45:45.6754 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:45:45.6754 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 17:45:45.6754 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 17:45:45.6944 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 17:45:45.6944 Info Configuration initialized.
+2022-11-11 17:45:45.7218 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 17:45:45.7291 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 17:45:45.7291 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 17:45:45.7291 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 17:45:45.7291 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 17:45:45.7291 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 17:45:45.7291 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 17:45:45.7650 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 17:45:45.7816 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 17:45:45.7856 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 17:48:18.3221 Info Message Template Auto Format enabled
+2022-11-11 17:48:18.3582 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 17:48:18.4441 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 17:48:18.4441 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:48:18.4597 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:48:18.4597 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:48:18.4597 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:48:18.4597 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:48:18.4597 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:48:18.4597 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:48:18.4597 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:48:18.4597 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:48:18.4597 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:48:18.4725 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:48:18.4725 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:48:18.4725 Info Adding target FileTarget(Name=logfile)
+2022-11-11 17:48:18.4725 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 17:48:18.4725 Trace ParseRulesElement
+2022-11-11 17:48:18.4948 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 17:48:18.4948 Debug --- NLog configuration dump ---
+2022-11-11 17:48:18.4948 Debug Targets:
+2022-11-11 17:48:18.4948 Debug FileTarget(Name=logfile)
+2022-11-11 17:48:18.4948 Debug Rules:
+2022-11-11 17:48:18.4948 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 17:48:18.4948 Debug --- End of NLog configuration dump ---
+2022-11-11 17:48:18.5039 Trace FindReachableObject<System.Object>:
+2022-11-11 17:48:18.5039 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 17:48:18.5039 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 17:48:18.5039 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 17:48:18.5039 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 17:48:18.5039 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:48:18.5039 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:48:18.5039 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:48:18.5039 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:48:18.5039 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:48:18.5039 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:48:18.5189 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 17:48:18.5189 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:48:18.5189 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:48:18.5189 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:48:18.5189 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:48:18.5189 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:48:18.5189 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:48:18.5189 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:48:18.5189 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 17:48:18.5189 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 17:48:18.5189 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 17:48:18.5189 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 17:48:18.5189 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 17:48:18.5348 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 17:48:18.5348 Trace Initializing Layout Renderer: ${message}
+2022-11-11 17:48:18.5348 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:48:18.5348 Trace Initializing Layout Renderer: ${level}
+2022-11-11 17:48:18.5348 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:48:18.5348 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 17:48:18.5348 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 17:48:18.5348 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:48:18.5348 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:48:18.5348 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:48:18.5348 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:48:18.5348 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:48:18.5348 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:48:18.5348 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:48:18.5348 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:48:18.5509 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:48:18.5509 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 17:48:18.5509 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:48:18.5509 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 17:48:18.5509 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 17:48:18.5509 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:48:18.5509 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:48:18.5509 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:48:18.5509 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:48:18.5509 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:48:18.5509 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:48:18.5509 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:48:18.5509 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 17:48:18.5509 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 17:48:18.5509 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 17:48:18.5509 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 17:48:18.5509 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:48:18.5509 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 17:48:18.5509 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:48:18.5509 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 17:48:18.5509 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 17:48:18.5509 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 17:48:18.5674 Info Configuration initialized.
+2022-11-11 17:48:18.5674 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 17:48:18.5865 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 17:48:18.5865 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 17:48:18.5865 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 17:48:18.5865 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 17:48:18.5865 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 17:48:18.5865 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 17:48:18.6134 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 17:48:18.6134 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 17:48:18.6294 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 17:52:54.5601 Info Message Template Auto Format enabled
+2022-11-11 17:52:54.6093 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 17:52:54.7001 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 17:52:54.7136 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:52:54.7255 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:52:54.7255 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:52:54.7255 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:52:54.7255 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:52:54.7383 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:52:54.7383 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:52:54.7383 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:52:54.7383 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:52:54.7383 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:52:54.7383 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:52:54.7383 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:52:54.7383 Info Adding target FileTarget(Name=logfile)
+2022-11-11 17:52:54.7383 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 17:52:54.7540 Trace ParseRulesElement
+2022-11-11 17:52:54.7913 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 17:52:54.7913 Debug --- NLog configuration dump ---
+2022-11-11 17:52:54.7913 Debug Targets:
+2022-11-11 17:52:54.7913 Debug FileTarget(Name=logfile)
+2022-11-11 17:52:54.7913 Debug Rules:
+2022-11-11 17:52:54.7913 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 17:52:54.8006 Debug --- End of NLog configuration dump ---
+2022-11-11 17:52:54.8006 Trace FindReachableObject<System.Object>:
+2022-11-11 17:52:54.8006 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 17:52:54.8006 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 17:52:54.8006 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 17:52:54.8189 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 17:52:54.8189 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:52:54.8189 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:52:54.8189 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:52:54.8189 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:52:54.8189 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:52:54.8189 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:52:54.8189 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 17:52:54.8189 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:52:54.8189 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:52:54.8189 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:52:54.8189 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:52:54.8314 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:52:54.8314 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:52:54.8314 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:52:54.8314 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 17:52:54.8314 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 17:52:54.8314 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 17:52:54.8314 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 17:52:54.8314 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 17:52:54.8559 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 17:52:54.8559 Trace Initializing Layout Renderer: ${message}
+2022-11-11 17:52:54.8559 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:52:54.8559 Trace Initializing Layout Renderer: ${level}
+2022-11-11 17:52:54.8559 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:52:54.8559 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 17:52:54.8559 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 17:52:54.8674 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:52:54.8674 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:52:54.8674 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:52:54.8674 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 17:52:54.8674 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:52:54.8674 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 17:52:54.8674 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:52:54.8674 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 17:52:54.8674 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:52:54.8674 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 17:52:54.8674 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 17:52:54.8674 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 17:52:54.8674 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 17:52:54.8786 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 17:52:54.8786 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:52:54.8786 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 17:52:54.8786 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 17:52:54.8786 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:52:54.8786 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 17:52:54.8786 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 17:52:54.8786 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 17:52:54.8786 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 17:52:54.8786 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 17:52:54.8786 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 17:52:54.8786 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 17:52:54.8786 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 17:52:54.8786 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 17:52:54.8786 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 17:52:54.8786 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 17:52:54.8976 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 17:52:54.8976 Info Configuration initialized.
+2022-11-11 17:52:54.9197 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 17:52:54.9197 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 17:52:54.9197 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 17:52:54.9267 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 17:52:54.9267 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 17:52:54.9267 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 17:52:54.9267 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 17:52:54.9518 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 17:52:54.9604 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 17:52:54.9604 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 18:04:52.9976 Info Message Template Auto Format enabled
+2022-11-11 18:04:53.0423 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 18:04:53.1556 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 18:04:53.1669 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:04:53.1782 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:04:53.1782 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:04:53.1782 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:04:53.1782 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:04:53.1782 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:04:53.1782 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:04:53.1782 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:04:53.1954 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:04:53.1954 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:04:53.1954 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:04:53.1954 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:04:53.1954 Info Adding target FileTarget(Name=logfile)
+2022-11-11 18:04:53.1954 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 18:04:53.1954 Trace ParseRulesElement
+2022-11-11 18:04:53.2324 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 18:04:53.2324 Debug --- NLog configuration dump ---
+2022-11-11 18:04:53.2324 Debug Targets:
+2022-11-11 18:04:53.2324 Debug FileTarget(Name=logfile)
+2022-11-11 18:04:53.2324 Debug Rules:
+2022-11-11 18:04:53.2411 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 18:04:53.2411 Debug --- End of NLog configuration dump ---
+2022-11-11 18:04:53.2411 Trace FindReachableObject<System.Object>:
+2022-11-11 18:04:53.2411 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 18:04:53.2411 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 18:04:53.2411 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:04:53.2547 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:04:53.2547 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:04:53.2547 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:04:53.2547 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:04:53.2547 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:04:53.2547 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:04:53.2547 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:04:53.2547 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:04:53.2547 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:04:53.2547 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:04:53.2547 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:04:53.2547 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:04:53.2547 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:04:53.2547 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:04:53.2547 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:04:53.2547 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:04:53.2706 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 18:04:53.2706 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 18:04:53.2706 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 18:04:53.2706 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 18:04:53.2882 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 18:04:53.2882 Trace Initializing Layout Renderer: ${message}
+2022-11-11 18:04:53.2882 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:04:53.2882 Trace Initializing Layout Renderer: ${level}
+2022-11-11 18:04:53.2882 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:04:53.2882 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 18:04:53.2882 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 18:04:53.3017 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:04:53.3017 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:04:53.3017 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:04:53.3017 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:04:53.3017 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:04:53.3017 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:04:53.3017 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:04:53.3017 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:04:53.3017 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:04:53.3169 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 18:04:53.3169 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:04:53.3169 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 18:04:53.3169 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 18:04:53.3169 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:04:53.3169 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:04:53.3169 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:04:53.3169 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:04:53.3169 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:04:53.3169 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:04:53.3169 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:04:53.3169 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 18:04:53.3315 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 18:04:53.3315 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:04:53.3315 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:04:53.3315 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:04:53.3315 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:04:53.3315 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:04:53.3315 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:04:53.3315 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 18:04:53.3315 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 18:04:53.3315 Info Configuration initialized.
+2022-11-11 18:04:53.3643 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 18:04:53.3643 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 18:04:53.3643 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 18:04:53.3643 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 18:04:53.3643 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 18:04:53.3643 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 18:04:53.3643 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 18:04:53.4110 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 18:04:53.4110 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 18:04:53.4294 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 18:07:56.7495 Info Message Template Auto Format enabled
+2022-11-11 18:07:56.7902 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 18:07:56.8714 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 18:07:56.8807 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:07:56.8807 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:07:56.8807 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:07:56.8967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:07:56.8967 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:07:56.8967 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:07:56.8967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:07:56.8967 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:07:56.8967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:07:56.8967 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:07:56.8967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:07:56.9103 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:07:56.9103 Info Adding target FileTarget(Name=logfile)
+2022-11-11 18:07:56.9103 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 18:07:56.9103 Trace ParseRulesElement
+2022-11-11 18:07:56.9441 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 18:07:56.9441 Debug --- NLog configuration dump ---
+2022-11-11 18:07:56.9441 Debug Targets:
+2022-11-11 18:07:56.9441 Debug FileTarget(Name=logfile)
+2022-11-11 18:07:56.9441 Debug Rules:
+2022-11-11 18:07:56.9441 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 18:07:56.9441 Debug --- End of NLog configuration dump ---
+2022-11-11 18:07:56.9592 Trace FindReachableObject<System.Object>:
+2022-11-11 18:07:56.9592 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 18:07:56.9592 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 18:07:56.9592 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:07:56.9592 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:07:56.9592 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:07:56.9592 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:07:56.9727 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:07:56.9727 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:07:56.9727 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:07:56.9727 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:07:56.9727 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:07:56.9727 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:07:56.9727 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:07:56.9727 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:07:56.9727 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:07:56.9727 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:07:56.9727 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:07:56.9727 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:07:56.9727 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:07:56.9727 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 18:07:56.9727 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 18:07:56.9938 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 18:07:56.9938 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 18:07:57.0100 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 18:07:57.0100 Trace Initializing Layout Renderer: ${message}
+2022-11-11 18:07:57.0100 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:07:57.0100 Trace Initializing Layout Renderer: ${level}
+2022-11-11 18:07:57.0100 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:07:57.0100 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 18:07:57.0100 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 18:07:57.0246 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:07:57.0246 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:07:57.0246 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:07:57.0246 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:07:57.0246 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:07:57.0246 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:07:57.0246 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:07:57.0246 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:07:57.0358 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:07:57.0358 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 18:07:57.0358 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:07:57.0358 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 18:07:57.0358 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 18:07:57.0358 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:07:57.0358 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:07:57.0358 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:07:57.0358 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:07:57.0358 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:07:57.0358 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:07:57.0358 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:07:57.0358 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 18:07:57.0518 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 18:07:57.0518 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:07:57.0518 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:07:57.0518 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:07:57.0518 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:07:57.0518 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:07:57.0518 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:07:57.0518 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 18:07:57.0518 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 18:07:57.0518 Info Configuration initialized.
+2022-11-11 18:07:57.0832 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 18:07:57.0832 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 18:07:57.0832 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 18:07:57.0832 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 18:07:57.0832 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 18:07:57.0832 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 18:07:57.0832 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 18:07:57.1244 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 18:07:57.1366 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 18:07:57.1366 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 18:11:44.9315 Info Message Template Auto Format enabled
+2022-11-11 18:11:44.9759 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 18:11:45.0795 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 18:11:45.0874 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:11:45.1002 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:11:45.1002 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:11:45.1002 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:11:45.1002 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:11:45.1002 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:11:45.1152 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:11:45.1152 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:11:45.1152 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:11:45.1152 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:11:45.1152 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:11:45.1152 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:11:45.1152 Info Adding target FileTarget(Name=logfile)
+2022-11-11 18:11:45.1152 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 18:11:45.1152 Trace ParseRulesElement
+2022-11-11 18:11:45.1571 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 18:11:45.1571 Debug --- NLog configuration dump ---
+2022-11-11 18:11:45.1607 Debug Targets:
+2022-11-11 18:11:45.1607 Debug FileTarget(Name=logfile)
+2022-11-11 18:11:45.1607 Debug Rules:
+2022-11-11 18:11:45.1957 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 18:11:45.1957 Debug --- End of NLog configuration dump ---
+2022-11-11 18:11:45.2074 Trace FindReachableObject<System.Object>:
+2022-11-11 18:11:45.2074 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 18:11:45.2074 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 18:11:45.2074 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:11:45.2074 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:11:45.2074 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:11:45.2221 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:11:45.2221 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:11:45.2221 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:11:45.2221 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:11:45.2221 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:11:45.2221 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:11:45.2221 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:11:45.2221 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:11:45.2221 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:11:45.2221 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:11:45.2221 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:11:45.2221 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:11:45.2221 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:11:45.2221 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:11:45.2380 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 18:11:45.2380 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 18:11:45.2380 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 18:11:45.2380 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 18:11:45.2674 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 18:11:45.2694 Trace Initializing Layout Renderer: ${message}
+2022-11-11 18:11:45.2694 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:11:45.2694 Trace Initializing Layout Renderer: ${level}
+2022-11-11 18:11:45.2694 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:11:45.2694 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 18:11:45.2694 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 18:11:45.2866 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:11:45.2866 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:11:45.2866 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:11:45.2866 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:11:45.2866 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:11:45.2866 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:11:45.2866 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:11:45.2866 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:11:45.3069 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:11:45.3069 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 18:11:45.3069 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:11:45.3069 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 18:11:45.3069 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 18:11:45.3171 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:11:45.3171 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:11:45.3171 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:11:45.3171 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:11:45.3171 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:11:45.3171 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:11:45.3171 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:11:45.3171 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 18:11:45.3171 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 18:11:45.3171 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:11:45.3171 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:11:45.3171 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:11:45.3171 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:11:45.3171 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:11:45.3171 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:11:45.3171 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 18:11:45.3337 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 18:11:45.3337 Info Configuration initialized.
+2022-11-11 18:11:45.3639 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 18:11:45.3639 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 18:11:45.3639 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 18:11:45.3639 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 18:11:45.3639 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 18:11:45.3639 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 18:11:45.3639 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 18:11:45.4032 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 18:11:45.4192 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 18:11:45.4192 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 18:21:28.7841 Info Message Template Auto Format enabled
+2022-11-11 18:21:28.8155 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 18:21:28.8743 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 18:21:28.8824 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:21:28.8824 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:21:28.8943 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:21:28.8943 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:21:28.8943 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:21:28.8943 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:21:28.9118 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:21:28.9118 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:21:28.9118 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:21:28.9118 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:21:28.9266 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:21:28.9266 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:21:28.9266 Info Adding target FileTarget(Name=logfile)
+2022-11-11 18:21:28.9266 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 18:21:28.9266 Trace ParseRulesElement
+2022-11-11 18:21:29.0002 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 18:21:29.0002 Debug --- NLog configuration dump ---
+2022-11-11 18:21:29.0039 Debug Targets:
+2022-11-11 18:21:29.0039 Debug FileTarget(Name=logfile)
+2022-11-11 18:21:29.0039 Debug Rules:
+2022-11-11 18:21:29.0039 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 18:21:29.0039 Debug --- End of NLog configuration dump ---
+2022-11-11 18:21:29.0239 Trace FindReachableObject<System.Object>:
+2022-11-11 18:21:29.0239 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 18:21:29.0239 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 18:21:29.0239 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:21:29.0359 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:21:29.0359 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:21:29.0359 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:21:29.0359 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:21:29.0359 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:21:29.0359 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:21:29.0359 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:21:29.0359 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:21:29.0359 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:21:29.0359 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:21:29.0508 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:21:29.0508 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:21:29.0508 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:21:29.0508 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:21:29.0508 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:21:29.0508 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:21:29.0508 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 18:21:29.0508 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 18:21:29.0508 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 18:21:29.0674 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 18:21:29.0674 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 18:21:29.0674 Trace Initializing Layout Renderer: ${message}
+2022-11-11 18:21:29.0674 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:21:29.0674 Trace Initializing Layout Renderer: ${level}
+2022-11-11 18:21:29.0674 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:21:29.0674 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 18:21:29.0674 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 18:21:29.0851 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:21:29.0851 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:21:29.0851 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:21:29.0851 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:21:29.0851 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:21:29.0851 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:21:29.0851 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:21:29.0851 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:21:29.0851 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:21:29.0851 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 18:21:29.0972 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:21:29.0972 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 18:21:29.0972 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 18:21:29.0972 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:21:29.0972 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:21:29.0972 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:21:29.0972 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:21:29.0972 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:21:29.0972 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:21:29.0972 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:21:29.0972 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 18:21:29.0972 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 18:21:29.0972 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:21:29.0972 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:21:29.0972 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:21:29.0972 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:21:29.0972 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:21:29.1130 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:21:29.1130 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 18:21:29.1130 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 18:21:29.1130 Info Configuration initialized.
+2022-11-11 18:21:29.1370 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 18:21:29.1447 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 18:21:29.1447 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 18:21:29.1447 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 18:21:29.1447 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 18:21:29.1447 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 18:21:29.1447 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 18:21:29.1786 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 18:21:29.1786 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 18:21:29.1786 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 18:47:38.0986 Info Message Template Auto Format enabled
+2022-11-11 18:47:38.1339 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 18:47:38.2053 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 18:47:38.2096 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:47:38.2260 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:47:38.2260 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:47:38.2260 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:47:38.2260 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:47:38.2418 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:47:38.2418 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:47:38.2418 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:47:38.2418 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:47:38.2418 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:47:38.2418 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:47:38.2418 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:47:38.2418 Info Adding target FileTarget(Name=logfile)
+2022-11-11 18:47:38.2542 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 18:47:38.2542 Trace ParseRulesElement
+2022-11-11 18:47:38.2808 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 18:47:38.2808 Debug --- NLog configuration dump ---
+2022-11-11 18:47:38.2808 Debug Targets:
+2022-11-11 18:47:38.2857 Debug FileTarget(Name=logfile)
+2022-11-11 18:47:38.2857 Debug Rules:
+2022-11-11 18:47:38.2857 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 18:47:38.2857 Debug --- End of NLog configuration dump ---
+2022-11-11 18:47:38.2857 Trace FindReachableObject<System.Object>:
+2022-11-11 18:47:38.2857 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 18:47:38.3020 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 18:47:38.3020 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:47:38.3020 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:47:38.3020 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:47:38.3020 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:47:38.3020 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:47:38.3020 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:47:38.3020 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:47:38.3020 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:47:38.3189 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:47:38.3189 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:47:38.3189 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:47:38.3189 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:47:38.3189 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:47:38.3189 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:47:38.3189 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:47:38.3189 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:47:38.3328 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:47:38.3328 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 18:47:38.3328 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 18:47:38.3328 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 18:47:38.3480 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 18:47:38.3480 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 18:47:38.3480 Trace Initializing Layout Renderer: ${message}
+2022-11-11 18:47:38.3480 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:47:38.3639 Trace Initializing Layout Renderer: ${level}
+2022-11-11 18:47:38.3639 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:47:38.3639 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 18:47:38.3639 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 18:47:38.3639 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:47:38.3639 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:47:38.3639 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:47:38.3639 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:47:38.3639 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:47:38.3639 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:47:38.3789 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:47:38.3789 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:47:38.3789 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:47:38.3789 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 18:47:38.3789 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:47:38.3789 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 18:47:38.3789 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 18:47:38.3789 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:47:38.3789 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:47:38.3789 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:47:38.3789 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:47:38.3949 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:47:38.3949 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:47:38.3949 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:47:38.3949 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 18:47:38.3949 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 18:47:38.3949 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:47:38.3949 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:47:38.3949 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:47:38.3949 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:47:38.4111 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:47:38.4111 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:47:38.4111 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 18:47:38.4261 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 18:47:38.4261 Info Configuration initialized.
+2022-11-11 18:47:38.4582 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 18:47:38.4582 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 18:47:38.4582 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 18:47:38.4582 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 18:47:38.4582 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 18:47:38.4582 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 18:47:38.4731 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 18:47:38.4990 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 18:47:38.5105 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 18:47:38.5105 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 18:53:03.4198 Info Message Template Auto Format enabled
+2022-11-11 18:53:03.4640 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 18:53:03.5381 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 18:53:03.5381 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:53:03.5557 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:53:03.5557 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:53:03.5557 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:53:03.5557 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:53:03.5684 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:53:03.5684 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:53:03.5684 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:53:03.5684 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:53:03.5684 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:53:03.5684 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:53:03.5684 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:53:03.5684 Info Adding target FileTarget(Name=logfile)
+2022-11-11 18:53:03.5684 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 18:53:03.5815 Trace ParseRulesElement
+2022-11-11 18:53:03.6018 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 18:53:03.6018 Debug --- NLog configuration dump ---
+2022-11-11 18:53:03.6018 Debug Targets:
+2022-11-11 18:53:03.6018 Debug FileTarget(Name=logfile)
+2022-11-11 18:53:03.6018 Debug Rules:
+2022-11-11 18:53:03.6018 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 18:53:03.6018 Debug --- End of NLog configuration dump ---
+2022-11-11 18:53:03.6192 Trace FindReachableObject<System.Object>:
+2022-11-11 18:53:03.6192 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 18:53:03.6192 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 18:53:03.6192 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:53:03.6192 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:53:03.6295 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:53:03.6295 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:53:03.6295 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:53:03.6295 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:53:03.6295 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:53:03.6295 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:53:03.6295 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:53:03.6295 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:53:03.6295 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:53:03.6295 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:53:03.6295 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:53:03.6295 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:53:03.6295 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:53:03.6446 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:53:03.6446 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:53:03.6446 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 18:53:03.6446 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 18:53:03.6446 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 18:53:03.6446 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 18:53:03.6649 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 18:53:03.6649 Trace Initializing Layout Renderer: ${message}
+2022-11-11 18:53:03.6649 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:53:03.6649 Trace Initializing Layout Renderer: ${level}
+2022-11-11 18:53:03.6649 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:53:03.6649 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 18:53:03.6649 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 18:53:03.6775 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:53:03.6775 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:53:03.6775 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:53:03.6775 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 18:53:03.6775 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:53:03.6775 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 18:53:03.6775 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:53:03.6775 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 18:53:03.6775 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:53:03.6775 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 18:53:03.6775 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 18:53:03.6775 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 18:53:03.6913 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 18:53:03.6913 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 18:53:03.6913 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:53:03.6913 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 18:53:03.6913 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 18:53:03.6913 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:53:03.6913 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 18:53:03.6913 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 18:53:03.6913 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 18:53:03.6913 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 18:53:03.6913 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 18:53:03.6913 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 18:53:03.6913 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 18:53:03.6913 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 18:53:03.7072 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 18:53:03.7072 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 18:53:03.7072 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 18:53:03.7072 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 18:53:03.7072 Info Configuration initialized.
+2022-11-11 18:53:03.7378 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 18:53:03.7378 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 18:53:03.7378 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 18:53:03.7378 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 18:53:03.7378 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 18:53:03.7378 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 18:53:03.7540 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 18:53:03.7860 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 18:53:03.7860 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 18:53:03.8009 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 19:15:19.9956 Info Message Template Auto Format enabled
+2022-11-11 19:15:20.0422 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 19:15:20.1266 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 19:15:20.1336 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 19:15:20.1478 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:15:20.1478 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 19:15:20.1478 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:15:20.1478 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 19:15:20.1617 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 19:15:20.1617 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:15:20.1617 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 19:15:20.1617 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:15:20.1617 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 19:15:20.1617 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:15:20.1617 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 19:15:20.1617 Info Adding target FileTarget(Name=logfile)
+2022-11-11 19:15:20.1755 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 19:15:20.1755 Trace ParseRulesElement
+2022-11-11 19:15:20.2071 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 19:15:20.2071 Debug --- NLog configuration dump ---
+2022-11-11 19:15:20.2071 Debug Targets:
+2022-11-11 19:15:20.2071 Debug FileTarget(Name=logfile)
+2022-11-11 19:15:20.2071 Debug Rules:
+2022-11-11 19:15:20.2071 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 19:15:20.2071 Debug --- End of NLog configuration dump ---
+2022-11-11 19:15:20.2271 Trace FindReachableObject<System.Object>:
+2022-11-11 19:15:20.2271 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 19:15:20.2271 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 19:15:20.2271 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 19:15:20.2386 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 19:15:20.2386 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 19:15:20.2386 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 19:15:20.2386 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 19:15:20.2386 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:15:20.2386 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 19:15:20.2386 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:15:20.2386 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 19:15:20.2386 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 19:15:20.2386 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 19:15:20.2386 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 19:15:20.2386 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:15:20.2386 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 19:15:20.2386 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:15:20.2386 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 19:15:20.2386 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 19:15:20.2386 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 19:15:20.2576 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 19:15:20.2576 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 19:15:20.2576 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 19:15:20.2711 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 19:15:20.2711 Trace Initializing Layout Renderer: ${message}
+2022-11-11 19:15:20.2711 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 19:15:20.2711 Trace Initializing Layout Renderer: ${level}
+2022-11-11 19:15:20.2711 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 19:15:20.2711 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 19:15:20.2711 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 19:15:20.2711 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:15:20.2711 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 19:15:20.2711 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 19:15:20.2711 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 19:15:20.2711 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:15:20.2855 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 19:15:20.2855 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:15:20.2855 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 19:15:20.2855 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 19:15:20.2855 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 19:15:20.2855 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 19:15:20.2855 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 19:15:20.2855 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 19:15:20.2855 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:15:20.2855 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 19:15:20.3007 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 19:15:20.3007 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 19:15:20.3007 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:15:20.3007 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 19:15:20.3007 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:15:20.3007 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 19:15:20.3007 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 19:15:20.3007 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 19:15:20.3007 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 19:15:20.3007 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 19:15:20.3007 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 19:15:20.3007 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 19:15:20.3007 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 19:15:20.3007 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 19:15:20.3173 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 19:15:20.3173 Info Configuration initialized.
+2022-11-11 19:15:20.3430 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 19:15:20.3517 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 19:15:20.3517 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 19:15:20.3517 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 19:15:20.3517 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 19:15:20.3517 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 19:15:20.3517 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 19:15:20.3854 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 19:15:20.3966 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 19:15:20.3966 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
+2022-11-11 19:44:07.8176 Info Message Template Auto Format enabled
+2022-11-11 19:44:07.8387 Debug ScanAssembly('NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2022-11-11 19:44:07.8805 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2022-11-11 19:44:07.8805 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 19:44:07.8805 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:44:07.8967 Trace Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 19:44:07.8967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:44:07.8967 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 19:44:07.8967 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 19:44:07.8967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:44:07.8967 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 19:44:07.8967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:44:07.8967 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 19:44:07.8967 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:44:07.8967 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 19:44:07.9106 Info Adding target FileTarget(Name=logfile)
+2022-11-11 19:44:07.9106 Debug Registered target logfile: NLog.Targets.FileTarget
+2022-11-11 19:44:07.9106 Trace ParseRulesElement
+2022-11-11 19:44:07.9421 Debug Watching file-filter 'NLog.config' in directory: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1
+2022-11-11 19:44:07.9421 Debug --- NLog configuration dump ---
+2022-11-11 19:44:07.9421 Debug Targets:
+2022-11-11 19:44:07.9421 Debug FileTarget(Name=logfile)
+2022-11-11 19:44:07.9421 Debug Rules:
+2022-11-11 19:44:07.9421 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]
+2022-11-11 19:44:07.9421 Debug --- End of NLog configuration dump ---
+2022-11-11 19:44:07.9599 Trace FindReachableObject<System.Object>:
+2022-11-11 19:44:07.9599 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] writeTo: [ logfile ]'
+2022-11-11 19:44:07.9599 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2022-11-11 19:44:07.9599 Trace  Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 19:44:07.9732 Trace   Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 19:44:07.9732 Trace   Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 19:44:07.9732 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 19:44:07.9732 Trace    Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 19:44:07.9732 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:44:07.9732 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 19:44:07.9732 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:44:07.9732 Trace   Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 19:44:07.9732 Trace   Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 19:44:07.9886 Trace    Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 19:44:07.9886 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 19:44:07.9886 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:44:07.9886 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 19:44:07.9886 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:44:07.9886 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 19:44:07.9886 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 19:44:07.9886 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2022-11-11 19:44:07.9886 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2022-11-11 19:44:08.0068 Info Validating config: TargetNames=logfile, ConfigItems=13, FilePath=C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\bin\Debug\netcoreapp3.1\NLog.config
+2022-11-11 19:44:08.0068 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2022-11-11 19:44:08.0243 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2022-11-11 19:44:08.0243 Trace Initializing Layout Renderer: ${message}
+2022-11-11 19:44:08.0243 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 19:44:08.0243 Trace Initializing Layout Renderer: ${level}
+2022-11-11 19:44:08.0243 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 19:44:08.0353 Trace Initializing Layout Renderer: ${longdate}
+2022-11-11 19:44:08.0353 Trace Initializing ${longdate} ${level:uppercase=true} ${message}
+2022-11-11 19:44:08.0353 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:44:08.0353 Trace Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 19:44:08.0353 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 19:44:08.0353 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2022-11-11 19:44:08.0353 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:44:08.0353 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2022-11-11 19:44:08.0353 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:44:08.0504 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2022-11-11 19:44:08.0504 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 19:44:08.0504 Trace Initializing Layout Renderer: ${shortdate}
+2022-11-11 19:44:08.0504 Trace Initializing Layout Renderer: ${literal}
+2022-11-11 19:44:08.0504 Trace Initializing Layout Renderer: ${currentdir}
+2022-11-11 19:44:08.0504 Trace Initializing ${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log
+2022-11-11 19:44:08.0504 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2022-11-11 19:44:08.0504 Trace Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 19:44:08.0504 Trace  Scanning Property LayoutRenderers 'NLog.LayoutRenderers.LayoutRenderer[]' System.Collections.Generic
+2022-11-11 19:44:08.0504 Trace  Scanning CurrentDirLayoutRenderer 'Layout Renderer: ${currentdir}'
+2022-11-11 19:44:08.0504 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:44:08.0676 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2022-11-11 19:44:08.0676 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2022-11-11 19:44:08.0676 Trace Initializing FileTarget(Name=logfile)
+2022-11-11 19:44:08.0676 Trace FindReachableObject<NLog.Layouts.Layout>:
+2022-11-11 19:44:08.0676 Trace Scanning FileTarget 'FileTarget(Name=logfile)'
+2022-11-11 19:44:08.0676 Trace  Scanning Property FileName '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log' NLog.Layouts
+2022-11-11 19:44:08.0676 Trace  Scanning SimpleLayout '${CurrentDir}\Logs\nlog-todoApi-${shortdate}.log'
+2022-11-11 19:44:08.0676 Trace  Scanning Property Layout '${longdate} ${level:uppercase=true} ${message}' NLog.Layouts
+2022-11-11 19:44:08.0676 Trace  Scanning SimpleLayout '${longdate} ${level:uppercase=true} ${message}'
+2022-11-11 19:44:08.0676 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2022-11-11 19:44:08.0676 Trace FileTarget(Name=logfile) has 2 layouts
+2022-11-11 19:44:08.0676 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.SingleProcessFileAppender+Factory
+2022-11-11 19:44:08.0870 Info Configuration initialized.
+2022-11-11 19:44:08.0870 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.0.5.1426. Product version: 5.0.5+ace23d89ecf3dc2675648414a1f01ee9c1b2383d. GlobalAssemblyCache: False
+2022-11-11 19:44:08.1018 Debug Targets configured when LogLevel >= Debug for Logger: TodoApiDTO.BLL.Services.Implementations.LoggerService
+2022-11-11 19:44:08.1018 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Debug] => logfile
+2022-11-11 19:44:08.1018 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Info] => logfile
+2022-11-11 19:44:08.1018 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Warn] => logfile
+2022-11-11 19:44:08.1018 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Error] => logfile
+2022-11-11 19:44:08.1018 Debug Logger TodoApiDTO.BLL.Services.Implementations.LoggerService [Fatal] => logfile
+2022-11-11 19:44:08.1323 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log'
+2022-11-11 19:44:08.1323 Debug FileTarget(Name=logfile): Creating file appender: C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log
+2022-11-11 19:44:08.1323 Trace FileTarget(Name=logfile): Opening C:\Users\beant\source\repos\VelvetechTestTask\TodoApiDTO\Logs\nlog-todoApi-2022-11-11.log with allowFileSharedWriting=False
