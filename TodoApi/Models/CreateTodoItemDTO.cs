@@ -2,7 +2,7 @@
 using Application.Todo.Command.Create;
 using AutoMapper;
 
-namespace TodoApiDTO.Models
+namespace TodoApi.Models
 {
     public class CreateTodoItemDTO: IMapWith<CreateTodoItemCommand>
     {

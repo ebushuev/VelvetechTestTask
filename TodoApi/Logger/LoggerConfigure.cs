@@ -1,7 +1,7 @@
 ﻿using Serilog.Events;
 using Serilog;
 
-namespace TodoApiDTO.Logger
+namespace TodoApi.Logger
 {
     public static class LoggerConfigure
     {

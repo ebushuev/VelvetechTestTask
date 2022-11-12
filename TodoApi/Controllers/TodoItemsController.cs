@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using TodoApiDTO.Controllers;
-using TodoApiDTO.Models;
+using TodoApi.Controllers;
+using TodoApi.Models;
 
 namespace TodoApi.Controllers
 {

@@ -3,7 +3,7 @@ using Application.Todo.Command.Update;
 using AutoMapper;
 using System;
 
-namespace TodoApiDTO.Models
+namespace TodoApi.Models
 {
     public class UpdateTodoItemDTO : IMapWith<UpdateTodoItemCommand>
     {

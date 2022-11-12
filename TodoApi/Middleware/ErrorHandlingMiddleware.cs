@@ -9,7 +9,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace TodoApiDTO.Middleware
+namespace TodoApi.Middleware
 {
     public class ErrorHandlingMiddleware
     {

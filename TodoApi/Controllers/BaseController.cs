@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace TodoApiDTO.Controllers
+namespace TodoApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

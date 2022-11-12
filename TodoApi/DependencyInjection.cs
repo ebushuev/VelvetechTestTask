@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using TodoApiDTO.Middleware;
+using TodoApi.Middleware;
 
-namespace TodoApiDTO
+namespace TodoApi
 {
     public static class DependencyInjection
     {

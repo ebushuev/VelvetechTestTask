@@ -4,7 +4,7 @@ using Serilog;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using TodoApiDTO.Logger;
+using TodoApi.Logger;
 
 namespace TodoApi
 {
