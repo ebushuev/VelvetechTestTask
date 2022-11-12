@@ -8,7 +8,6 @@ namespace Application.Todo.Command.Delete
         public DeleteTodoItemCommandValidator()
         {
             RuleFor(x => x.Id)
-                 .NotEmpty()
                  .NotNull()
                  .NotEqual(Guid.Empty);
         }

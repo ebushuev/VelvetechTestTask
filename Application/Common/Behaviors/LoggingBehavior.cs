@@ -14,7 +14,7 @@ namespace Application.Common.Behaviors
         {
             var requestName = typeof(TRequest).Name;
 
-            Log.Information("TodoItme request: {Name} {@Request}",
+            Log.Information("TodoItem request: {Name} {@Request}",
                 requestName, request);
 
             var response = await next();

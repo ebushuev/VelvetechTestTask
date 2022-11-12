@@ -9,7 +9,6 @@ namespace Application.Todo.Command.Update
         public UpdateTodoItemCommandValidator()
         {
             RuleFor(x => x.Id)
-                .NotEmpty()
                 .NotNull()
                 .NotEqual(Guid.Empty);
 

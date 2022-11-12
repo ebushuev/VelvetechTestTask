@@ -9,7 +9,6 @@ namespace Application.Todo.Queries.GetDetails
         public GetTodoItemDetailsQueryValidation()
         {
             RuleFor(x => x.Id)
-                .NotEmpty()
                 .NotNull()
                 .NotEqual(Guid.Empty);
         }
