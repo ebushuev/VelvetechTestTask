@@ -2,6 +2,7 @@
 using Application.Interfaces;
 using Domain;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace Application.Todo.Command.Delete
         public async Task<Unit> Handle(DeleteTodoItemCommand request, CancellationToken cancellationToken)
         {
             var item = await _dbContext.TodoItems
-               .FindAsync(new object[] { request.Id }, cancellationToken);
+               .FirstOrDefaultAsync(x=>x.Id == request.Id, cancellationToken);
 
             if (item == null)
                 throw new NotFoundException(HttpStatusCode.NotFound,$"TodoItem {request.Id} not found");
