@@ -42,7 +42,7 @@ namespace TodoApi
 
             app.AddErrorHandingMiddlewareWebApi();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseCors("AllowAll");
             app.UseRouting();
 
