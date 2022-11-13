@@ -1,17 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using TodoApi.Server.Helpers;
+using TodoApi.Server.Midddlewares;
+using TodoApi.Server.Validators;
 
 namespace TodoApi
 {
@@ -27,9 +23,12 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
-            services.AddControllers();
+            services.AddFluentValidationAutoValidation();
+            services.AddDatabase(Configuration.GetConnectionString("TodoItemDatabase"));
+            services.AddServices();
+            services.AddValidatorsFromAssembly(typeof(TodoItemValidator).Assembly);
+            services.AddControllers(opt => opt.Filters.Add<TodoExceptionFilter>());
+            services.AddSwaggerGen(opt => opt.AddSwagerXmlFile());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +38,13 @@ namespace TodoApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(opt => {
+                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                opt.RoutePrefix = string.Empty;
+            });
 
             app.UseHttpsRedirection();
 
