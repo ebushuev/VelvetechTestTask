@@ -11,7 +11,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using Microsoft.OpenApi.Models;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.ProjectModel;
+using TodoApiDTO.BuisnessLayer.Services;
+using TodoApiDTO.DataAccessLayer;
+using TodoApiDTO.DataAccessLayer.Reposotories;
 
 namespace TodoApi
 {
@@ -27,9 +31,28 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+
             services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+               opt.UseSqlServer(Configuration.GetConnectionString("connection")));
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
+
+            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Swagger",
+                    Description = "Документация API",
+                });
+            });
+
+            services.AddScoped<ITodoListService, TodoListService>();
+            services.AddScoped<ITodoListRepository, TodoListRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +72,11 @@ namespace TodoApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
             });
         }
     }
