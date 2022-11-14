@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using TodoApiDTO.BuisnessLayer.Models;
+using TodoApiDTO.BuisnessLayer.Services;
 
 namespace TodoApi.Controllers
 {
@@ -11,106 +14,146 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        /// <summary>
+        /// Логирование
+        /// </summary>
+        private readonly ILogger<TodoItemsController> _logger;
 
-        public TodoItemsController(TodoContext context)
+        /// <summary>
+        /// Сервис TodoList
+        /// </summary>
+        private readonly ITodoListService _todoListService;
+
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="logger">Логирование</param>
+        /// <param name="todoListService">Сервис TodoList</param>
+        public TodoItemsController(ILogger<TodoItemsController> logger, ITodoListService todoListService)
         {
-            _context = context;
+            _logger = logger;
+            _todoListService = todoListService;
         }
 
+        /// <summary>
+        /// Получение всех задач
+        /// </summary>
+        /// <returns>Список всех задач</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            try
+            {
+                return await _todoListService.GetTodoItems();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }
         }
 
+        /// <summary>
+        /// Получение задачи по идентификатору
+        /// </summary>
+        /// <param name="id">Идентификатор задачи</param>
+        /// <returns>Задача</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
+            try
             {
-                return NotFound();
+                var todoItem = await _todoListService.GetTodoItem(id);
+
+                if (todoItem == null)
+                {
+                    return NotFound();
+                }
+
+                return todoItem;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
             }
 
-            return ItemToDTO(todoItem);
         }
 
+        /// <summary>
+        /// Обновление задачи
+        /// </summary>
+        /// <param name="id">Идентификатор задачи</param>
+        /// <param name="todoItemDTO">Задача</param>
+        /// <returns>Обновленная задача</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
         {
-            if (id != todoItemDTO.Id)
-            {
-                return BadRequest();
-            }
-
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
-
             try
             {
-                await _context.SaveChangesAsync();
+                if (id != todoItemDTO.Id)
+                {
+                    return BadRequest();
+                }
+
+                var todoItem = await _todoListService.UpdateTodoItem(id, todoItemDTO);
+                if (todoItem == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(todoItem);
             }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
+            catch (Exception e)
             {
-                return NotFound();
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
             }
 
-            return NoContent();
         }
 
+        /// <summary>
+        /// Создание новой задачи
+        /// </summary>
+        /// <param name="todoItemDTO">Задача</param>
+        /// <returns>Новая задача</returns>
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
-            var todoItem = new TodoItem
+            try
             {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
-
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(
-                nameof(GetTodoItem),
-                new { id = todoItem.Id },
-                ItemToDTO(todoItem));
+               var result = await _todoListService.CreateTodoItem(todoItemDTO);
+                return CreatedAtAction(
+                    nameof(GetTodoItem),
+                    new { id = result.Id },
+                    result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }
         }
 
+
+        /// <summary>
+        /// Удаление задачи по идентификатору
+        /// </summary>
+        /// <param name="id">Идентификатор задачи</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
+            try
             {
-                return NotFound();
+                await _todoListService.DeleteTodoItem(id);
+                return NoContent();
             }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
-
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-            new TodoItemDTO
+            catch (Exception e)
             {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };       
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
