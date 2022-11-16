@@ -1,0 +1,51 @@
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.deps.json
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfo.cs
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.exe
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\Gdarc\OneDrive\Desktop\VelvetechTestTask-master\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.exe
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.deps.json
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfo.cs
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\New folder\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.exe
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.deps.json
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfo.cs
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\Gdarc\OneDrive\Desktop\George_Darch\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
