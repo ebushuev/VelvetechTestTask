@@ -1,4 +1,4 @@
-﻿namespace Domain.Models
+﻿namespace Business.Dtos
 {
     #region snippet
     public class TodoItemDto

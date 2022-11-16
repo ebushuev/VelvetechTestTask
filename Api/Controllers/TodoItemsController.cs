@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Business.Dtos;
 using Business.Exceptions;
 using Business.Services.Interfaces;
-using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers

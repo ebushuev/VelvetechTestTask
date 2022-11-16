@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Domain.Models;
+using Business.Dtos;
 
 namespace Business.Services.Interfaces
 {
