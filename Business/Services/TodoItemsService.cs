@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Business.Dtos;
 using Business.Exceptions;
 using Business.Services.Interfaces;
-using DAL;
+using DAL.Repositories.Interfaces;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,23 +13,21 @@ namespace Business.Services
 {
     public class TodoItemsService : ITodoItemsService
     {
-        private readonly TodoContext _context;
+        private readonly ITodoRepository _todoRepository;
 
-        public TodoItemsService(TodoContext context)
+        public TodoItemsService(ITodoRepository todoRepository)
         {
-            _context = context;
+            _todoRepository = todoRepository;
         }
         
         public async Task<IEnumerable<TodoItemDto>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDto(x))
-                .ToListAsync();
+            return (await _todoRepository.GetAllAsync()).Select(ItemToDto);
         }
         
         public async Task<TodoItemDto> GetTodoItem(long id)
         {
-            TodoItem todoItem = await _context.TodoItems.FindAsync(id);
+            TodoItem todoItem = await _todoRepository.GetByIdAsync(id);
 
             if (todoItem == null)
             {
@@ -46,7 +44,7 @@ namespace Business.Services
                 throw new Exception("Id was not equals to model's id");
             }
             
-            TodoItem todoItem = await _context.TodoItems.FindAsync(id);
+            TodoItem todoItem = await _todoRepository.GetByIdAsync(id);
             
             if (todoItem == null)
             {
@@ -58,7 +56,7 @@ namespace Business.Services
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _todoRepository.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
             {
@@ -74,28 +72,28 @@ namespace Business.Services
                 Name = todoItemDto.Name
             };
 
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+            _todoRepository.Add(todoItem);
+            await _todoRepository.SaveChangesAsync();
 
             return todoItem.Id;
         }
         
         public async Task DeleteTodoItem(long id)
         {
-            TodoItem todoItem = await _context.TodoItems.FindAsync(id);
+            TodoItem todoItem = await _todoRepository.GetByIdAsync(id);
 
             if (todoItem == null)
             {
                 throw new NotFoundException();
             }
 
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
+            _todoRepository.Remove(todoItem);
+            await _todoRepository.SaveChangesAsync();
         }
 
         private bool TodoItemExists(long id)
         {
-            return _context.TodoItems.Any(e => e.Id == id);
+            return _todoRepository.AnyAsync(id).GetAwaiter().GetResult();
         }
 
         private static TodoItemDto ItemToDto(TodoItem todoItem)
