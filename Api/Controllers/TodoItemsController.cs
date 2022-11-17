@@ -5,6 +5,7 @@ using Business.Dtos;
 using Business.Exceptions;
 using Business.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Api.Controllers
 {
@@ -13,10 +14,12 @@ namespace Api.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly ITodoItemsService _todoItemsService;
+        private readonly ILogger<TodoItemsController> _logger;
 
-        public TodoItemsController(ITodoItemsService todoItemsService)
+        public TodoItemsController(ITodoItemsService todoItemsService, ILogger<TodoItemsController> logger)
         {
             _todoItemsService = todoItemsService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -28,6 +31,7 @@ namespace Api.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e, "An error has occurred during todos retrieving");
                 return BadRequest(e.Message);
             }
         }
@@ -41,12 +45,14 @@ namespace Api.Controllers
 
                 return Ok(todoItemDto);
             }
-            catch (NotFoundException)
+            catch (NotFoundException e)
             {
+                _logger.LogInformation(e, "An item was not found");
                 return NotFound();
             }
             catch (Exception e)
             {
+                _logger.LogError(e, "An error has occurred during todo retrieving");
                 return BadRequest(e.Message);
             }
         }
@@ -60,12 +66,14 @@ namespace Api.Controllers
 
                 return NoContent();
             }
-            catch (NotFoundException)
+            catch (NotFoundException e)
             {
+                _logger.LogInformation(e, "An item to update was not found");
                 return NotFound();
             }
             catch (Exception e)
             {
+                _logger.LogError(e, "An error has occurred during todo updating");
                 return BadRequest(e.Message);
             }
         }
@@ -83,6 +91,7 @@ namespace Api.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e, "An error has occurred during todo creating");
                 return BadRequest(e.Message);
             }
         }
@@ -96,12 +105,14 @@ namespace Api.Controllers
 
                 return NoContent();
             }
-            catch (NotFoundException)
+            catch (NotFoundException e)
             {
+                _logger.LogInformation(e, "An item to delete was not found");
                 return NotFound();
             }
             catch (Exception e)
             {
+                _logger.LogError(e, "An error has occurred during todo deleting");
                 return BadRequest(e.Message);
             }
         }     

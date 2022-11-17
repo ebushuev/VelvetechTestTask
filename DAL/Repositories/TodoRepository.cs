@@ -3,16 +3,19 @@ using System.Threading.Tasks;
 using DAL.Repositories.Interfaces;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace DAL.Repositories
 {
     public class TodoRepository : ITodoRepository
     {
         private readonly TodoContext _context;
+        private readonly ILogger<TodoRepository> _logger;
 
-        public TodoRepository(TodoContext context)
+        public TodoRepository(TodoContext context, ILogger<TodoRepository> logger)
         {
             _context = context;
+            _logger = logger;
         }
         
         public async Task<IEnumerable<TodoItem>> GetAllAsync()
@@ -43,6 +46,7 @@ namespace DAL.Repositories
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
+            _logger.LogInformation("Changes are saved successfully");
         }
     }
 }
