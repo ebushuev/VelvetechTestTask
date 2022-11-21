@@ -11,7 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using TodoApi.Models;
+using TodoApiDTO.Repository;
+using TodoApiDTO.Services;
+using Serilog;
+using TodoApiDTO.Middlewares;
 
 namespace TodoApi
 {
@@ -27,8 +32,21 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            services.AddDbContext<DataContext>(opt => 
+            {
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
+            services.AddTransient<ToDoItemsRepository>();
+            services.AddTransient<ToDoItemService>();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "ToDoApi",
+                    Version = "v1"
+                });
+                c.EnableAnnotations();
+            });
             services.AddControllers();
         }
 
@@ -38,6 +56,8 @@ namespace TodoApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger(c => { c.SerializeAsV2 = true; });
+                app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDoApi v1"); });
             }
 
             app.UseHttpsRedirection();
@@ -45,6 +65,8 @@ namespace TodoApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
