@@ -15,9 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TodoApi.Data\Form1.cs">
-      <Link>WinFormsApp1\Form1.cs</Link>
-    </Compile>
     <Compile Update="TodoApi.Data\Program.cs">
       <Link>WinFormsApp1\Program.cs</Link>
     </Compile>
