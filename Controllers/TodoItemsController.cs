@@ -1,9 +1,15 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using TodoApi.Models;
+using TodoApiDTO.Models;
+using TodoApiDTO.Repository;
+using TodoApiDTO.Services;
 
 namespace TodoApi.Controllers
 {
@@ -11,106 +17,90 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private ToDoItemService _service;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(ToDoItemService service)
         {
-            _context = context;
+            _service = service;
         }
 
         [HttpGet]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(
+            Summary = "ѕолучение всех заметок",
+            Description = "ћетод обеспечивающий получение всех заметок из базы данных",
+            OperationId = "GetTodoItems"
+        )]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            var items = await _service.GetTodoItems();
+            if (items is null)
+            {
+                return NoContent();
+            }
+            return Ok();
         }
 
         [HttpGet("{id}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(
+            Summary = "ѕолучение заметки по заданному ID",
+            Description = "ћетод обеспечивающий получение заметки по заданному ID из базы данных",
+            OperationId = "GetTodoItem"
+        )]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            return ItemToDTO(todoItem);
+            var item = await _service.GetTodoItem(id);
+            return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(
+            Summary = "ќбновление заметки по заданному ID",
+            Description = "ћетод обеспечивающий обновление заметки по заданному ID из базы данных",
+            OperationId = "UpdateTodoItem"
+        )]
+        public async Task<IActionResult> UpdateTodoItem(UpdateTodoItemRequest model)
         {
-            if (id != todoItemDTO.Id)
-            {
-                return BadRequest();
-            }
-
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
-            {
-                return NotFound();
-            }
-
-            return NoContent();
+                await _service.UpdateTodoItem(model);
+                return Ok();
         }
 
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(
+            Summary = "—оздание заметки",
+            Description = "ћетод обеспечивающий создание заметки",
+            OperationId = "UpdateTodoItem"
+        )]
+        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(CreateTodoItemRequest model)
         {
-            var todoItem = new TodoItem
-            {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
-
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(
-                nameof(GetTodoItem),
-                new { id = todoItem.Id },
-                ItemToDTO(todoItem));
+            return Ok(await _service.CreateTodoItem(model));
         }
 
         [HttpDelete("{id}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [SwaggerOperation(
+            Summary = "”даление заметки по заданному ID",
+            Description = "ћетод обеспечивающий удаление заметки по заданному ID",
+            OperationId = "UpdateTodoItem"
+        )]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
-
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-            new TodoItemDTO
-            {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };       
+                await _service.DeleteTodoItem(id);
+                return Ok();
+        }   
     }
 }
