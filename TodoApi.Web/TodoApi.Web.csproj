@@ -24,8 +24,4 @@
       <Folder Include="logs" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Remove="logs\logger-20221122.txt" />
-    </ItemGroup>
-
 </Project>
