@@ -44,11 +44,11 @@ namespace TodoApiDTO.Repository
                 }
                 return item;
             }
-            catch (KeyNotFoundException ex)
+            catch (KeyNotFoundException)
             {
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -64,9 +64,8 @@ namespace TodoApiDTO.Repository
 
                 return item.Entity;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Log.Error(ex.Message);
                 throw;
             }
         }
@@ -83,14 +82,12 @@ namespace TodoApiDTO.Repository
 
                 await _context.SaveChangesAsync();
             }
-            catch (KeyNotFoundException ex)
+            catch (KeyNotFoundException)
             {
-                Log.Error(ex.Message);
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Log.Error(ex.Message);
                 throw;
             }
         }
@@ -108,14 +105,12 @@ namespace TodoApiDTO.Repository
                 _context.ToDoItems.Remove(entity);
                 await _context.SaveChangesAsync();
             }
-            catch (KeyNotFoundException ex)
+            catch (KeyNotFoundException)
             {
-                Log.Error(ex.Message);
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Log.Error(ex.Message);
                 throw;
             }
         }
