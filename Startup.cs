@@ -29,6 +29,9 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt =>
                opt.UseInMemoryDatabase("TodoList"));
+
+            services.AddSwaggerGen();
+
             services.AddControllers();
         }
 
@@ -41,6 +44,13 @@ namespace TodoApi
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDo List Swagger");
+            });
 
             app.UseRouting();
 
