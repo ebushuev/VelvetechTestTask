@@ -7,6 +7,7 @@ using TodoApi.Infrastructure.DI;
 using TodoApi.Domain.DI;
 using AutoMapper;
 using TodoApiDTO.Mappings;
+using TodoApiDTO.Middleware;
 
 namespace TodoApi
 {
@@ -50,6 +51,8 @@ namespace TodoApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDo List Swagger");
             });
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseRouting();
 
