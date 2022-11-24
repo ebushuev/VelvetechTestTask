@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30002.166
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApiDTO", "TodoApiDTO.csproj", "{623124F9-F5BA-42DD-BC26-A1720774229C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApi.API", "TodoApi.API.csproj", "{623124F9-F5BA-42DD-BC26-A1720774229C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApi.Infrastructure", "TodoApi.Infrastructure\TodoApi.Infrastructure.csproj", "{60C5B879-8BE0-48D5-AA26-3D813F7BC97D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApi.Domain", "TodoApi.Domain\TodoApi.Domain.csproj", "{B0AB6AE5-BDBC-466B-B52A-3DDCF7554A0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{623124F9-F5BA-42DD-BC26-A1720774229C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{623124F9-F5BA-42DD-BC26-A1720774229C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{623124F9-F5BA-42DD-BC26-A1720774229C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60C5B879-8BE0-48D5-AA26-3D813F7BC97D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C5B879-8BE0-48D5-AA26-3D813F7BC97D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C5B879-8BE0-48D5-AA26-3D813F7BC97D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C5B879-8BE0-48D5-AA26-3D813F7BC97D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0AB6AE5-BDBC-466B-B52A-3DDCF7554A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0AB6AE5-BDBC-466B-B52A-3DDCF7554A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0AB6AE5-BDBC-466B-B52A-3DDCF7554A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0AB6AE5-BDBC-466B-B52A-3DDCF7554A0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

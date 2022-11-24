@@ -1,17 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TodoApi.Infrastructure.DI;
+using TodoApi.Domain.DI;
+using AutoMapper;
+using TodoApiDTO.Mappings;
+using TodoApiDTO.Middleware;
 using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using System.IO;
+using Serilog;
 
 namespace TodoApi
 {
@@ -22,14 +21,28 @@ namespace TodoApi
             Configuration = configuration;
         }
 
+        private const string SubfolderLogsPath = @"Logs\errors-log.txt";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+
+            services.AddSwaggerGen();
+
             services.AddControllers();
+
+            services.RegisterDomain();
+
+            services.AddAutoMapper(typeof(TodoItemMappingProfile));
+
+            services.AddLogging(builder => 
+            {
+                builder.AddFile(Path.Combine(Directory.GetCurrentDirectory(), SubfolderLogsPath), LogLevel.Error);
+            });
+
+            services.RegisterInfrastructure(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,8 +52,17 @@ namespace TodoApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+           
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDo List Swagger");
+            });
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseRouting();
 
