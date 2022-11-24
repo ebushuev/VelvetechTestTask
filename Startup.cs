@@ -8,6 +8,9 @@ using TodoApi.Domain.DI;
 using AutoMapper;
 using TodoApiDTO.Mappings;
 using TodoApiDTO.Middleware;
+using Microsoft.Extensions.Logging;
+using System.IO;
+using Serilog;
 
 namespace TodoApi
 {
@@ -17,6 +20,8 @@ namespace TodoApi
         {
             Configuration = configuration;
         }
+
+        private const string SubfolderLogsPath = @"Logs\errors-log.txt";
 
         public IConfiguration Configuration { get; }
 
@@ -32,6 +37,11 @@ namespace TodoApi
 
             services.AddAutoMapper(typeof(TodoItemMappingProfile));
 
+            services.AddLogging(builder => 
+            {
+                builder.AddFile(Path.Combine(Directory.GetCurrentDirectory(), SubfolderLogsPath), LogLevel.Error);
+            });
+
             services.RegisterInfrastructure(Configuration);
         }
 
@@ -42,7 +52,7 @@ namespace TodoApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+           
             app.UseHttpsRedirection();
 
             app.UseSwagger();

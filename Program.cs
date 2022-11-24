@@ -16,10 +16,6 @@ namespace TodoApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureLogging((ctx, configure) =>
-                    {
-                        configure.AddFile($@"{ctx.HostingEnvironment.ContentRootPath}\Logs\errors-log.txt", LogLevel.Error);
-                    });
                 });
     }
 }
