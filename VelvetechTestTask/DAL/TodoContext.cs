@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using DAL.DataTransferObjects;
 
-namespace TodoApi.Models
+namespace DAL
 {
     public class TodoContext : DbContext
     {
+        public DbSet<ToDoItemDTO> ToDoItems { get; set; }
+
         public TodoContext(DbContextOptions<TodoContext> options)
             : base(options)
         {
         }
-
-        public DbSet<TodoItem> TodoItems { get; set; }
     }
 }
