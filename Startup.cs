@@ -13,8 +13,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using TodoApi.Models;
+using TodoApiDTO.Data;
 using TodoApiDTO.Logger;
+using TodoApiDTO.Repositories;
 
 namespace TodoApi
 {
@@ -35,6 +36,9 @@ namespace TodoApi
 
             services.AddDbContext<TodoContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("TodoList")));
+
+            services.AddScoped<ITodoRepository, TodoRepository>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -46,7 +50,7 @@ namespace TodoApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logs", "logger.txt"));
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

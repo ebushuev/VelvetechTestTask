@@ -3,7 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using TodoApiDTO.Models;
+using TodoApiDTO.Dtos;
+using TodoApiDTO.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace TodoApi.Controllers
 {
@@ -11,25 +14,28 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly ILogger _logger;
+        private readonly ITodoRepository _repository;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(ILoggerFactory loggerFactory,
+            ITodoRepository repository)
         {
-            _context = context;
+            _logger = loggerFactory.CreateLogger("FileLogger");
+            _repository = repository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            var todoItems = await _repository.GetTodoItemsAsync();
+
+            return todoItems.Select(x => ItemToDTO(x)).ToArray();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _repository.GetTodoItemAsync(id);
 
             if (todoItem == null)
             {
@@ -47,7 +53,7 @@ namespace TodoApi.Controllers
                 return BadRequest();
             }
 
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _repository.GetTodoItemAsync(id);
             if (todoItem == null)
             {
                 return NotFound();
@@ -58,10 +64,12 @@ namespace TodoApi.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _repository.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
+            catch (DbUpdateConcurrencyException) when (!_repository.TodoItemExists(id))
             {
+                _logger.LogError($"Item not found by id {id}");
+
                 return NotFound();
             }
 
@@ -77,8 +85,8 @@ namespace TodoApi.Controllers
                 Name = todoItemDTO.Name
             };
 
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+            _repository.CreateTodoItem(todoItem);
+            await _repository.SaveChangesAsync();
 
             return CreatedAtAction(
                 nameof(GetTodoItem),
@@ -89,21 +97,18 @@ namespace TodoApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _repository.GetTodoItemAsync(id);
 
             if (todoItem == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
+            _repository.DeleteTodoItem(todoItem);
+            await _repository.SaveChangesAsync();
 
             return NoContent();
         }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
 
         private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
             new TodoItemDTO
@@ -111,6 +116,6 @@ namespace TodoApi.Controllers
                 Id = todoItem.Id,
                 Name = todoItem.Name,
                 IsComplete = todoItem.IsComplete
-            };       
+            };
     }
 }
