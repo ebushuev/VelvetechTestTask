@@ -1,24 +1,33 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using NLog;
+using TodoApiDTO.Components.TodoList.DbContexts;
+using TodoApiDTO.Components.TodoList.Interfaces;
+using TodoApiDTO.Components.TodoList.Services;
+using TodoApiDTO.Extensions;
 
-namespace TodoApi
+namespace TodoApiDTO
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.Setup()
+                .LoadConfiguration(builder =>
+                {
+                    builder.ForLogger()
+                        .FilterMinLevel(LogLevel.Info)
+                        .WriteToConsole();
+
+                    builder.ForLogger()
+                        .FilterMinLevel(LogLevel.Info)
+                        .WriteToFile(fileName: "ERRORS_${shortdate}.log");
+                });
+
             Configuration = configuration;
         }
 
@@ -29,6 +38,10 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt =>
                opt.UseInMemoryDatabase("TodoList"));
+
+            services.AddScoped<ITodoRepository, TodoRepository>();
+            services.AddScoped<TodoCrudService, TodoCrudService>();
+
             services.AddControllers();
             services.AddSwaggerGen();
         }
@@ -53,6 +66,8 @@ namespace TodoApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.AddGlobalErrorHandler();
 
             app.UseAuthorization();
 
