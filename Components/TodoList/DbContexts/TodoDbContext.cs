@@ -1,14 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TodoApiDTO.Components.TodoList.Models;
-
-namespace TodoApiDTO.Components.TodoList.DbContexts
+﻿namespace TodoApiDTO.Components.TodoList.DbContexts
 {
+    using Microsoft.EntityFrameworkCore;
+    using TodoApiDTO.Components.TodoList.Models;
+
     /// <summary>
     /// Контекст Базы Данных TO-DO.
     /// </summary>
-    public class TodoContext : DbContext
+    public class TodoDbContext : DbContext
     {
-        public TodoContext(DbContextOptions<TodoContext> options)
+        public TodoDbContext(DbContextOptions<TodoDbContext> options)
             : base(options)
         {
         }

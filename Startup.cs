@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +10,7 @@ using NLog;
 using TodoApiDTO.Components.TodoList.DbContexts;
 using TodoApiDTO.Components.TodoList.Interfaces;
 using TodoApiDTO.Components.TodoList.Services;
+using TodoApiDTO.Controllers;
 using TodoApiDTO.Extensions;
 
 namespace TodoApiDTO
@@ -23,9 +26,15 @@ namespace TodoApiDTO
                         .FilterMinLevel(LogLevel.Info)
                         .WriteToConsole();
 
-                    builder.ForLogger()
-                        .FilterMinLevel(LogLevel.Info)
-                        .WriteToFile(fileName: "ERRORS_${shortdate}.log");
+                    var logFilesRootPath = Directory.GetCurrentDirectory() + "\\logs\\";
+
+                    builder.ForLogger("SystemError")
+                        .FilterMinLevel(LogLevel.Error)
+                        .WriteToFile(logFilesRootPath+ "SYSTEM_ERRORS_${shortDate}.log");
+
+                    builder.ForLogger("CustomError")
+                        .FilterMinLevel(LogLevel.Error)
+                        .WriteToFile(logFilesRootPath + "CUSTOM_ERRORS_${shortDate}.log");
                 });
 
             Configuration = configuration;
@@ -36,11 +45,12 @@ namespace TodoApiDTO
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
+            services.AddDbContext<TodoDbContext>(opt =>
                opt.UseSqlServer(Configuration.GetConnectionString("TodoDB")));
 
             services.AddScoped<ITodoRepository, TodoRepository>();
             services.AddScoped<TodoCrudService, TodoCrudService>();
+            services.AddScoped<BaseControllerService, BaseControllerService>();
 
             services.AddControllers();
             services.AddSwaggerGen();

@@ -1,13 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TodoApiDTO.Components.TodoList.Dto;
-using TodoApiDTO.Components.TodoList.Interfaces;
-using TodoApiDTO.Components.TodoList.Models;
-using TodoApiDTO.Exceptions;
-
-namespace TodoApiDTO.Components.TodoList.Services
+﻿namespace TodoApiDTO.Components.TodoList.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using TodoApiDTO.Components.TodoList.Dto;
+    using TodoApiDTO.Components.TodoList.Interfaces;
+    using TodoApiDTO.Components.TodoList.Models;
+    using TodoApiDTO.Exceptions;
+
+    /// <summary>
+    /// Реализация специфичных для сущности
+    /// TO-DO CRUD операций.
+    /// </summary>
+    /// <remarks>
+    /// Данный сервис слежит для того, чтобы
+    /// убрать из контроллера логику с обработкой
+    /// исключений, выборкой данных и использовать
+    /// только готовые специфичные CRUD операции.
+    /// </remarks>
     public class TodoCrudService
     {
         private readonly ITodoRepository _todoRepository;
@@ -23,7 +33,7 @@ namespace TodoApiDTO.Components.TodoList.Services
                 .GetAll();
 
             return allItems
-                .Select(TodoItemDto.ProjectionExpression)
+                .Select(TodoItemDto.Projection)
                 .ToArray();
         }
 
@@ -36,7 +46,7 @@ namespace TodoApiDTO.Components.TodoList.Services
                 throw new ValidationException($"Запись с Id {id} не найдена в БД.");
             }
 
-            return TodoItemDto.ProjectionExpression(todoItem);
+            return TodoItemDto.Projection(todoItem);
         }
 
         public async Task UpdateTodoItem(long id, TodoItemDto todoItemDto)
@@ -70,7 +80,7 @@ namespace TodoApiDTO.Components.TodoList.Services
 
             await _todoRepository.Create(todoItem);
 
-            return TodoItemDto.ProjectionExpression(todoItem);
+            return TodoItemDto.Projection(todoItem);
         }
 
         public async Task DeleteTodoItem(long id)

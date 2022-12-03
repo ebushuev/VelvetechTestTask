@@ -1,7 +1,7 @@
-﻿using TodoApiDTO.Interfaces;
-
-namespace TodoApiDTO.Components.TodoList.Models
+﻿namespace TodoApiDTO.Components.TodoList.Models
 {
+    using TodoApiDTO.Interfaces;
+
     /// <summary>
     /// Сущность TO-DO.
     /// </summary>

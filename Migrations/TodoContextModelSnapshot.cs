@@ -7,7 +7,7 @@ using TodoApiDTO.Components.TodoList.DbContexts;
 
 namespace TodoApiDTO.Migrations
 {
-    [DbContext(typeof(TodoContext))]
+    [DbContext(typeof(TodoDbContext))]
     partial class TodoContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

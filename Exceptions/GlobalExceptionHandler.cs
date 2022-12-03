@@ -1,13 +1,16 @@
-﻿using System;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using NLog;
-
-namespace TodoApiDTO.Exceptions
+﻿namespace TodoApiDTO.Exceptions
 {
+    using System;
+    using System.Net;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
+    using Newtonsoft.Json;
+    using TodoApiDTO.Logger;
+
+    /// <summary>
+    /// Глобальный обработчик ошибок.
+    /// </summary>
     public class GlobalExceptionHandler
     {
         private readonly RequestDelegate _next;
@@ -35,6 +38,8 @@ namespace TodoApiDTO.Exceptions
             string stackTrace;
             string message;
 
+            var isCustomError = false;
+
             var exceptionType = exception.GetType();
 
             if (exceptionType == typeof(ValidationException))
@@ -42,6 +47,7 @@ namespace TodoApiDTO.Exceptions
                 message = exception.Message;
                 status = HttpStatusCode.NotFound;
                 stackTrace = exception.StackTrace;
+                isCustomError = true;
             }
             else if (exceptionType == typeof(DbUpdateConcurrencyException))
             {
@@ -56,12 +62,7 @@ namespace TodoApiDTO.Exceptions
                 stackTrace = exception.StackTrace;
             }
 
-            // logging to console and root path ERRORS_${shortdate}.log file.
-            LogManager
-                .GetCurrentClassLogger()
-                .Error(exception
-                    + Environment.NewLine
-                    + Environment.NewLine);
+            LoggerHelper.LogError(isCustomError, exception);
 
             var exceptionResult = JsonConvert.SerializeObject(
                 new {

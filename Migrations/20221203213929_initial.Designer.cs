@@ -8,7 +8,7 @@ using TodoApiDTO.Components.TodoList.DbContexts;
 
 namespace TodoApiDTO.Migrations
 {
-    [DbContext(typeof(TodoContext))]
+    [DbContext(typeof(TodoDbContext))]
     [Migration("20221203213929_initial")]
     partial class initial
     {

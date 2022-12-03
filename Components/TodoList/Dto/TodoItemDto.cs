@@ -1,8 +1,8 @@
-﻿using TodoApiDTO.Components.TodoList.Models;
-using TodoApiDTO.Interfaces;
-
-namespace TodoApiDTO.Components.TodoList.Dto
+﻿namespace TodoApiDTO.Components.TodoList.Dto
 {
+    using TodoApiDTO.Components.TodoList.Models;
+    using TodoApiDTO.Interfaces;
+
     /// <summary>
     /// Dto для сущности TO-DO.
     /// </summary>
@@ -12,7 +12,7 @@ namespace TodoApiDTO.Components.TodoList.Dto
         /// Проекция сущности TO-DO в Dto.
         /// </summary>
         /// <param name="todoItem">Сущность TO-DO.</param>
-        public static TodoItemDto ProjectionExpression(TodoItem todoItem) =>
+        public static TodoItemDto Projection(TodoItem todoItem) =>
             new TodoItemDto
             {
                 Id = todoItem.Id,

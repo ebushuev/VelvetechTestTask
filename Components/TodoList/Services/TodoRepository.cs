@@ -1,36 +1,39 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using TodoApiDTO.Components.TodoList.DbContexts;
-using TodoApiDTO.Components.TodoList.Interfaces;
-using TodoApiDTO.Components.TodoList.Models;
-
-namespace TodoApiDTO.Components.TodoList.Services
+﻿namespace TodoApiDTO.Components.TodoList.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+    using TodoApiDTO.Components.TodoList.DbContexts;
+    using TodoApiDTO.Components.TodoList.Interfaces;
+    using TodoApiDTO.Components.TodoList.Models;
+
+    /// <summary>
+    /// Реализация интерфейса 'Репозиторий' для сущности TO-DO.
+    /// </summary>
     public class TodoRepository : ITodoRepository
     {
-        private readonly TodoContext _context;
+        private readonly TodoDbContext _dbContext;
 
-        public TodoRepository(TodoContext context)
+        public TodoRepository(TodoDbContext dbContext)
         {
-            _context = context;
+            _dbContext = dbContext;
         }
 
         public async Task<IEnumerable<TodoItem>> GetAll()
         {
-            return await _context.TodoItems.ToListAsync();
+            return await _dbContext.TodoItems.ToListAsync();
         }
 
         public async Task<TodoItem> Get(long id)
         {
-            return await _context.TodoItems.FindAsync(id);
+            return await _dbContext.TodoItems.FindAsync(id);
         }
 
         public async Task Create(TodoItem item)
         {
-            await _context.TodoItems.AddAsync(item);
-            await _context.SaveChangesAsync();
+            await _dbContext.TodoItems.AddAsync(item);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task Update(TodoItem item)
@@ -41,8 +44,8 @@ namespace TodoApiDTO.Components.TodoList.Services
             itemToUpdate.IsComplete = item.IsComplete;
             itemToUpdate.Secret = item.Secret;
 
-            _context.TodoItems.Update(itemToUpdate);
-            await _context.SaveChangesAsync();
+            _dbContext.TodoItems.Update(itemToUpdate);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task Delete(long id)
@@ -54,8 +57,8 @@ namespace TodoApiDTO.Components.TodoList.Services
                 return;
             }
 
-            _context.TodoItems.Remove(itemToDelete);
-            await _context.SaveChangesAsync();
+            _dbContext.TodoItems.Remove(itemToDelete);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<bool> Exists(long id)
