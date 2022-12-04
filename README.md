@@ -46,3 +46,6 @@ to test migration mechanism follow next steps:
 ### Logs
 You can find errors logs in project ```logs\``` directory.
 All logs have the format: ```LOG_PREFIX_${shortDate}.log```
+
+### Finish
+Task was finished by 03.12.22. Pull request was created at 04.12.22. 
