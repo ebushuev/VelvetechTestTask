@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ToDo.Domain.Models;
 
 namespace ToDo.WebApi.Models
 {
@@ -9,6 +10,6 @@ namespace ToDo.WebApi.Models
         {
         }
 
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<ToDoItem> TodoItems { get; set; }
     }
 }

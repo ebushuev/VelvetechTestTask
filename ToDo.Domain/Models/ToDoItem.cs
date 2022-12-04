@@ -1,7 +1,7 @@
-﻿namespace ToDo.WebApi.Models
+﻿namespace ToDo.Domain.Models
 {
     #region snippet
-    public class TodoItem
+    public class ToDoItem
     {
         public long Id { get; set; }
         public string Name { get; set; }
