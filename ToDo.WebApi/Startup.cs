@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerUI;
 using ToDo.WebApi.Models;
 
 namespace ToDo.WebApi
@@ -31,7 +32,7 @@ namespace ToDo.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+               opt.UseSqlServer(Configuration.GetConnectionString("db")));
             services.AddControllers();
             services.AddSwaggerGen(options =>
             {
@@ -57,6 +58,7 @@ namespace ToDo.WebApi
                 {
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
                     options.RoutePrefix = String.Empty;
+                    options.EnableTryItOutByDefault();
                 });
             }
 
