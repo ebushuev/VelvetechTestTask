@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace TodoApiDTO.Controllers {
     public class ErrorController : Controller {
@@ -9,7 +10,7 @@ namespace TodoApiDTO.Controllers {
         private readonly ILogger<ErrorController> logger;
 
         public ErrorController( ILogger<ErrorController> logger ) {
-            this.logger = logger;
+            this.logger = logger ?? throw new ArgumentNullException ( nameof ( logger ) );
         }
 
         [Route ( "Error" )]

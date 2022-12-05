@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TodoApi.Models;
@@ -14,7 +15,7 @@ namespace TodoApi.Controllers
         private readonly IService<TodoItemDTO> service;
 
         public TodoItemsController( IService<TodoItemDTO> service ) {
-            this.service = service;
+            this.service = service ?? throw new ArgumentNullException ( nameof ( service ) );
         }
 
         /// <summary>
