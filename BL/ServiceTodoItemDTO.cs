@@ -93,7 +93,7 @@ namespace TodoApiDTO.BL {
         }
 
         public bool IsExists( long id ) {
-            return !( _repository.GetAsync ( id ) is null );
+            return _repository.GetAsync ( id ).Result != null;
         }
 
     }

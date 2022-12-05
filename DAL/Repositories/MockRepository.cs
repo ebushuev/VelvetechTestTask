@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TodoApi.Models;
 using TodoApiDTO.DAL.Interfaces;
@@ -40,11 +38,11 @@ namespace TodoApiDTO.DAL.Repositories {
         }
 
         public Task<TodoItem> GetAsync( long id ) {
-            return Task.Run ( () => _items.First<TodoItem> ( item => item.Id == id ) );
+            return Task.Run ( () => _items.FirstOrDefault<TodoItem> ( item => item.Id == id ) );
         }
 
-        public Task<int> SaveChangesAsync() {
-            return Task.Run ( () => 0 );
+        public async Task<int> SaveChangesAsync() {
+            return 0;
         }
 
         public void Update( TodoItem item ) {

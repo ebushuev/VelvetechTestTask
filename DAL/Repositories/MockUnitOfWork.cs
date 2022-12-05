@@ -9,13 +9,7 @@ namespace TodoApiDTO.DAL.Repositories {
         public MockUnitOfWork() {
         }
 
-        public IRepository<TodoItem> TodoItems {
-            get {
-                if(mockRepository == null)
-                    mockRepository = new MockRepository ();
-                return mockRepository;
-            }
-        }
+        public IRepository<TodoItem> TodoItems { get => new MockRepository (); }
 
         public void Dispose() {
         }
