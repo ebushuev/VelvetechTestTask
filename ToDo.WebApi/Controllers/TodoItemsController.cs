@@ -1,9 +1,11 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using ToDo.Domain.Models;
+using AutoMapper;
+using ToDo.Application.Models;
+using ToDo.Application.Services;
+using ToDo.DAL.Exceptions;
 using ToDo.WebApi.Models;
 
 namespace ToDo.WebApi.Controllers
@@ -12,11 +14,13 @@ namespace ToDo.WebApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly ITodoItemService _service;
+        private readonly IMapper _mapper;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(ITodoItemService service, IMapper mapper)
         {
-            _context = context;
+            _service = service;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -24,11 +28,11 @@ namespace ToDo.WebApi.Controllers
         /// </summary>
         /// <returns>List of ToDoItems</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<TodoItemVM>>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            var items = await _service.GetAllAsync();
+            var result =  _mapper.Map<IEnumerable<TodoItemVM>>(items);
+            return Ok(result);
         }
 
         /// <summary>
@@ -37,74 +41,69 @@ namespace ToDo.WebApi.Controllers
         /// <param name="id"></param>
         /// <returns>ToDoItem</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
+        public async Task<ActionResult<TodoItemVM>> GetTodoItem(int id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
+            try
             {
+                var item = await _service.GetAsync(id);
+                var result = _mapper.Map<TodoItemVM>(item);
+                return Ok(result);
+            }
+            catch (NotFoundException e)
+            {
+                Console.WriteLine(e); // log
                 return NotFound();
             }
-
-            return ItemToDTO(todoItem);
         }
 
         /// <summary>
         /// Updates existing ToDoItem
         /// </summary>
         /// <param name="id">item to update</param>
-        /// <param name="todoItemDTO">attributes to update</param>
+        /// <param name="todoItemVm">attributes to update</param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
+        public async Task<IActionResult> UpdateTodoItem(int id, TodoItemVM todoItemVm)
         {
-            if (id != todoItemDTO.Id)
+            if (id != todoItemVm.Id)
             {
                 return BadRequest();
             }
 
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
-
             try
             {
-                await _context.SaveChangesAsync();
+                //await _service.GetAsync(id);
+                await _service.UpdateAsync(_mapper.Map<ToDoDto>(todoItemVm));
+                
+                return Ok();
             }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
+            catch (NotFoundException e)
             {
+                Console.WriteLine(e); // log
                 return NotFound();
             }
 
-            return NoContent();
         }
 
         /// <summary>
         /// Creates new item
         /// </summary>
-        /// <param name="todoItemDTO">new item</param>
+        /// <param name="todoItemVm">new item</param>
         /// <returns>Added item</returns>
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
+        public async Task<ActionResult<TodoItemVM>> CreateTodoItem(TodoItemVM todoItemVm)
         {
-            var todoItem = new ToDoItem
+            try
             {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
-
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(
-                nameof(GetTodoItem),
-                new { id = todoItem.Id },
-                ItemToDTO(todoItem));
+                var item = await _service.CreateAsync(_mapper.Map<ToDoDto>(todoItemVm));
+                var result = _mapper.Map<TodoItemVM>(item);
+                return CreatedAtAction(nameof(GetTodoItem), new { id = item.Id }, result);
+            }
+            catch (AlreadyExistsException e)
+            {
+                Console.WriteLine(e);
+                return NoContent();
+            }
         }
 
         /// <summary>
@@ -113,30 +112,19 @@ namespace ToDo.WebApi.Controllers
         /// <param name="id">item id</param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoItem(long id)
+        public async Task<IActionResult> DeleteTodoItem(int id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
+            try
+            {   
+                await _service.DeleteAsync(id);
+            }
+            catch (NotFoundException e)
             {
+                Console.WriteLine(e);
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
             return NoContent();
         }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
-
-        private static TodoItemDTO ItemToDTO(ToDoItem todoItem) =>
-            new TodoItemDTO
-            {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };       
     }
 }

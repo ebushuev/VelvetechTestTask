@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ToDo.Application\ToDo.Application.csproj" />
+    <ProjectReference Include="..\ToDo.DAL\ToDo.DAL.csproj" />
   </ItemGroup>
 
 

@@ -1,7 +1,7 @@
 ﻿namespace ToDo.WebApi.Models
 {
     #region snippet
-    public class TodoItemDTO
+    public class TodoItemVM
     {
         public long Id { get; set; }
         public string Name { get; set; }
