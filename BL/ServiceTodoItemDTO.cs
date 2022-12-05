@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Threading.Tasks;
@@ -18,8 +19,8 @@ namespace TodoApiDTO.BL {
         private readonly IMapper _mapperToItem;
 
         public ServiceTodoItemDTO( IUnitOfWork unitOfWork, ILogger<ServiceTodoItemDTO> logger ) {
-            _logger = logger;
-            _repository = unitOfWork.TodoItems;
+            _logger = logger ?? throw new ArgumentNullException ( nameof ( logger ) );
+            _repository = unitOfWork?.TodoItems ?? throw new ArgumentNullException ( nameof ( unitOfWork ) );
             var config = new MapperConfiguration ( cfg => cfg.CreateMap<TodoItem, TodoItemDTO> ()
             .ForMember ( "Id", opt => opt.MapFrom ( src => src.Id ) )
             .ForMember ( "Name", opt => opt.MapFrom ( src => src.Name ) )
@@ -59,7 +60,7 @@ namespace TodoApiDTO.BL {
 
         public async Task<int> Create( TodoItemDTO itemDTO ) {
             try {
-                await _repository.CreateAsync ( _mapperToItem.Map<TodoItem> ( itemDTO ) );
+                _repository.CreateAsync ( _mapperToItem.Map<TodoItem> ( itemDTO ) );
                 await _repository.SaveChangesAsync ();
             }
             catch(DbUpdateConcurrencyException ex) when(!IsExists ( itemDTO.Id )) {
