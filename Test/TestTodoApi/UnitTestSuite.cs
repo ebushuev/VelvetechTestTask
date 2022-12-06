@@ -40,6 +40,11 @@ namespace TestTodoApi {
         }
 
         [Test]
+        public void GetByIdNegativeTest() {
+            Assert.IsNull ( _service.Get ( long.MaxValue ).Result.Value );
+        }
+
+        [Test]
         public void UpdateTest() {
             var items = new List<TodoItemDTO> () {
                 new TodoItemDTO { Id = 1, IsComplete = true, Name = "Garold" },
@@ -48,9 +53,30 @@ namespace TestTodoApi {
                 new TodoItemDTO { Id = 4, IsComplete = true, Name = "Marina" },
             };
             string expectedJson = JsonSerializer.Serialize ( items );
-            _service.Update ( 3, new TodoItemDTO { Id = 3, IsComplete = true, Name = "Sara" } );
+            var code = _service.Update ( 3, new TodoItemDTO { Id = 3, IsComplete = true, Name = "Sara" } ).Result;
             string actualJson = JsonSerializer.Serialize ( _service.GetAll () );
-            Assert.That ( actualJson, Is.EqualTo ( expectedJson ) );
+            Assert.Multiple ( () => {
+                Assert.That ( actualJson, Is.EqualTo ( expectedJson ) );
+                Assert.That ( code, Is.EqualTo ( 204 ) );
+            } );
+        }
+
+        [Test]
+        public void UpdateNegativeTest() {
+            var items = new List<TodoItemDTO> () {
+                new TodoItemDTO { Id = 1, IsComplete = true, Name = "Garold" },
+                new TodoItemDTO { Id = 2, IsComplete = true, Name = "Yaroslav" },
+                new TodoItemDTO { Id = 3, IsComplete = true, Name = "Natalya" },
+                new TodoItemDTO { Id = 4, IsComplete = true, Name = "Marina" },
+            };
+            string expectedJson = JsonSerializer.Serialize ( items );
+            var code = _service.Update ( long.MaxValue, new TodoItemDTO { Id = 3, IsComplete = true, Name = "Sara" } ).Result;
+            string actualJson = JsonSerializer.Serialize ( _service.GetAll () );
+            Assert.Multiple ( () => {
+                Assert.That ( actualJson, Is.EqualTo ( expectedJson ) );
+                Assert.That ( code, Is.EqualTo ( 400 ) );
+            } );
+
         }
 
         [Test]
@@ -68,6 +94,23 @@ namespace TestTodoApi {
             Assert.Multiple ( () => {
                 Assert.That ( actualJson, Is.EqualTo ( expectedJson ) );
                 Assert.That ( code, Is.EqualTo ( 201 ) );
+            } );
+        }
+
+        [Test]
+        public void CreateNegativeTest() {
+            var items = new List<TodoItemDTO> () {
+                new TodoItemDTO { Id = 1, IsComplete = true, Name = "Garold" },
+                new TodoItemDTO { Id = 2, IsComplete = true, Name = "Yaroslav" },
+                new TodoItemDTO { Id = 3, IsComplete = true, Name = "Natalya" },
+                new TodoItemDTO { Id = 4, IsComplete = true, Name = "Marina" },
+            };
+            string expectedJson = JsonSerializer.Serialize ( items );
+            var code = _service.Create ( new TodoItemDTO { Id = long.MaxValue, IsComplete = true, Name = "Petr" } ).Result;
+            string actualJson = JsonSerializer.Serialize ( _service.GetAll () );
+            Assert.Multiple ( () => {
+                Assert.That ( actualJson, Is.EqualTo ( expectedJson ) );
+                Assert.That ( code, Is.EqualTo ( 400 ) );
             } );
         }
 
@@ -106,7 +149,7 @@ namespace TestTodoApi {
 
         [Test]
         public void IsExistsTest() {
-            Assert.IsTrue ( _service.IsExists(1) );
+            Assert.IsTrue ( _service.IsExists ( 1 ) );
         }
 
         [Test]

@@ -59,6 +59,7 @@ namespace TodoApiDTO.BL {
         }
 
         public async Task<int> Create( TodoItemDTO itemDTO ) {
+            if(itemDTO.Id != 0) { return 400; }
             try {
                 _repository.CreateAsync ( _mapperToItem.Map<TodoItem> ( itemDTO ) );
                 await _repository.SaveChangesAsync ();
