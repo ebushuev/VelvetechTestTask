@@ -11,7 +11,7 @@ using TodoApi.Database;
 namespace TodoApi.Database.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    [Migration("20221210095039_Initial")]
+    [Migration("20221210172204_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -40,7 +40,6 @@ namespace TodoApi.Database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Secret")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -18,7 +18,7 @@ public static class DatabaseDiExtensions
         using var serviceScope = app.ApplicationServices.CreateScope();
 
         var dbContext = serviceScope.ServiceProvider.GetRequiredService<TodoContext>();
-        
+
         dbContext.Database.Migrate();
     }
 }

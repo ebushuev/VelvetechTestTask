@@ -8,11 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Features" />
+        <PackageReference Include="MediatR" Version="11.1.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="11.1.0" />
+        <ProjectReference Include="..\TodoApi.Core\TodoApi.Core.csproj"/>
+        <ProjectReference Include="..\TodoApi.Database\TodoApi.Database.csproj"/>
     </ItemGroup>
 
 </Project>
