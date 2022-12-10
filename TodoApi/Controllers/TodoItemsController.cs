@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TodoApi.Database;
+using TodoApi.Database.Models;
 using TodoApi.Models;
 
 namespace TodoApi.Controllers
@@ -53,8 +55,11 @@ namespace TodoApi.Controllers
                 return NotFound();
             }
 
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
+            todoItem = todoItem with
+            {
+                Name = todoItemDTO.Name, 
+                IsComplete = todoItemDTO.IsComplete
+            };
 
             try
             {
@@ -71,11 +76,10 @@ namespace TodoApi.Controllers
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
-            var todoItem = new TodoItem
-            {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
+            var todoItem = new TodoItemDbo(0, 
+                null,
+                todoItemDTO.IsComplete,
+                todoItemDTO.Name);
 
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
@@ -105,12 +109,12 @@ namespace TodoApi.Controllers
         private bool TodoItemExists(long id) =>
              _context.TodoItems.Any(e => e.Id == id);
 
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
+        private static TodoItemDTO ItemToDTO(TodoItemDbo todoItemDbo) =>
             new TodoItemDTO
             {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
+                Id = todoItemDbo.Id,
+                Name = todoItemDbo.Name,
+                IsComplete = todoItemDbo.IsComplete
             };       
     }
 }

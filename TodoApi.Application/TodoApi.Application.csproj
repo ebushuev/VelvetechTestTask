@@ -7,4 +7,12 @@
         <RootNamespace>TodoApiDTO.Application</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Features" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="11.1.0" />
+    </ItemGroup>
+
 </Project>

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TodoApi.Database.DI;
 using TodoApi.Models;
 
 namespace TodoApi
@@ -27,8 +28,8 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            services.AddDatabase(Configuration);
+            
             services.AddControllers();
         }
 
@@ -50,6 +51,8 @@ namespace TodoApi
             {
                 endpoints.MapControllers();
             });
+
+            app.MigrateDatabase();
         }
     }
 }
