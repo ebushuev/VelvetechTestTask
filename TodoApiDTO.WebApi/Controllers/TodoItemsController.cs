@@ -68,6 +68,27 @@ namespace TodoApiDTO.WebApi.Controllers
             return Ok();
         }
 
+        // Можно и так оставить, но думаю стоит разделить этот функционала
+        //[HttpPut("{id}")]
+        //public async Task<ActionResult> UpdateItem(long id, UpdateTodoItem item)
+        //{
+        //    _logger.LogDebug($"{nameof(TodoItemsController)}.{nameof(UpdateItem)} Start.");
+        //    if ((id < 1) || (id != item.Id))
+        //    {
+        //        return BadRequest("incorrect id");
+        //    }
+
+        //    if (string.IsNullOrWhiteSpace(item.Name) && !item.IsComplete.HasValue)
+        //    {
+        //        return BadRequest("incorrect data");
+        //    }
+
+        //    await _todoItemsService.UpdateItem(id, item.Name, item.IsComplete);
+
+        //    _logger.LogDebug($"{nameof(TodoItemsController)}.{nameof(UpdateItem)} End.");
+        //    return Ok();
+        //}
+
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateItem(long id, UpdateTodoItem item)
         {
@@ -77,14 +98,29 @@ namespace TodoApiDTO.WebApi.Controllers
                 return BadRequest("incorrect id");
             }
 
-            if (string.IsNullOrWhiteSpace(item.Name) && !item.IsComplete.HasValue)
+            if (string.IsNullOrWhiteSpace(item.Name))
             {
                 return BadRequest("incorrect data");
             }
 
-            await _todoItemsService.UpdateItem(id, item.Name, item.IsComplete);
+            await _todoItemsService.UpdateItem(id, item.Name);
 
             _logger.LogDebug($"{nameof(TodoItemsController)}.{nameof(UpdateItem)} End.");
+            return Ok();
+        }
+
+        [HttpPost("{id}/complete")]
+        public async Task<ActionResult> CompleteItem(long id)
+        {
+            _logger.LogDebug($"{nameof(TodoItemsController)}.{nameof(CompleteItem)} Start.");
+            if (id < 1)
+            {
+                return BadRequest("incorrect id");
+            }
+
+            await _todoItemsService.CompleteItem(id);
+
+            _logger.LogDebug($"{nameof(TodoItemsController)}.{nameof(CompleteItem)} End.");
             return Ok();
         }
 

@@ -38,5 +38,10 @@ namespace TodoApiDTO.Infrastructure.Services.Todo
         /// Удалить запись
         /// </summary>
         Task DeleteItem(TodoItem item);
+
+        /// <summary>
+        /// Завершить задачу
+        /// </summary>
+        Task Complete(long id);
     }
 }

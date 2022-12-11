@@ -132,6 +132,38 @@ namespace TodoApiDTO.Application.Todo
             _logger.LogDebug($"{nameof(TodoItemsService)}.{nameof(UpdateItem)} End.");
         }
 
+
+        public async Task UpdateItem(long id, string name)
+        {
+            _logger.LogDebug($"{nameof(TodoItemsService)}.{nameof(UpdateItem)} Start.");
+
+            if (id < 1)
+            {
+                throw new ArgumentException(nameof(id));
+            }
+
+            try
+            {
+                var item = await _todoItemsRepository.GetItem(id);
+
+                if (item != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(name) && !string.Equals(item.Name, name))
+                    {
+                        var upItem = new TodoItem(id, name, item.IsComplete);
+                        await _todoItemsRepository.UpdateItem(upItem);
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                _logger.LogError(exc, $"Error Update. Id: {id}");
+                throw;
+            }
+
+            _logger.LogDebug($"{nameof(TodoItemsService)}.{nameof(UpdateItem)} End.");
+        }
+
         public async Task DeleteItem(long id)
         {
             _logger.LogDebug($"{nameof(TodoItemsService)}.{nameof(DeleteItem)} Start.");
@@ -156,6 +188,27 @@ namespace TodoApiDTO.Application.Todo
             }
 
             _logger.LogDebug($"{nameof(TodoItemsService)}.{nameof(DeleteItem)} End.");
+        }
+
+        public async Task CompleteItem(long id)
+        {
+            _logger.LogDebug($"{nameof(TodoItemsService)}.{nameof(CompleteItem)} Start.");
+            if (id < 1)
+            {
+                throw new ArgumentException(nameof(id));
+            }
+
+            try
+            {
+                await _todoItemsRepository.Complete(id);
+            }
+            catch (Exception exc)
+            {
+                _logger.LogError(exc, $"Error complete item. Id: {id}");
+                throw;
+            }
+
+            _logger.LogDebug($"{nameof(TodoItemsService)}.{nameof(CompleteItem)} End.");
         }
     }
 }

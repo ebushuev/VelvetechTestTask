@@ -13,7 +13,6 @@ namespace TodoApiDTO.Infrastructure.Database.Configurations
         {
             builder.ToTable("todoitems");
             builder.Property(x => x.Name).IsRequired();
-            builder.Property(x => x.IsComplete).HasDefaultValue(false);
         }
     }
 }

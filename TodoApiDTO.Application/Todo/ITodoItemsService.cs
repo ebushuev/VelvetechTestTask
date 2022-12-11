@@ -32,8 +32,18 @@ namespace TodoApiDTO.Application.Todo
         Task UpdateItem(long id, string name, bool? isComplete);
 
         /// <summary>
+        /// обновить запись. Обновляется только название.
+        /// </summary>
+        Task UpdateItem(long id, string name);
+
+        /// <summary>
         /// Удалить запись
         /// </summary>
         Task DeleteItem(long id);
+
+        /// <summary>
+        /// Завершить задачу
+        /// </summary>
+        Task CompleteItem(long id);
     }
 }

@@ -42,7 +42,7 @@ namespace TodoApiDTO.Infrastructure.Services.Todo
 
             var newItem = new TodoItem(name, isComplete);
 
-            await _context.TodoItems.AddAsync(newItem);
+            var res = await _context.TodoItems.AddAsync(newItem);
             await _context.SaveChangesAsync();
 
             return newItem.Id;
@@ -55,7 +55,7 @@ namespace TodoApiDTO.Infrastructure.Services.Todo
                 throw new ArgumentNullException(nameof(item));
             }
 
-            _context.Entry(item).State= EntityState.Modified;
+            _context.Entry(item).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
@@ -68,6 +68,18 @@ namespace TodoApiDTO.Infrastructure.Services.Todo
 
             _context.Entry(item).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
+        }
+
+        public async Task Complete(long id)
+        {
+            if (id < 1)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            var oldItem = await this.GetItem(id);
+            var completeItem = new TodoItem(id, oldItem.Name, true);
+            await UpdateItem(completeItem);
         }
     }
 }

@@ -9,8 +9,10 @@ namespace TodoApiDTO.Domain.Todo
     /// </summary>
     public class TodoItem
     {
-        public TodoItem(string name, bool isComplete) : this(0, name, isComplete)
+        public TodoItem(string name, bool isComplete)
         {
+            Name = name;
+            IsComplete = isComplete;
         }
 
         public TodoItem(long id, string name, bool isComplete)
