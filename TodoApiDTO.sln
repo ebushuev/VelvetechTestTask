@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30002.166
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApiDTO", "TodoApiDTO.csproj", "{623124F9-F5BA-42DD-BC26-A1720774229C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApiDTO", "old\TodoApiDTO.csproj", "{623124F9-F5BA-42DD-BC26-A1720774229C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApiDTO.Application", "TodoApiDTO.Application\TodoApiDTO.Application.csproj", "{E2DE763D-075E-4B56-8D30-48646805A92F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApiDTO.Domain", "TodoApiDTO.Domain\TodoApiDTO.Domain.csproj", "{CD826723-8A2E-42A3-9888-EBB3785DC1C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApiDTO.Infrastructure", "TodoApiDTO.Infrastructure\TodoApiDTO.Infrastructure.csproj", "{B5F54F2D-525C-467C-9DE4-2A97D1918EF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApiDTO.WebApi", "TodoApiDTO.WebApi\TodoApiDTO.WebApi.csproj", "{641568AF-C7F4-44D0-B0F3-8D319D9F3FDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{623124F9-F5BA-42DD-BC26-A1720774229C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{623124F9-F5BA-42DD-BC26-A1720774229C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{623124F9-F5BA-42DD-BC26-A1720774229C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2DE763D-075E-4B56-8D30-48646805A92F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2DE763D-075E-4B56-8D30-48646805A92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2DE763D-075E-4B56-8D30-48646805A92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2DE763D-075E-4B56-8D30-48646805A92F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD826723-8A2E-42A3-9888-EBB3785DC1C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD826723-8A2E-42A3-9888-EBB3785DC1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD826723-8A2E-42A3-9888-EBB3785DC1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD826723-8A2E-42A3-9888-EBB3785DC1C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F54F2D-525C-467C-9DE4-2A97D1918EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F54F2D-525C-467C-9DE4-2A97D1918EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F54F2D-525C-467C-9DE4-2A97D1918EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F54F2D-525C-467C-9DE4-2A97D1918EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{641568AF-C7F4-44D0-B0F3-8D319D9F3FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{641568AF-C7F4-44D0-B0F3-8D319D9F3FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{641568AF-C7F4-44D0-B0F3-8D319D9F3FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{641568AF-C7F4-44D0-B0F3-8D319D9F3FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
