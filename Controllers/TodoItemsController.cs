@@ -3,114 +3,42 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using TodoApp.BL.DTOs;
+using TodoApp.Common.Base;
+using TodoApp.Common.Contract;
+using TodoApp.Services;
 
 namespace TodoApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TodoItemsController : ControllerBase
+    public class TodoItemsController : BaseController<TodoItemsController>
     {
-        private readonly TodoContext _context;
+        private readonly ITodoService _todoService;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(ITodoService todoService)
         {
-            _context = context;
+            _todoService = todoService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
-        {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
-        }
+        public async Task<ApiResponse> GetTodoItems() =>
+            await _todoService.GetAll();
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
-        {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            return ItemToDTO(todoItem);
-        }
+        public async Task<ApiResponse<TodoItemDTO>> GetTodoItem(long id) =>
+            await _todoService.GetItemById(id);
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
-        {
-            if (id != todoItemDTO.Id)
-            {
-                return BadRequest();
-            }
-
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
-            {
-                return NotFound();
-            }
-
-            return NoContent();
-        }
+        public async Task<ApiResponse> UpdateTodoItem(long id, TodoItemDTO todoItemDTO) =>
+            await _todoService.UpdateItem(id, todoItemDTO);
 
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
-        {
-            var todoItem = new TodoItem
-            {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
-
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(
-                nameof(GetTodoItem),
-                new { id = todoItem.Id },
-                ItemToDTO(todoItem));
-        }
+        public async Task<ApiResponse<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO) =>
+            await _todoService.AddItem(todoItemDTO);
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoItem(long id)
-        {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
-
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-            new TodoItemDTO
-            {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };       
+        public async Task<ApiResponse> DeleteTodoItem(long id) =>
+            await _todoService.Delete(id); 
     }
 }
