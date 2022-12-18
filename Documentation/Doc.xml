@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TodoApiDTO</name>
+    </assembly>
+    <members>
+        <member name="M:TodoApi.Controllers.TodoItemsController.GetTodoItems">
+            <summary>
+            List all todo items
+            </summary>
+            <returns>List of existing todo items</returns>      
+        </member>
+        <member name="M:TodoApi.Controllers.TodoItemsController.GetTodoItem(System.Int64)">
+            <summary>
+            Return concrete todo item
+            </summary>
+            <param name="id">Id of desired todo item</param>
+            <returns>Concrete todo item</returns>
+        </member>
+        <member name="M:TodoApi.Controllers.TodoItemsController.UpdateTodoItem(System.Int64,TodoApi.Models.TodoItemDTO)">
+            <summary>
+            Update todo item's attributes
+            </summary>
+            <param name="id">Id of updating todo item</param>
+            <param name="todoItemDTO">New model of todo item</param>
+            <returns>Request status</returns>
+        </member>
+        <member name="M:TodoApi.Controllers.TodoItemsController.CreateTodoItem(TodoApi.Models.TodoItemDTO)">
+            <summary>
+            Create new todo item
+            </summary>
+            <param name="todoItemDTO">New todo item's model</param>
+            <returns>New todo item's model</returns>
+        </member>
+        <member name="M:TodoApi.Controllers.TodoItemsController.DeleteTodoItem(System.Int64)">
+            <summary>
+            Remove concrete todo item
+            </summary>
+            <param name="id">Id of todo item to delete</param>
+            <returns>Request status</returns>
+        </member>
+    </members>
+</doc>
