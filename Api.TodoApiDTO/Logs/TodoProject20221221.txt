@@ -1,0 +1,55 @@
+2022-12-21 12:52:44.187 +03:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-12-21 12:52:45.113 +03:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2022-12-21 12:52:45.451 +03:00 [DBG] Response markup was updated to include browser refresh script injection.
+2022-12-21 12:52:45.594 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2022-12-21 12:52:45.593 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2022-12-21 12:52:55.167 +03:00 [DBG] The request path /api/TodoItems does not match a supported file type
+2022-12-21 12:52:55.203 +03:00 [DBG] 1 candidate(s) found for the request path '/api/TodoItems'
+2022-12-21 12:52:55.210 +03:00 [DBG] Endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)' with route pattern 'api/TodoItems' is valid for the request path '/api/TodoItems'
+2022-12-21 12:52:55.211 +03:00 [DBG] Request matched endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2022-12-21 12:52:55.213 +03:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2022-12-21 12:52:55.225 +03:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexTypeModelBinderProvider"]
+2022-12-21 12:52:55.265 +03:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[BusinessLayer.DTOs.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2022-12-21 12:52:55.267 +03:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2022-12-21 12:52:55.267 +03:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2022-12-21 12:52:55.267 +03:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2022-12-21 12:52:55.267 +03:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-12-21 12:52:55.267 +03:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2022-12-21 12:52:55.268 +03:00 [DBG] Executing controller factory for controller TodoApi.Controllers.TodoItemsController (TodoApiDTO)
+2022-12-21 12:52:55.908 +03:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2022-12-21 12:52:55.932 +03:00 [DBG] Executed controller factory for controller TodoApi.Controllers.TodoItemsController (TodoApiDTO)
+2022-12-21 12:52:56.132 +03:00 [INF] Executing action method TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) - Validation state: "Valid"
+2022-12-21 12:52:56.701 +03:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-21 12:52:56.925 +03:00 [DBG] queryContext => new QueryingEnumerable<TodoItemDTO>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache, 
+    null, 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, int[], ResultCoordinator, TodoItemDTO>, 
+    DataLayer.Context.TodoContext, 
+    DiagnosticsLogger<Query>
+)
+2022-12-21 12:52:56.960 +03:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2022-12-21 12:52:57.659 +03:00 [DBG] Created DbCommand for 'ExecuteReader' (695ms).
+2022-12-21 12:52:57.665 +03:00 [DBG] Opening connection to database 'TodoDB' on server '.\SQLEXPRESS2019'.
+2022-12-21 12:52:58.772 +03:00 [DBG] Opened connection to database 'TodoDB' on server '.\SQLEXPRESS2019'.
+2022-12-21 12:52:58.788 +03:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Name], [t].[Id], [t].[IsComplete]
+FROM [TodoItem] AS [t]
+2022-12-21 12:52:58.927 +03:00 [INF] Executed DbCommand (144ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Name], [t].[Id], [t].[IsComplete]
+FROM [TodoItem] AS [t]
+2022-12-21 12:52:58.954 +03:00 [DBG] A data reader was disposed.
+2022-12-21 12:52:58.958 +03:00 [DBG] Closing connection to database 'TodoDB' on server '.\SQLEXPRESS2019'.
+2022-12-21 12:52:58.966 +03:00 [DBG] Closed connection to database 'TodoDB' on server '.\SQLEXPRESS2019'.
+2022-12-21 12:52:58.974 +03:00 [INF] Executed action method TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2836.2541ms.
+2022-12-21 12:52:58.979 +03:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2022-12-21 12:52:58.983 +03:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2022-12-21 12:52:58.984 +03:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2022-12-21 12:52:58.985 +03:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2022-12-21 12:52:58.985 +03:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2022-12-21 12:52:58.986 +03:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2022-12-21 12:52:58.986 +03:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[BusinessLayer.DTOs.TodoItemDTO, BusinessLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-12-21 12:52:59.000 +03:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 3727.0356ms
+2022-12-21 12:52:59.002 +03:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2022-12-21 12:52:59.005 +03:00 [DBG] 'TodoContext' disposed.
