@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using TodoApiDTO.Models;
 using TodoApi.Models;
+using TodoApi.Operations;
+using System.Linq;
 
 namespace TodoApi.Controllers
 {
@@ -11,26 +14,25 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly ITodoListOperation _operation;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(ITodoListOperation operation)
         {
-            _context = context;
+            _operation = operation;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            var items = await _operation.GetTodoItemsAsync();
+            return items.Select(x => ItemToDTO(x)).ToArray();
+
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
+            var todoItem = await _operation.GetTodoItemAsync(id);
             if (todoItem == null)
             {
                 return NotFound();
@@ -47,7 +49,7 @@ namespace TodoApi.Controllers
                 return BadRequest();
             }
 
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _operation.GetTodoItemAsync(id);
             if (todoItem == null)
             {
                 return NotFound();
@@ -58,9 +60,9 @@ namespace TodoApi.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _operation.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
+            catch (DbUpdateConcurrencyException) when (!_operation.TodoItemExists(id))
             {
                 return NotFound();
             }
@@ -73,12 +75,13 @@ namespace TodoApi.Controllers
         {
             var todoItem = new TodoItem
             {
+                Id = todoItemDTO.Id, // Future updates: Prevent ids from being 0. Good idea to generate ids automatically in code or sql.
                 IsComplete = todoItemDTO.IsComplete,
                 Name = todoItemDTO.Name
             };
 
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+            _operation.AddTodoItem(todoItem);
+            await _operation.SaveChangesAsync();
 
             return CreatedAtAction(
                 nameof(GetTodoItem),
@@ -89,21 +92,18 @@ namespace TodoApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _operation.GetTodoItemAsync(id);
 
             if (todoItem == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
+            _operation.RemoveTodoItem(todoItem);
+            await _operation.SaveChangesAsync();
 
             return NoContent();
         }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
 
         private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
             new TodoItemDTO
@@ -111,6 +111,6 @@ namespace TodoApi.Controllers
                 Id = todoItem.Id,
                 Name = todoItem.Name,
                 IsComplete = todoItem.IsComplete
-            };       
+            };
     }
 }
