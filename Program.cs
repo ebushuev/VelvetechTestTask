@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TodoApiDTO.Logging;
 
 namespace TodoApi
 {
@@ -21,6 +22,16 @@ namespace TodoApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureLogging((context, logging) =>
+                {
+                    logging.AddFileLogger(options =>
+                    {
+                        context.Configuration.GetSection("Logging")
+                            .GetSection("FileLogger")
+                            .GetSection("Options")
+                            .Bind(options);
+                    });
                 });
     }
 }

@@ -13,7 +13,7 @@ namespace TodoApi.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly TodoContext _context;
-        private readonly ILogger _logger;
+        private readonly ILogger<TodoItemsController> _logger;
 
         public TodoItemsController(TodoContext context, ILogger<TodoItemsController> logger)
         {
@@ -25,6 +25,8 @@ namespace TodoApi.Controllers
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
             this._logger.LogInformation("got it there");
+            this._logger.LogError("got error there");
+            this._logger.LogTrace("trace");
             return await _context.TodoItems
                 .Select(x => ItemToDTO(x))
                 .ToListAsync();
