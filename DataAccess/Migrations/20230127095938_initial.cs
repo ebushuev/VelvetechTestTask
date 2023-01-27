@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TodoApiDTO.Migrations
+namespace DataAccess.Migrations
 {
     public partial class initial : Migration
     {
@@ -10,8 +11,7 @@ namespace TodoApiDTO.Migrations
                 name: "TodoItems",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     IsComplete = table.Column<bool>(nullable: false),
                     Secret = table.Column<string>(nullable: true)

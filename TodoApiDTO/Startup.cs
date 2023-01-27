@@ -1,11 +1,11 @@
 using System;
+using DataAccess;
+using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TodoApi.Models;
 
 namespace TodoApi
 {
@@ -21,10 +21,12 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // change of DB type required reset of migrations
-            //TODO make constants file
-            services.AddDbContext<TodoContext>(opt =>
-                opt.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
+            var connectionString = Configuration.GetConnectionString("TodosConnection");
+            services.AddDataAccessServices(connectionString);
+            services.AddDomainServices();
+
+            services.AddAutoMapper(typeof(DomainMapperProfile));
+
             services.AddControllers();
 
             services.AddSwaggerGen();
