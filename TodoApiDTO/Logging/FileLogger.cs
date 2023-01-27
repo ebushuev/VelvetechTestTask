@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Extensions.Logging;
 
-namespace TodoApiDTO.Logging
+namespace API.Logging
 {
     
     public class FileLogger: ILogger

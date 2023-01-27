@@ -1,4 +1,4 @@
-﻿namespace TodoApiDTO.Logging
+﻿namespace API.Logging
 {
     public class FileLoggerOptions
     {

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace TodoApiDTO.Logging
+namespace API.Logging
 {
     public static class FileLoggerExtensions
     {

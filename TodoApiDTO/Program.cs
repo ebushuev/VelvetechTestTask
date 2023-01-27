@@ -1,9 +1,9 @@
+using API.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using TodoApiDTO.Logging;
 
-namespace TodoApi
+namespace API
 {
     public class Program
     {

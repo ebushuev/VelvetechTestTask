@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Domain;
 using Microsoft.Extensions.Logging;
 
-namespace TodoApi.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

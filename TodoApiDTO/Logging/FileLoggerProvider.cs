@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace TodoApiDTO.Logging
+namespace API.Logging
 {
     [ProviderAlias("FileLogger")]
     public class FileLoggerProvider : ILoggerProvider
