@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using API.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
-namespace TodoApi
+namespace API
 {
     public class Program
     {
@@ -17,10 +13,21 @@ namespace TodoApi
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
+
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureLogging((context, logging) =>
+                {
+                    logging.AddFileLogger(options =>
+                    {
+                        context.Configuration.GetSection("Logging")
+                            .GetSection("FileLogger")
+                            .GetSection("Options")
+                            .Bind(options);
+                    });
                 });
     }
 }
