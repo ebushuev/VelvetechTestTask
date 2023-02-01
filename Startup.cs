@@ -1,11 +1,13 @@
-using Infrastructure.Database;
+using Domain;
+using Domain.Repositories;
+using Infrastructure;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using TodoApiDTO.Extensions;
 
 namespace TodoApiDTO
 {
@@ -22,32 +24,11 @@ namespace TodoApiDTO
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new OpenApiInfo
-				{
-					Title = "TODO API",
-					Version = "v1",
-					Description = "TODO CRUD API",
-					Contact = new OpenApiContact
-					{
-						Name = "Nodar Aronia",
-						Email = "nodararonia@gmail.com"
-					},
-				});
-			});
-
-			services.AddCors(options =>
-			{
-				options.AddPolicy("AllowAll",
-					p => p.AllowAnyHeader()
-						.AllowAnyOrigin()
-						.AllowAnyMethod());
-			});
-
-			services.AddDbContext<TodoContext>(options =>
-				options.UseSqlServer(Configuration["ConnectionStrings:DbContext"], sqlOptions => sqlOptions.EnableRetryOnFailure()));
+			services.AddSwagger();
+			services.RegisterCorsPolicy();
+			services.RegisterSQLDatabase(Configuration);
+			services.RegisterRepositories();
+			services.RegisterServices();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

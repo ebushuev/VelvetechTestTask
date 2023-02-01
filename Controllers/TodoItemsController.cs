@@ -1,14 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Domain.Common;
 using Domain.DTOs;
-using Domain.Entities;
 using Domain.Enums;
 using Domain.Services;
-using Infrastructure.Database;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TodoApiDTO.Controllers
 {
@@ -34,8 +29,8 @@ namespace TodoApiDTO.Controllers
 		{
 			var response = await _todoItemService.GetTodoItemAsync(id);
 
-			return response.State == ItemState.NotFound 
-				? (ActionResult<TodoItemDTO>)NotFound() 
+			return response.State == ItemState.NotFound
+				? (ActionResult<TodoItemDTO>)NotFound()
 				: Ok(response.Result);
 		}
 
@@ -49,8 +44,8 @@ namespace TodoApiDTO.Controllers
 
 			var response = await _todoItemService.UpdateTodoItemAsync(todoItemDTO);
 
-			return response.State == ItemState.NotFound 
-				? (IActionResult)NotFound() 
+			return response.State == ItemState.NotFound
+				? (IActionResult)NotFound()
 				: NoContent();
 		}
 
@@ -67,8 +62,8 @@ namespace TodoApiDTO.Controllers
 		{
 			var response = await _todoItemService.DeleteTodoItemAsync(id);
 
-			return response.State == ItemState.NotFound 
-				? (IActionResult)NotFound() 
+			return response.State == ItemState.NotFound
+				? (IActionResult)NotFound()
 				: NoContent();
 		}
 	}
