@@ -52,9 +52,11 @@ namespace TodoApiDTO.Controllers
 		[HttpPost]
 		public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
 		{
-			var addResult = await _todoItemService.AddTodoItemAsync(todoItemDTO);
+			var response = await _todoItemService.AddTodoItemAsync(todoItemDTO);
 
-			return CreatedAtAction(nameof(GetTodoItem), new { id = addResult.Id }, addResult);
+			return response.State == ItemState.Null
+				? (ActionResult<TodoItemDTO>)BadRequest()
+				: CreatedAtAction(nameof(GetTodoItem), new { id = response.Result.Id }, response.Result);
 		}
 
 		[HttpDelete("{id}")]
