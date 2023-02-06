@@ -12,6 +12,63 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="DataLayer\TodoApi.DataLayer.Config\TodoApi.DataLayer.Config.csproj" />
+    <ProjectReference Include="DataLayer\TodoApi.DataLayer.Entity\TodoApi.DataLayer.Entity.csproj" />
+    <ProjectReference Include="Infrastructure\TodoApi.Infrastructure.DbContext\TodoApi.Infrastructure.DbContext.csproj" />
+    <ProjectReference Include="Infrastructure\TodoApi.Infrastructure.Migration\TodoApi.Infrastructure.Migration.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infrastructure\**" />
+    <Compile Remove="TodoApi.Infrastructure.Migration\**" />
+    <Compile Remove="TodoApi.DataLayer.Entity\**" />
+    <Compile Remove="DataLayer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="TodoApi.Infrastructure.Migration\**" />
+    <EmbeddedResource Remove="TodoApi.DataLayer.Entity\**" />
+    <EmbeddedResource Remove="DataLayer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Infrastructure\**" />
+    <None Remove="TodoApi.Infrastructure.Migration\**" />
+    <None Remove="TodoApi.DataLayer.Entity\**" />
+    <None Remove="DataLayer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Infrastructure\**" />
+    <Content Remove="TodoApi.Infrastructure.Migration\**" />
+    <Content Remove="TodoApi.DataLayer.Entity\**" />
+    <Content Remove="DataLayer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Infrastructure\TodoApi.Infrastructure.DbContext\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\TodoApi.Infrastructure.DbContext\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\TodoApi.Infrastructure.DbContext\obj\TodoApi.Infrastructure.DbContext.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="TodoApi.Infrastructure.Migration\bin\Debug\netcoreapp3.1\TodoApi.Infrastructure.Migration.deps.json" />
+    <_ContentIncludedByDefault Remove="TodoApi.Infrastructure.Migration\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="TodoApi.Infrastructure.Migration\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="TodoApi.Infrastructure.Migration\obj\TodoApi.Infrastructure.Migration.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="TodoApi.DataLayer.Entity\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="TodoApi.DataLayer.Entity\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="TodoApi.DataLayer.Entity\obj\TodoApi.DataLayer.Entity.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="DataLayer\TodoApi.DataLayer.Config\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="DataLayer\TodoApi.DataLayer.Config\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="DataLayer\TodoApi.DataLayer.Config\obj\TodoApi.DataLayer.Config.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="DataLayer\TodoApi.DataLayer.Entity\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="DataLayer\TodoApi.DataLayer.Entity\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="DataLayer\TodoApi.DataLayer.Entity\obj\TodoApi.DataLayer.Entity.csproj.nuget.dgspec.json" />
   </ItemGroup>
 
 
