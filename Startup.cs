@@ -1,19 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Swashbuckle.AspNetCore.Swagger;
+using TodoApi.Application.TodoItems;
+using TodoApi.DataLayer.DataAccess;
+using TodoApi.DataLayer.Entity;
 using TodoApi.Infrastructure.DbContext;
-using TodoApi.Models;
 
 namespace TodoApi
 {
@@ -34,6 +30,10 @@ namespace TodoApi
                     x => x.MigrationsAssembly("TodoApi.Infrastructure.Migration")));
 
             services.AddControllers();
+
+            services.AddEntityServices<TodoItem>();
+
+            services.AddTodoItemHandlers();
 
             services.AddSwaggerGen();
         }

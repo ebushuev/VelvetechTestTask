@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
+using TodoApi.Application.TodoItems.Contract;
+using TodoApi.DataLayer.Entity;
 using TodoApi.Models;
 
 namespace TodoApi.Controllers
@@ -11,12 +14,14 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
         // private readonly TodoContext _context;
         //
-        // public TodoItemsController(TodoContext context)
-        // {
-        //     _context = context;
-        // }
+        public TodoItemsController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
         //
         // [HttpGet]
         // public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
@@ -26,18 +31,21 @@ namespace TodoApi.Controllers
         //         .ToListAsync();
         // }
         //
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
-        // {
-        //     var todoItem = await _context.TodoItems.FindAsync(id);
-        //
-        //     if (todoItem == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //
-        //     return ItemToDTO(todoItem);
-        // }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
+        {
+            var todoItem = await _mediator.Send(new GetTodoItemRequest
+            {
+                Id = id
+            });
+        
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+        
+            return ItemToDTO(todoItem);
+        }
         //
         // [HttpPut("{id}")]
         // public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
@@ -105,12 +113,13 @@ namespace TodoApi.Controllers
         // private bool TodoItemExists(long id) =>
         //      _context.TodoItems.Any(e => e.Id == id);
         //
-        // private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-        //     new TodoItemDTO
-        //     {
-        //         Id = todoItem.Id,
-        //         Name = todoItem.Name,
-        //         IsComplete = todoItem.IsComplete
-        //     };       
+        
+        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
+            new TodoItemDTO
+            {
+                Id = todoItem.Id,
+                Name = todoItem.Name,
+                IsComplete = todoItem.IsComplete
+            };       
     }
 }

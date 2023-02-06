@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApiDTO", "TodoApiDTO.cs
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TodoApi.Infrastructure", "TodoApi.Infrastructure", "{1DCDFA34-12EF-407E-BA5D-B7C334AA6E12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Infrastructure.DbContext", "Infrastructure\TodoApi.Infrastructure.DbContext\TodoApi.Infrastructure.DbContext.csproj", "{CD95BB02-A61D-4AFF-93A5-298BA7A4641C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TodoApi.DataLayer", "TodoApi.DataLayer", "{9559DFF1-D331-49B5-A850-0A1B6A07B89E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Infrastructure.Migration", "Infrastructure\TodoApi.Infrastructure.Migration\TodoApi.Infrastructure.Migration.csproj", "{4F221AC7-94EC-4414-A996-0FB0E642032C}"
@@ -17,7 +15,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.DataLayer.Entity", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.DataLayer.Config", "DataLayer\TodoApi.DataLayer.Config\TodoApi.DataLayer.Config.csproj", "{0A6E5838-6394-4FC9-B2C5-029E287AE8E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.DataLayer.DataAccess", "DataLayer\TodoApi.DataLayer.DataAccess\TodoApi.DataLayer.DataAccess.csproj", "{C5C22CF1-C609-4BCF-AAF1-12D71FF21F54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Infrastructure.DbContext", "Infrastructure\TodoApi.Infrastructure.DbContext\TodoApi.Infrastructure.DbContext.csproj", "{40C52C3F-621B-4D46-8FC2-2C8DC87B6D99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TodoApi.Application", "TodoApi.Application", "{0B3BFF14-6516-469F-970D-4492E07711C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Application.TodoItems", "Application\TodoApi.Application.TodoItems\TodoApi.Application.TodoItems.csproj", "{9798732E-4DAE-48EF-855C-B8E3B9B4D69F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Application.TodoItems.Contract", "Application\TodoApi.Application.TodoItems.Contract\TodoApi.Application.TodoItems.Contract.csproj", "{0F440E53-F9A2-4146-9E14-56DDAD5114AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.DataLayer.DataAccess", "DataLayer\TodoApi.DataLayer.DataAccess\TodoApi.DataLayer.DataAccess.csproj", "{8894495D-2DA1-477F-B41D-0F05CF2663C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +55,22 @@ Global
 		{C5C22CF1-C609-4BCF-AAF1-12D71FF21F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5C22CF1-C609-4BCF-AAF1-12D71FF21F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5C22CF1-C609-4BCF-AAF1-12D71FF21F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40C52C3F-621B-4D46-8FC2-2C8DC87B6D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40C52C3F-621B-4D46-8FC2-2C8DC87B6D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40C52C3F-621B-4D46-8FC2-2C8DC87B6D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40C52C3F-621B-4D46-8FC2-2C8DC87B6D99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9798732E-4DAE-48EF-855C-B8E3B9B4D69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9798732E-4DAE-48EF-855C-B8E3B9B4D69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9798732E-4DAE-48EF-855C-B8E3B9B4D69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9798732E-4DAE-48EF-855C-B8E3B9B4D69F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F440E53-F9A2-4146-9E14-56DDAD5114AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F440E53-F9A2-4146-9E14-56DDAD5114AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F440E53-F9A2-4146-9E14-56DDAD5114AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F440E53-F9A2-4146-9E14-56DDAD5114AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8894495D-2DA1-477F-B41D-0F05CF2663C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8894495D-2DA1-477F-B41D-0F05CF2663C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8894495D-2DA1-477F-B41D-0F05CF2663C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8894495D-2DA1-477F-B41D-0F05CF2663C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +84,9 @@ Global
 		{50E4FA06-4D71-4EBD-9B09-FC10771F9D95} = {9559DFF1-D331-49B5-A850-0A1B6A07B89E}
 		{0A6E5838-6394-4FC9-B2C5-029E287AE8E3} = {9559DFF1-D331-49B5-A850-0A1B6A07B89E}
 		{C5C22CF1-C609-4BCF-AAF1-12D71FF21F54} = {9559DFF1-D331-49B5-A850-0A1B6A07B89E}
+		{40C52C3F-621B-4D46-8FC2-2C8DC87B6D99} = {1DCDFA34-12EF-407E-BA5D-B7C334AA6E12}
+		{9798732E-4DAE-48EF-855C-B8E3B9B4D69F} = {0B3BFF14-6516-469F-970D-4492E07711C3}
+		{0F440E53-F9A2-4146-9E14-56DDAD5114AC} = {0B3BFF14-6516-469F-970D-4492E07711C3}
+		{8894495D-2DA1-477F-B41D-0F05CF2663C7} = {9559DFF1-D331-49B5-A850-0A1B6A07B89E}
 	EndGlobalSection
 EndGlobal
