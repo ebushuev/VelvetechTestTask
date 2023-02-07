@@ -8,8 +8,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TodoApi.Application.TodoItems;
 using TodoApi.DataLayer.DataAccess;
+using TodoApi.DataLayer.Dto;
 using TodoApi.DataLayer.Entity;
 using TodoApi.Infrastructure.DbContext;
+using TodoApi.Infrastructure.Pipeline;
 
 namespace TodoApi
 {
@@ -33,7 +35,12 @@ namespace TodoApi
 
             services.AddEntityServices<TodoItem>();
 
-            services.AddTodoItemHandlers();
+            services
+                .AddMediatrRequestValidation()
+                .AddTodoItemHandlers()
+                .AddCommitter();
+
+            services.AddProfilesAutoMapper();
 
             services.AddSwaggerGen();
         }

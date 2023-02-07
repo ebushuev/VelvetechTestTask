@@ -1,5 +1,7 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using TodoApi.Infrastructure.DbContext;
 
 namespace TodoApi.DataLayer.DataAccess
@@ -17,6 +19,11 @@ namespace TodoApi.DataLayer.DataAccess
         public ValueTask<TEntity> Find(params object[] keyValues)
         {
             return _context.FindAsync<TEntity>(keyValues);
+        }
+
+        public async ValueTask<List<TEntity>> GetAll()
+        {
+            return await _context.Set<TEntity>().ToListAsync();
         }
     }
 }

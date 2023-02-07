@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
@@ -48,7 +50,9 @@
     <ProjectReference Include="Application\TodoApi.Application.TodoItems.Contract\TodoApi.Application.TodoItems.Contract.csproj" />
     <ProjectReference Include="Application\TodoApi.Application.TodoItems\TodoApi.Application.TodoItems.csproj" />
     <ProjectReference Include="DataLayer\TodoApi.DataLayer.DataAccess\TodoApi.DataLayer.DataAccess.csproj" />
+    <ProjectReference Include="DataLayer\TodoApi.DataLayer.Dto\TodoApi.DataLayer.Dto.csproj" />
     <ProjectReference Include="Infrastructure\TodoApi.Infrastructure.DbContext\TodoApi.Infrastructure.DbContext.csproj" />
+    <ProjectReference Include="Infrastructure\TodoApi.Infrastructure.Pipeline\TodoApi.Infrastructure.Pipeline.csproj" />
   </ItemGroup>
 
 </Project>
