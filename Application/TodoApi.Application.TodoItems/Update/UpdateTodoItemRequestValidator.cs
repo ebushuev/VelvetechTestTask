@@ -5,7 +5,7 @@ using TodoApi.Application.TodoItems.Contract;
 using TodoApi.DataLayer.DataAccess;
 using TodoApi.DataLayer.Entity;
 
-namespace TodoApi.Application.TodoItems
+namespace TodoApi.Application.TodoItems.Update
 {
     public class UpdateTodoItemRequestValidator : AbstractValidator<UpdateTodoItemRequest>
     {

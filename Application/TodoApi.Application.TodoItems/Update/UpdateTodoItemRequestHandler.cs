@@ -5,15 +5,15 @@ using TodoApi.Application.TodoItems.Contract;
 using TodoApi.DataLayer.DataAccess;
 using TodoApi.DataLayer.Entity;
 
-namespace TodoApi.Application.TodoItems
+namespace TodoApi.Application.TodoItems.Update
 {
-    public class DeleteTodoItemRequestHandler : IRequestHandler<DeleteTodoItemRequest>
+    public class UpdateTodoItemRequestHandler : IRequestHandler<UpdateTodoItemRequest>
     {
         private readonly IEntityAccessService<TodoItem> _entityAccessService;
         private readonly IEntityModificationService<TodoItem> _entityModificationService;
         private readonly ICommitter _committer;
 
-        public DeleteTodoItemRequestHandler(
+        public UpdateTodoItemRequestHandler(
             IEntityAccessService<TodoItem> entityAccessService,
             IEntityModificationService<TodoItem> entityModificationService,
             ICommitter committer)
@@ -23,11 +23,14 @@ namespace TodoApi.Application.TodoItems
             _committer = committer;
         }
 
-        public async Task<Unit> Handle(DeleteTodoItemRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateTodoItemRequest request, CancellationToken cancellationToken)
         {
             var todoItem = await _entityAccessService.Find(request.Id);
-
-            _entityModificationService.Remove(todoItem);
+            
+            todoItem.Name = request.TodoItem.Name;
+            todoItem.IsComplete = request.TodoItem.IsComplete;
+            
+            _entityModificationService.Update(todoItem);
 
             await _committer.Commit();
 

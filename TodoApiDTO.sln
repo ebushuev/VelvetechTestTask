@@ -29,6 +29,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Infrastructure.Pipe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.DataLayer.Dto", "DataLayer\TodoApi.DataLayer.Dto\TodoApi.DataLayer.Dto.csproj", "{BD53A86B-FB2D-45AE-9756-F4B319B0DE84}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Todo.Application.Test", "Todo.Application.Test", "{EF3C4D3D-2F34-433B-9984-4646DE21CBD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Application.TodoItems.Test", "Test\TodoApi.Application.TodoItems.Test\TodoApi.Application.TodoItems.Test.csproj", "{A22EAC5D-6E4D-4344-8A37-CACCF6483B8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApi.Application.Test.Common", "Test\TodoApi.Application.Test.Common\TodoApi.Application.Test.Common.csproj", "{7D6CCD32-E765-491A-9D4C-C133CCF8B312}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +89,14 @@ Global
 		{BD53A86B-FB2D-45AE-9756-F4B319B0DE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD53A86B-FB2D-45AE-9756-F4B319B0DE84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD53A86B-FB2D-45AE-9756-F4B319B0DE84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A22EAC5D-6E4D-4344-8A37-CACCF6483B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A22EAC5D-6E4D-4344-8A37-CACCF6483B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A22EAC5D-6E4D-4344-8A37-CACCF6483B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A22EAC5D-6E4D-4344-8A37-CACCF6483B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D6CCD32-E765-491A-9D4C-C133CCF8B312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D6CCD32-E765-491A-9D4C-C133CCF8B312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D6CCD32-E765-491A-9D4C-C133CCF8B312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D6CCD32-E765-491A-9D4C-C133CCF8B312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,5 +116,7 @@ Global
 		{8894495D-2DA1-477F-B41D-0F05CF2663C7} = {9559DFF1-D331-49B5-A850-0A1B6A07B89E}
 		{1ADE8954-AEF8-464B-82A3-7D149772D19B} = {1DCDFA34-12EF-407E-BA5D-B7C334AA6E12}
 		{BD53A86B-FB2D-45AE-9756-F4B319B0DE84} = {9559DFF1-D331-49B5-A850-0A1B6A07B89E}
+		{A22EAC5D-6E4D-4344-8A37-CACCF6483B8A} = {EF3C4D3D-2F34-433B-9984-4646DE21CBD6}
+		{7D6CCD32-E765-491A-9D4C-C133CCF8B312} = {EF3C4D3D-2F34-433B-9984-4646DE21CBD6}
 	EndGlobalSection
 EndGlobal

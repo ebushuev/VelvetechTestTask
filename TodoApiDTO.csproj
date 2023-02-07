@@ -26,24 +26,28 @@
     <Compile Remove="DataLayer\**" />
     <Compile Remove="Infrastructure\**" />
     <Compile Remove="Application\**" />
+    <Compile Remove="Test\**" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="DataLayer\**" />
     <EmbeddedResource Remove="Infrastructure\**" />
     <EmbeddedResource Remove="Application\**" />
+    <EmbeddedResource Remove="Test\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="DataLayer\**" />
     <None Remove="Infrastructure\**" />
     <None Remove="Application\**" />
+    <None Remove="Test\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="DataLayer\**" />
     <Content Remove="Infrastructure\**" />
     <Content Remove="Application\**" />
+    <Content Remove="Test\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,5 +58,4 @@
     <ProjectReference Include="Infrastructure\TodoApi.Infrastructure.DbContext\TodoApi.Infrastructure.DbContext.csproj" />
     <ProjectReference Include="Infrastructure\TodoApi.Infrastructure.Pipeline\TodoApi.Infrastructure.Pipeline.csproj" />
   </ItemGroup>
-
 </Project>
