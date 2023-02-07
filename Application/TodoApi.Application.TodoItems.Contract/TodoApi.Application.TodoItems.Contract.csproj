@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>TodoApi.Application.TodoItems.Contract</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\DataLayer\TodoApi.DataLayer.Entity\TodoApi.DataLayer.Entity.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -12,7 +17,45 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="DataLayer\**" />
+    <Compile Remove="Infrastructure\**" />
+    <Compile Remove="Application\**" />
+    <Compile Remove="Test\**" />
+  </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Remove="DataLayer\**" />
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="Application\**" />
+    <EmbeddedResource Remove="Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="DataLayer\**" />
+    <None Remove="Infrastructure\**" />
+    <None Remove="Application\**" />
+    <None Remove="Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="DataLayer\**" />
+    <Content Remove="Infrastructure\**" />
+    <Content Remove="Application\**" />
+    <Content Remove="Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="Application\TodoApi.Application.TodoItems.Contract\TodoApi.Application.TodoItems.Contract.csproj" />
+    <ProjectReference Include="Application\TodoApi.Application.TodoItems\TodoApi.Application.TodoItems.csproj" />
+    <ProjectReference Include="DataLayer\TodoApi.DataLayer.DataAccess\TodoApi.DataLayer.DataAccess.csproj" />
+    <ProjectReference Include="DataLayer\TodoApi.DataLayer.Dto\TodoApi.DataLayer.Dto.csproj" />
+    <ProjectReference Include="Infrastructure\TodoApi.Infrastructure.DbContext\TodoApi.Infrastructure.DbContext.csproj" />
+    <ProjectReference Include="Infrastructure\TodoApi.Infrastructure.Pipeline\TodoApi.Infrastructure.Pipeline.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace TodoApi.Models
+﻿namespace TodoApi.DataLayer.Dto
 {
     #region snippet
     public class TodoItemDTO
