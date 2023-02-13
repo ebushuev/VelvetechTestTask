@@ -1,7 +1,3 @@
-using Domain;
-using Domain.Repositories;
-using Infrastructure;
-using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
