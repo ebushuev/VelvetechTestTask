@@ -1,17 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using Microsoft.OpenApi.Models;
+using TodoApiDTO.BusinessLayer;
+using TodoApiDTO.Core.DataAccess;
+using TodoApiDTO.Core.Services;
+using TodoApiDTO.DataAccessLayer;
+using TodoApiDTO.Middlewares;
+
 
 namespace TodoApi
 {
@@ -27,8 +26,31 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddScoped<ITodoService, TodoService>();
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+
+            services.AddDbContext<TodoDbContext>(opt =>
+               opt.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+
+            //services.AddDbContext<TodoContext>(opt =>
+            //  opt.UseInMemoryDatabase("TodoList"));
+
+            services.AddSwaggerGen(gen =>
+            {
+                gen.SwaggerDoc("todoApiV1", new OpenApiInfo
+                {
+                    Version = "V1",
+                    Title = "Todo",
+                    Description = "Todo Description",
+                    Contact = new OpenApiContact
+                    {
+                         Name = "Ismayil",
+                         Email = "xxxxx@gmail.com"
+                    }
+                });
+            });
             services.AddControllers();
         }
 
@@ -39,6 +61,15 @@ namespace TodoApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseLogException();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/todoApiV1/swagger.json", "Todo API");
+                options.RoutePrefix = string.Empty;
+            });
 
             app.UseHttpsRedirection();
 
