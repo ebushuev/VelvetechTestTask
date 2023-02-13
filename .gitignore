@@ -339,5 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-bin
-obj
+# Ignore any files in /bin and /obj Folders
+**/bin/*
+**/obj/*
