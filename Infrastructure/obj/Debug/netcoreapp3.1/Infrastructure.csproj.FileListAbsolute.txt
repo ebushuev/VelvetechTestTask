@@ -11,3 +11,6 @@ C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Deb
 C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CopyComplete
 C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.dll
 C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.pdb
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.runtimeconfig.json
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.runtimeconfig.dev.json
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.genruntimeconfig.cache
