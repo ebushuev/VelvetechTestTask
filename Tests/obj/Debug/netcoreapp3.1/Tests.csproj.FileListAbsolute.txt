@@ -1,0 +1,10 @@
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\bin\Debug\netcoreapp3.1\Tests.deps.json
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\bin\Debug\netcoreapp3.1\Tests.dll
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\bin\Debug\netcoreapp3.1\Tests.pdb
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\obj\Debug\netcoreapp3.1\Tests.csproj.AssemblyReference.cache
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\obj\Debug\netcoreapp3.1\Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\obj\Debug\netcoreapp3.1\Tests.AssemblyInfoInputs.cache
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\obj\Debug\netcoreapp3.1\Tests.AssemblyInfo.cs
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\obj\Debug\netcoreapp3.1\Tests.csproj.CoreCompileInputs.cache
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\obj\Debug\netcoreapp3.1\Tests.dll
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Tests\obj\Debug\netcoreapp3.1\Tests.pdb

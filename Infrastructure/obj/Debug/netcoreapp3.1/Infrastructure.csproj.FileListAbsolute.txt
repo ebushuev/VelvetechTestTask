@@ -1,0 +1,13 @@
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.deps.json
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.dll
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.pdb
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfo.cs
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CopyComplete
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.dll
+C:\Users\Aron\Desktop\Velvetech-example\VelvetechTestTask\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.pdb
