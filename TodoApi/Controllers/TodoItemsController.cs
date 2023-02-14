@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using TodoApiDTO.Models;
 
-namespace TodoApi.Controllers
+namespace TodoApiDTO.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -111,6 +111,6 @@ namespace TodoApi.Controllers
                 Id = todoItem.Id,
                 Name = todoItem.Name,
                 IsComplete = todoItem.IsComplete
-            };       
+            };
     }
 }
