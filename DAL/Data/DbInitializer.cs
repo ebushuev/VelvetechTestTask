@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
+﻿using DAL;
+using Microsoft.EntityFrameworkCore.Internal;
 using System.Collections.Generic;
-using TodoApi.Models;
+using TodoApi.DAL.Models;
 
-namespace TodoApiDTO.Data
+namespace TodoApiDTO.DAL.Data
 {
     public static class DbInitializer
     {
