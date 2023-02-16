@@ -11,7 +11,7 @@ namespace TodoApiDTO.Infrastructure
         {
             using (StreamWriter writer = new StreamWriter("exceptions_log.log", true))
             {
-                writer.WriteLine($"{DateTime.Now} {context.Exception.Message}");
+                writer.WriteLineAsync($"{DateTime.Now} {context.Exception.Message}");
             }
         }
     }

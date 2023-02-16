@@ -1,5 +1,6 @@
 ﻿using Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Data
 {

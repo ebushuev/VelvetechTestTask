@@ -5,9 +5,9 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApiDTO", "TodoApi\TodoApiDTO.csproj", "{75F42A76-EC0E-4092-A696-9F9BD5C6E109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{10805FB8-948C-4027-8EC9-364D4547ABD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{10805FB8-948C-4027-8EC9-364D4547ABD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{2A2DCDF2-2611-4D1A-A7B8-E5E3893B801B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{2A2DCDF2-2611-4D1A-A7B8-E5E3893B801B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
