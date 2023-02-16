@@ -4,7 +4,7 @@ namespace TodoApiDTO.Models
 {
     public static class MappingExtensions
     {
-        public static TodoItemResponse ToResponse(this TodoItemDTO source)
+        public static TodoItemResponse ToResponse(this TodoItemDto source)
         {
             return new TodoItemResponse
             {
@@ -13,9 +13,9 @@ namespace TodoApiDTO.Models
                 IsComplete = source.IsComplete,
             };
         }
-        public static TodoItemDTO ToDto(this TodoItemRequest source)
+        public static TodoItemDto ToDto(this TodoItemRequest source)
         {
-            return new TodoItemDTO
+            return new TodoItemDto
             {
                 Name = source.Name,
                 IsComplete = source.IsComplete,

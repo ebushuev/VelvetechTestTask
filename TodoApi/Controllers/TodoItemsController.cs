@@ -11,18 +11,23 @@ using TodoApiDTO.Models;
 
 namespace TodoApiDTO.Controllers
 {
+    [NRExceptionsFilter]
     [ExceptionLoggingFilter]
     [Route("api/[controller]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoService _todoService;
+        private readonly ITodoService _todoService;
 
-        public TodoItemsController(TodoService todoService)
+        public TodoItemsController(ITodoService todoService)
         {
             _todoService = todoService;
         }
 
+        /// <summary>
+        /// Gets the todo items.
+        /// </summary>
+        /// <returns>Todo items.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemResponse>>> GetTodoItems()
         {
@@ -30,6 +35,11 @@ namespace TodoApiDTO.Controllers
             return items.Select(x => x.ToResponse()).ToList();
         }
 
+        /// <summary>
+        /// Gets the todo item by specified id.
+        /// </summary>
+        /// <param name="id">The element id.</param>
+        /// <returns>The todo item.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemResponse>> GetTodoItem(long id)
         {
@@ -43,22 +53,34 @@ namespace TodoApiDTO.Controllers
             return todoItem.ToResponse();
         }
 
+        /// <summary>
+        /// Updates the todo item.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <param name="request">Updated data.</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemRequest request)
         {
-            if (id != request.Id) return BadRequest();
-
             await _todoService.UpdateItem(id, request.ToDto());
             return Ok();
         }
 
+        /// <summary>
+        /// Creates new item.
+        /// </summary>
+        /// <param name="item">Item to create.</param>
+        /// <returns>Created item.</returns>
         [HttpPost]
         public async Task<ActionResult<TodoItemResponse>> CreateTodoItem(TodoItemRequest item)
         {
             var result = await _todoService.CreateItem(item.ToDto());
-            return CreatedAtAction(nameof(result), result);
+            return new ObjectResult(result) { StatusCode = 200 };
         }
 
+        /// <summary>
+        /// Deletes the item by specified Id.
+        /// </summary>
+        /// <param name="id">The item id.</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {

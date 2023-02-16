@@ -6,9 +6,9 @@ namespace Business.Models
 {
     public static class MappingExtensions
     {
-        public static TodoItemDTO ToDto(this TodoItemEntity source)
+        public static TodoItemDto ToDto(this TodoItemEntity source)
         {
-            return new TodoItemDTO
+            return new TodoItemDto
             {
                 Id = source.Id,
                 Name = source.Name,
@@ -16,7 +16,7 @@ namespace Business.Models
             };
         }
 
-        public static TodoItemEntity ToEntity(this TodoItemDTO source)
+        public static TodoItemEntity ToEntity(this TodoItemDto source)
         {
             return new TodoItemEntity
             {

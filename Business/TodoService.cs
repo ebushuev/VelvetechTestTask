@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business
 {
+    /// <inheritdoc/>
     public class TodoService : ITodoService
     {
         private readonly TodoContext _context;
@@ -18,44 +19,38 @@ namespace Business
             _context = context;
         }
 
-        public async Task<IEnumerable<TodoItemDTO>> GetItems()
+        public async Task<IEnumerable<TodoItemDto>> GetItems()
         {
             return await _context.TodoItems
                 .Select(x => x.ToDto())
                 .ToListAsync();
         }
 
-        public async Task<TodoItemDTO> GetItem(long id)
+        public async Task<TodoItemDto> GetItem(long id)
         {
             var item = await _context.TodoItems.FindAsync(id);
             return item.ToDto();
         }
 
-        public async Task UpdateItem(long id, TodoItemDTO todoItem)
+        public async Task UpdateItem(long id, TodoItemDto todoItem)
         {
             var item = await _context.TodoItems.FindAsync(id);
             if (item != null)
             {
                 item.Name = todoItem.Name;
                 item.IsComplete = todoItem.IsComplete;
-            }
-            
-            try
-            {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException) when (!_context.TodoItems.Any(e => e.Id == id))
-            {
-                throw new NullReferenceException();
-            }
+            else throw new NullReferenceException("Object not found");
         }
 
-        public async Task<TodoItemDTO> CreateItem(TodoItemDTO item)
+        public async Task<TodoItemDto> CreateItem(TodoItemDto item)
         {
             _context.TodoItems.Add(item.ToEntity());
             await _context.SaveChangesAsync();
 
-            return item; //UNDONE так делать нельзя. Надо вернуть сущность из БД
+            var result = _context.TodoItems.FirstOrDefault(x => x.Name == item.Name);
+            return result.ToDto();
         }
 
         public async Task DeleteItem(long id)
