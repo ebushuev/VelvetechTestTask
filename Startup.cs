@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TodoApi.Models;
+using Microsoft.OpenApi.Models;
 using TodoApiDTO.Data;
-using TodoApiDTO.Models;
 using TodoApiDTO.Services;
 
 namespace TodoApi
@@ -23,11 +21,21 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseSqlServer(Configuration.GetConnectionString("MsSqlAuth")));
+            DataHelpers.SetDbConnection(services, Configuration);
+            DataHelpers.Configure(services);
 
-            services.AddScoped<ITodoService, TodoService>();
-            services.AddScoped<ITodoRepository, TodoRepository>();
+            ServiceHelpers.Configure(services);
+
+            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "TODO List - сервис для управления списком задач (API)",
+                    Description = "Тестовое задание (вариант №1) для Velvetech by Шариков Роман a.k.a. R0m43ss",
+                });
+            });
 
             services.AddControllers();
         }
@@ -49,6 +57,12 @@ namespace TodoApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
             });
         }
     }
