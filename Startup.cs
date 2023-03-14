@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using TodoApiDTO;
+using TodoApiDTO.Data;
+using TodoApiDTO.Services;
 
 namespace TodoApi
 {
@@ -27,8 +21,14 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            DataHelpers.SetDbConnection(services, Configuration);
+            DataHelpers.Configure(services);
+
+            ServiceHelpers.Configure(services);
+
+            StartupHelpers.InitSwagger(services);
+            StartupHelpers.InitLogging(services);
+
             services.AddControllers();
         }
 
@@ -39,6 +39,13 @@ namespace TodoApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1.0.0");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseHttpsRedirection();
 
