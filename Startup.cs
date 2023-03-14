@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using TodoApiDTO;
 using TodoApiDTO.Data;
 using TodoApiDTO.Services;
 
@@ -26,16 +26,8 @@ namespace TodoApi
 
             ServiceHelpers.Configure(services);
 
-            services.AddSwaggerGen();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "TODO List - сервис для управления списком задач (API)",
-                    Description = "Тестовое задание (вариант №1) для Velvetech by Шариков Роман a.k.a. R0m43ss",
-                });
-            });
+            StartupHelpers.InitSwagger(services);
+            StartupHelpers.InitLogging(services);
 
             services.AddControllers();
         }
@@ -48,6 +40,13 @@ namespace TodoApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1.0.0");
+                c.RoutePrefix = string.Empty;
+            });
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -57,12 +56,6 @@ namespace TodoApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Showing API V1");
             });
         }
     }

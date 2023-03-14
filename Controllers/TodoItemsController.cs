@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,73 +15,147 @@ namespace TodoApi.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly ITodoService _todoService;
+        private readonly ILogger<TodoItemsController> _logger;
 
-        public TodoItemsController(ITodoService todoService)
+        public TodoItemsController(ITodoService todoService, ILogger<TodoItemsController> logger)
         {
             _todoService = todoService;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _todoService.GetList()
-                .Select(x => TodoItemDTO.ItemToDTO(x))
-                .ToListAsync();
+            try
+            {
+                return await _todoService.GetList()
+                    .Select(x => TodoItemDTO.ItemToDTO(x))
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"GetTodoItems: {ex.Message}\n{ex.StackTrace}");
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var todoItem = await _todoService.GetById(id);
-            if (todoItem == null)
+            if (id < 0)
             {
-                return NotFound();
+                _logger.LogError($"GetTodoItem: invalid id value ({id})");
+                return BadRequest("Invalid id");
             }
 
-            return TodoItemDTO.ItemToDTO(todoItem);
+            try
+            {
+                var todoItem = await _todoService.GetById(id);
+                if (todoItem == null)
+                {
+                    _logger.LogError($"GetTodoItem: item not found (id:{id})");
+                    return NotFound("TODO item not found");
+                }
+
+                return TodoItemDTO.ItemToDTO(todoItem);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"GetTodoItem (id:{id}): {ex.Message}\n{ex.StackTrace}");
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}/update")]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
         {
-            if (id != todoItemDTO.Id)
+            if (id < 0)
             {
-                return BadRequest();
+                _logger.LogError($"UpdateTodoItem: invalid id value ({id})");
+                return BadRequest("Invalid id");
+            }
+            if (todoItemDTO == null)
+            {
+                _logger.LogError($"UpdateTodoItem: request is null (id:{id})");
+                return BadRequest("Request is null");
             }
 
-            var result = await _todoService.Update(todoItemDTO);
+            if (id != todoItemDTO.Id)
+            {
+                _logger.LogError($"UpdateTodoItem: ids mismatch (parameter id:{id}, request id:{todoItemDTO?.Id})");
+                return BadRequest("Ids mismatch");
+            }
 
-            return GetTodoItemActionResult(result);
+            try
+            {
+                var result = await _todoService.Update(todoItemDTO);
+                return HandleActionResult(result, $"UpdateTodoItem (id:{id})");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"UpdateTodoItem (id:{id}): {ex.Message}\n{ex.StackTrace}");
+                return BadRequest(ex.Message);
+            }
         }
 
+        [Route("create")]
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
-            var todoItem = await _todoService.Create(todoItemDTO);
+            try
+            {
+                var todoItem = await _todoService.Create(todoItemDTO);
+                if (todoItem == null)
+                {
+                    _logger.LogError($"CreateTodoItem: cannot create item");
+                    return BadRequest("Couldn't create TODO item");
+                }
 
-            return CreatedAtAction(
-                nameof(GetTodoItem),
-                new { id = todoItem.Id },
-                TodoItemDTO.ItemToDTO(todoItem));
+                return CreatedAtAction(
+                    nameof(GetTodoItem),
+                    new { id = todoItem.Id },
+                    TodoItemDTO.ItemToDTO(todoItem));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"CreateTodoItem: {ex.Message}\n{ex.StackTrace}");
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}/delete")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var result = await _todoService.Delete(id);
+            if (id < 0)
+            {
+                _logger.LogError($"DeleteTodoItem: invalid id ({id})");
+                return BadRequest("Invalid id");
+            }
 
-            return GetTodoItemActionResult(result);
+            try 
+            {
+                var result = await _todoService.Delete(id);
+                return HandleActionResult(result, $"DeleteTodoItem (id:{id})");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"DeleteTodoItem (id:{id}): {ex.Message}\n{ex.StackTrace}");
+                return BadRequest(ex.Message);
+            }
         }
         
-        private IActionResult GetTodoItemActionResult(TodoItemActionResult result)
+        private IActionResult HandleActionResult(TodoItemActionResult result, string actionName)
         {
-            return result switch
+            switch (result)
             {
-                TodoItemActionResult.Success => NoContent(),
-                TodoItemActionResult.NotFound => NotFound(),
-                TodoItemActionResult.Failed => BadRequest(),
-                _ => Accepted(),
-            };
+                case TodoItemActionResult.Success:
+                    return NoContent();
+                case TodoItemActionResult.NotFound:
+                    _logger.LogError($"{actionName}: item not found");
+                    return NotFound("TODO item not found");
+                default:
+                    return NoContent();
+            }
         }
     }
 }

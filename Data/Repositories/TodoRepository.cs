@@ -64,9 +64,9 @@ namespace TodoApiDTO.Data
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException) when (!_context.TodoItems.Any(e => e.Id == input.Id))
+            catch (DbUpdateConcurrencyException ex) when (!_context.TodoItems.Any(e => e.Id == input.Id))
             {
-                return TodoItemActionResult.NotFound;
+                throw ex;
             }
 
             return TodoItemActionResult.Success;

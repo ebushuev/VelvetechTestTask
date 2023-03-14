@@ -1,7 +1,7 @@
 CREATE TABLE TodoItems
 (
-	Id int NOT NULL,
-	Name nvarchar(255) NOT NULL,
+	Id bigint NOT NULL IDENTITY(1,1),
+	Name nvarchar(255),
 	IsComplete bit NOT NULL,
 	Secret nvarchar(255),
 	PRIMARY KEY (Id)
