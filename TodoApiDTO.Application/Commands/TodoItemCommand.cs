@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TodoApiDTO.Application.Commands
+﻿namespace TodoApiDTO.Application.Commands
 {
     public class TodoItemCommand
     {
