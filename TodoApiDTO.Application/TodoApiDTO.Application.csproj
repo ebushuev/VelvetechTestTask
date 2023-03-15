@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="MediatR" Version="8.1.0" />
+	<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TodoApiDTO.Domain\TodoApiDTO.Domain.csproj" />
+    <ProjectReference Include="..\TodoApiDTO.Infrastructure\TodoApiDTO.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
