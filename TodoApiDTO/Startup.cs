@@ -8,7 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using TodoApi.BusinessLayer.Repositories;
 using TodoApi.Storage.Contexts;
+using TodoApi.Storage.Repositories;
 
 namespace TodoApi
 {
@@ -42,6 +44,7 @@ namespace TodoApi
                     AppContext.BaseDirectory,
                     $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
             });
+            services.AddScoped<ITodoItemRepository, TodoItemRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

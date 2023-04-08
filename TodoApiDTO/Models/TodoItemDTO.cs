@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using TodoApi.BusinessLayer.Models;
 
 namespace TodoApi.Models
 {
@@ -9,6 +10,17 @@ namespace TodoApi.Models
     /// </summary>
     public class TodoItemDTO
     {
+        public TodoItemDTO()
+        {
+        }
+
+        public TodoItemDTO(TodoItem persistentItem)
+        {
+            Id = persistentItem.Id;
+            Name = persistentItem.Name;
+            IsComplete = persistentItem.IsComplete;
+        }
+
         /// <summary>
         /// Item identifier in storage
         /// </summary>

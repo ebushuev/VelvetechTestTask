@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TodoApi.BusinessLayer.Models;
-using TodoApi.BusinessLayer.Repositories;
 
 namespace TodoApi.Storage.Contexts
 {
-    public class TodoContext : DbContext, ITodoItemRepository
+    public class TodoContext : DbContext
     {
         public TodoContext(DbContextOptions<TodoContext> options)
             : base(options)
