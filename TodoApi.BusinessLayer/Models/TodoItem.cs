@@ -10,7 +10,7 @@
         /// <summary>
         /// Name to use when no name is provided
         /// </summary>
-        private const string DefaultName = "Unnamed";
+        public const string DefaultName = "Unnamed";
 
         /// <summary>
         /// Item identifier
