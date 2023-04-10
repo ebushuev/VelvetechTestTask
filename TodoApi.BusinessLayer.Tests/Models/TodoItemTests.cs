@@ -52,7 +52,7 @@ namespace TodoApi.BusinessLayer.Models.Tests
             var todoItem = new TodoItem(name);
             Assert.AreEqual(name, todoItem.Name);
 
-            todoItem.SetName(newName);
+            todoItem.Name = newName;
             Assert.AreEqual(newName, todoItem.Name);            
         }
 
@@ -64,7 +64,7 @@ namespace TodoApi.BusinessLayer.Models.Tests
             var todoItem = new TodoItem(name);
             Assert.AreEqual(name, todoItem.Name);
 
-            todoItem.SetName(string.Empty);
+            todoItem.Name = string.Empty;
             Assert.AreEqual(TodoItem.DefaultName, todoItem.Name);
         }
 
@@ -76,7 +76,7 @@ namespace TodoApi.BusinessLayer.Models.Tests
             var todoItem = new TodoItem(name);
             Assert.AreEqual(name, todoItem.Name);
 
-            todoItem.SetName(null);
+            todoItem.Name = null;
             Assert.AreEqual(TodoItem.DefaultName, todoItem.Name);
         }
 
@@ -88,7 +88,7 @@ namespace TodoApi.BusinessLayer.Models.Tests
             var todoItem = new TodoItem(name);
             Assert.AreEqual(name, todoItem.Name);
 
-            todoItem.SetName(name);
+            todoItem.Name = name;
             Assert.AreEqual(name, todoItem.Name);
         }
 
@@ -102,7 +102,7 @@ namespace TodoApi.BusinessLayer.Models.Tests
             var todoItem = new TodoItem(name, originalValue);
             Assert.AreEqual(originalValue, todoItem.IsComplete);
 
-            todoItem.SetComplete(replacementValue);
+            todoItem.IsComplete = replacementValue;
             Assert.AreEqual(expected, todoItem.IsComplete);
         }
 
@@ -116,7 +116,7 @@ namespace TodoApi.BusinessLayer.Models.Tests
             var todoItem = new TodoItem(name, isComplete);
             Assert.AreEqual(isComplete, todoItem.IsComplete);
 
-            todoItem.SetComplete(isComplete);
+            todoItem.IsComplete = isComplete;
             Assert.AreEqual(expected, todoItem.IsComplete);
         }
     }

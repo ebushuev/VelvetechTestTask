@@ -11,6 +11,7 @@
         /// Name to use when no name is provided
         /// </summary>
         public const string DefaultName = "Unnamed";
+        private string _name;
 
         /// <summary>
         /// Item identifier
@@ -20,28 +21,21 @@
         /// <summary>
         /// Todo description
         /// </summary>
-        public string Name { get; private set; }
+        public string Name {
+            get => _name;
+            set => _name = !string.IsNullOrEmpty(value) ? value : DefaultName;
+        }
 
         /// <summary>
         /// Whether todo item is completed
         /// </summary>
-        public bool IsComplete { get; private set; }
+        public bool IsComplete { get; set; }
 
         public string Secret { get; }
 
         public TodoItem(string name, bool isComplete = false)
         {
-            SetName(name);
-            SetComplete(isComplete);
-        }
-
-        public void SetName(string name)
-        {
-            Name = !string.IsNullOrEmpty(name) ? name : DefaultName;
-        }
-
-        public void SetComplete(bool isComplete)
-        {
+            Name = name;
             IsComplete = isComplete;
         }
     }

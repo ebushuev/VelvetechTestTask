@@ -19,6 +19,7 @@ namespace TodoApi.Storage.Contexts
 
             modelBuilder.Entity<TodoItem>()
                 .Property(t => t.Name)
+                .HasField("_name")
                 .IsRequired();
 
             modelBuilder.Entity<TodoItem>()

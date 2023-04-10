@@ -77,8 +77,8 @@ namespace TodoApi.Controllers
                 return NotFound();
             }
 
-            todoItem.SetName(todoItemDTO.Name);
-            todoItem.SetComplete(todoItemDTO.IsComplete);
+            todoItem.Name = todoItemDTO.Name;
+            todoItem.IsComplete = todoItemDTO.IsComplete;
 
             try
             {
