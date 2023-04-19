@@ -38,13 +38,6 @@ namespace TodoApi.BLL.Services
             return mapper.Map<IEnumerable<TodoItem>, List<TodoItemDTO>>(DB.TodoItems.GetAll());
         }
 
-        private TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-            new TodoItemDTO
-            {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };
         public long CreateTodoItem(TodoItemDTO todoItemDTO)
         {
             TodoItem item = new TodoItem
@@ -56,6 +49,7 @@ namespace TodoApi.BLL.Services
             DB.Save();
             return itemID;
         }
+
         public void DeleteTodoItem(long id)
         {
             DB.TodoItems.Delete(id);
@@ -73,5 +67,13 @@ namespace TodoApi.BLL.Services
                 DB.Save();
             }
         }
+
+        private TodoItemDTO ItemToDTO(TodoItem todoItem) =>
+            new TodoItemDTO
+            {
+                Id = todoItem.Id,
+                Name = todoItem.Name,
+                IsComplete = todoItem.IsComplete
+            };
     }
 }
