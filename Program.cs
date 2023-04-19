@@ -6,21 +6,30 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
-namespace TodoApi
+namespace TodoApiDTO
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main( string[] args )
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder( args ).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static IHostBuilder CreateHostBuilder( string[] args ) =>
+            Host.CreateDefaultBuilder( args )
+                .ConfigureWebHostDefaults( webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    webBuilder.UseStartup<Startup>()
+                   .ConfigureLogging( ( hostingContext, logging ) =>
+                   {
+                       logging.ClearProviders();
+                       logging.AddSerilog( new LoggerConfiguration()
+                           .MinimumLevel.Error()
+                           .WriteTo.File( "logs\\log-.txt", rollingInterval: RollingInterval.Day )
+                           .CreateLogger() );
+                   } );
+                } );
     }
 }
