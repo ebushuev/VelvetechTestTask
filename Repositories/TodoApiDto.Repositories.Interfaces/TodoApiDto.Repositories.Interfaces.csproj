@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\TodoApiDto.StrongId\TodoApiDto.StrongId.csproj" />
+    <ProjectReference Include="..\TodoApiDto.Repositories.Data\TodoApiDto.Repositories.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -8,7 +8,7 @@ using TodoApiDto.StrongId;
 using ApiData = TodoApiDto.Shared.Api.Data;
 using ServiceData = TodoApiDto.Services.Data;
 
-namespace TodoApiDTO.Controllers
+namespace TodoApi.Controllers
 {
     [Route("api/[controller]"), ApiController, Produces("application/json")]
     public class TodoItemsController : ControllerBase
