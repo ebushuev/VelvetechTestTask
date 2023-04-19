@@ -11,7 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using TodoApi.DAL.EF;
+using TodoApi.DAL.Interfaces;
+using TodoApi.DAL.Repositories;
 
 namespace TodoApi
 {
@@ -29,7 +31,8 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt =>
                opt.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
-                //opt.UseInMemoryDatabase("TodoList"));
+            //opt.UseInMemoryDatabase("TodoList"));
+            services.AddTransient<IUnit, EFUnit>();
             services.AddControllers();
 
             services.AddSwaggerGen();
