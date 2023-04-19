@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TodoApi.BLL.Interfaces;
+using TodoApi.BLL.Services;
 using TodoApi.DAL.EF;
 using TodoApi.DAL.Interfaces;
 using TodoApi.DAL.Repositories;
@@ -36,6 +38,7 @@ namespace TodoApi
             services.AddControllers();
 
             services.AddSwaggerGen();
+            services.AddScoped<ITodoService, TodoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,10 +61,16 @@ namespace TodoApi
             });
 
             app.UseSwagger();
+            //app.UseSwaggerUI(c =>
+            //{
+            //    c.SwaggerEndpoint("swagger/v1/swagger.json", "Todo API DTO v1");
+            //});
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("swagger/v1/swagger.json", "Todo API DTO v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Employee API V1");
+                c.RoutePrefix = string.Empty;
             });
+
         }
     }
 }
