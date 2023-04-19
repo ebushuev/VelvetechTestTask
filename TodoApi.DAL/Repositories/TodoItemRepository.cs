@@ -4,6 +4,7 @@ using TodoApi.DAL.Interfaces;
 using TodoApi.DAL.Entities;
 using TodoApi.DAL.EF;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace TodoApi.DAL.Repositories
 {
@@ -16,9 +17,10 @@ namespace TodoApi.DAL.Repositories
             this.db = context;
         }
         
-        public void Create(TodoItem item)
+        public long Create(TodoItem item)
         {
             db.TodoItems.Add(item);
+            return item.Id;
         }
 
         public void Delete(long id)
@@ -32,7 +34,7 @@ namespace TodoApi.DAL.Repositories
 
         public IEnumerable<TodoItem> Find(Func<TodoItem, bool> predicate)
         {
-            throw new NotImplementedException();
+            return db.TodoItems.Where(predicate).ToList();
         }
 
         public TodoItem Get(long id)
@@ -42,7 +44,7 @@ namespace TodoApi.DAL.Repositories
 
         public IEnumerable<TodoItem> GetAll()
         {
-            throw new NotImplementedException();
+            return db.TodoItems;
         }
 
         public void Update(TodoItem item)
