@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace TodoApi
 {
@@ -13,6 +14,9 @@ namespace TodoApi
     {
         public static void Main(string[] args)
         {
+            var builder = CreateHostBuilder(args);
+            builder.UseSerilog((hcxt, prov, config) => config.ReadFrom.Configuration(hcxt.Configuration));
+            builder.Build().Run();
             CreateHostBuilder(args).Build().Run();
         }
 
