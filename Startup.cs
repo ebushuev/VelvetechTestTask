@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TodoApi.BusinessLayer;
 using TodoApi.DataAccessLayer;
 using TodoApi.DataAccessLayer.Context;
 
@@ -23,7 +24,8 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt =>
                opt.UseInMemoryDatabase("TodoList"));
-            services.AddDataRepositories();
+            services.AddDataRepositories()
+                    .AddApplication();
             services.AddControllers();
             services.AddSwaggerGen();
         }
@@ -35,8 +37,8 @@ namespace TodoApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwagger()
+               .UseSwaggerUI();
 
             app.UseHttpsRedirection();
 
