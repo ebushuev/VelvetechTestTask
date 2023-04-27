@@ -1,0 +1,27 @@
+﻿version: "3.9"
+services:
+  seq:
+    environment:
+      - ACCEPT_EULA=Y
+    image: datalust/seq:latest
+    ports:
+      - '8081:80'
+      - '5341:5341'
+    volumes:
+      - ./seq:/data
+    container_name: seq
+    restart: unless-stopped
+  db:
+    env_file:
+      - ./.env
+    environment:
+      - 'POSTGRES_USER=${POSTGRES_USER}'
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+      - 'POSTGRES_DB=${POSTGRES_DB}'
+    image: postgres:14.1-alpine
+    ports:
+      - '5433:5432'
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    container_name: postgres-14.1-alpine-testtask
+    restart: always
