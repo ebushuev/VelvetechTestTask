@@ -16,7 +16,6 @@ using TodoApiDTO.ServiceInterfaces;
 using TodoApiDTO.ServiceInterfaces.DatabaseWrappers;
 using TodoApiDTO.Validations;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddCustomDb();
@@ -41,7 +40,6 @@ builder.Services.AddScoped<IValidator<TodoItemUpdateModel>, TodoItemUpdateValida
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -52,7 +50,6 @@ if (app.Environment.IsDevelopment())
 
 Log.ForContext("Mode", app.Environment.EnvironmentName);
 Log.Debug("App activated in [{Environment}] mode", app.Environment.EnvironmentName);
-
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
