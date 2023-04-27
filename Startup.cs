@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using TodoApi.BusinessLayer;
 using TodoApi.DataAccessLayer;
 using TodoApi.DataAccessLayer.Context;
+using TodoApi.Middlewares;
 
 namespace TodoApi
 {
@@ -24,9 +25,12 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt =>
                opt.UseInMemoryDatabase("TodoList"));
+
             services.AddDataRepositories()
                     .AddApplication();
+
             services.AddControllers();
+
             services.AddSwaggerGen();
         }
 
@@ -37,6 +41,9 @@ namespace TodoApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<ExceptionLoggingMiddleware>();
+
             app.UseSwagger()
                .UseSwaggerUI();
 
