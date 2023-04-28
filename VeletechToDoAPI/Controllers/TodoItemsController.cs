@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TodoCore.Data.Entities;
@@ -17,15 +18,17 @@ namespace TodoApi.Controllers
         private readonly IGetTodoItemsService _getTodoItemsService;
         private readonly IUpdateTodoItemService _updateTodoItemService;
         private readonly IDeleteTodoItemService _deleteTodoItemService;
+        private readonly ILogger _logger;
 
         public TodoItemsController(IAddTodoItemService addTodoItemService, IGetTodoItemService getTodoItemService, IGetTodoItemsService getTodoItemsService, 
-            IUpdateTodoItemService updateTodoItemService, IDeleteTodoItemService deleteTodoItemService)
+            IUpdateTodoItemService updateTodoItemService, IDeleteTodoItemService deleteTodoItemService, ILogger logger)
         {
             _addTodoItemService = addTodoItemService;
             _getTodoItemService = getTodoItemService;
             _getTodoItemsService = getTodoItemsService;
             _updateTodoItemService = updateTodoItemService;
             _deleteTodoItemService = deleteTodoItemService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -45,24 +48,27 @@ namespace TodoApi.Controllers
             }
             catch(EntityNotFoundException<TodoItem> ex)
             {
+                _logger.Error(ex.Message);
                 return NotFound(ex.Message);
             }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
+        public async Task<IActionResult> UpdateTodoItem(long id, UpdateTodoItemDTO todoItemDTO)
         {
             try
             {
-                var result = await _updateTodoItemService.UpdateTodoItemAsync(todoItemDTO);
+                var result = await _updateTodoItemService.UpdateTodoItemAsync(id, todoItemDTO);
                 return Ok(result);
             }
             catch(EntityNotFoundException<TodoItem> ex)
             {
+                _logger.Error(ex.Message);
                 return NotFound(ex.Message);
             }
             catch(SomethingWentWrongException ex)
             {
+                _logger.Error(ex.Message);
                 return StatusCode(500, ex.Message);
             }
         }
@@ -82,12 +88,14 @@ namespace TodoApi.Controllers
                 var result = await _deleteTodoItemService.DeleteTodoItemAsync(id);
                 return Ok();
             }
-            catch (EntityNotFoundException<TodoItem>)
+            catch (EntityNotFoundException<TodoItem> ex)
             {
+                _logger.Error(ex.Message);
                 return NotFound();
             }
-            catch (SomethingWentWrongException)
+            catch (SomethingWentWrongException ex)
             {
+                _logger.Error(ex.Message);
                 return StatusCode(500);
             }
         }

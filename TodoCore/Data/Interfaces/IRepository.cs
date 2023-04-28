@@ -4,7 +4,7 @@ using TodoCore.Data.Common;
 
 namespace TodoCore.Data.Interfaces
 {
-    public interface IReposytory<T> where T : BaseEntity
+    public interface IRepository<T> where T : BaseEntity
     {
         Task<List<T>> GetAllAsync();
         Task<T> GetByIdAsync(long id);

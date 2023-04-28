@@ -12,7 +12,7 @@ namespace TodoInfrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<ITodoItemReposytory, TodoItemReposytory>();
+            services.AddTransient<ITodoItemRepository, TodoItemRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddDbContext<ApplicationDbContext>(options =>
             {

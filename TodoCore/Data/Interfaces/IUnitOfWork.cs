@@ -5,7 +5,7 @@ namespace TodoCore.Data.Interfaces
 {
     public interface IUnitOfWork
     {
-        public ITodoItemReposytory TodoItemReposytory { get; }
+        public ITodoItemRepository TodoItemReposytory { get; }
         public Task SaveChangesAsync();
         public IDbTransaction StartTransation();
     }

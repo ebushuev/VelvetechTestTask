@@ -10,10 +10,10 @@ namespace TodoApplication.Services
 {
     internal class GetTodoItemService : IGetTodoItemService
     {
-        private readonly ITodoItemReposytory _todoItemReposytory;
+        private readonly ITodoItemRepository _todoItemReposytory;
         private readonly IMapper _mapper;
 
-        public GetTodoItemService(ITodoItemReposytory todoItemReposytory, IMapper mapper)
+        public GetTodoItemService(ITodoItemRepository todoItemReposytory, IMapper mapper)
         {
             _todoItemReposytory = todoItemReposytory;
             _mapper = mapper;

@@ -8,6 +8,6 @@ namespace TodoCore.Services
 {
     public interface IUpdateTodoItemService
     {
-        Task<TodoItemDTO> UpdateTodoItemAsync(TodoItemDTO itemDTO);
+        Task<UpdateTodoItemDTO> UpdateTodoItemAsync(long id, UpdateTodoItemDTO itemDTO);
     }
 }

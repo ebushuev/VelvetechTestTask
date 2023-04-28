@@ -7,12 +7,12 @@ using TodoCore.Exceptions;
 
 namespace TodoInfrastructure.DataAccess.Repositories
 {
-    public class Reposytory<T> : IReposytory<T>
+    public class Repository<T> : IRepository<T>
         where T : BaseEntity
     {
         private readonly ApplicationDbContext _context;
 
-        public Reposytory(ApplicationDbContext context)
+        public Repository(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -37,7 +37,7 @@ namespace TodoInfrastructure.DataAccess.Repositories
         {
             var entity = await _context.Set<T>().SingleOrDefaultAsync(e => e.Id == id);
             if (entity == null)
-                throw new EntityNotFoundException<T>("entity with id {id} wasn't found");
+                throw new EntityNotFoundException<T>($"entity with id {id} wasn't found");
             return entity;
         }
 

@@ -17,12 +17,12 @@ namespace TodoApplication.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<TodoItemDTO> UpdateTodoItemAsync(TodoItemDTO itemDTO)
+        public async Task<UpdateTodoItemDTO> UpdateTodoItemAsync(long id, UpdateTodoItemDTO itemDTO)
         {
             TodoItem todoItem;
             try
             {
-                todoItem = await _unitOfWork.TodoItemReposytory.GetByIdAsync(itemDTO.Id);
+                todoItem = await _unitOfWork.TodoItemReposytory.GetByIdAsync(id);
             }
             catch(EntityNotFoundException<TodoItem> ex)
             {
@@ -43,7 +43,6 @@ namespace TodoApplication.Services
                 transaction.Rollback();
                 throw new SomethingWentWrongException("Something went wrong wile updating item");
             }
-            
         }
     }
 }

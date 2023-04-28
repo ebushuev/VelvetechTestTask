@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using TodoApplication.AutoMapperProfiles;
 using TodoApplication.Services;
 using TodoCore.Services;
 
@@ -13,6 +14,8 @@ namespace TodoApplication
             services.AddTransient<IGetTodoItemsService, GetTodoItemsService>();
             services.AddTransient<IDeleteTodoItemService, DeleteTodoItemService>();
             services.AddTransient<IUpdateTodoItemService, UpdateTodoItemService>();
+
+            services.AddAutoMapper(typeof(TodoItemProfile));
             return services;
         }
     }

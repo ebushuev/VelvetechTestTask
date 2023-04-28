@@ -11,10 +11,10 @@ namespace TodoInfrastructure.DataAccess.UOW
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
-        private readonly ITodoItemReposytory _todoItemReposytory;
+        private readonly ITodoItemRepository _todoItemReposytory;
 
-        public ITodoItemReposytory TodoItemReposytory => _todoItemReposytory;
-        public UnitOfWork(ApplicationDbContext context, ITodoItemReposytory todoItemReposytory)
+        public ITodoItemRepository TodoItemReposytory => _todoItemReposytory;
+        public UnitOfWork(ApplicationDbContext context, ITodoItemRepository todoItemReposytory)
         {
             _context = context;
             _todoItemReposytory = todoItemReposytory;
