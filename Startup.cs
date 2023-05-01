@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NLog;
 using System.IO;
-using TodoApi.DataAccessLayer;
+using TodoApi.DataAccessLayer.Context;
 using TodoApiDTO.LoggerService;
 using TodoApiDTO.Middlewares;
 

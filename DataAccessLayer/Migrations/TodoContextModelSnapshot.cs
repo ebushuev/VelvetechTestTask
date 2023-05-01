@@ -2,8 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TodoApi.DataAccessLayer;
+using TodoApi.DataAccessLayer.Context;
 
 namespace TodoApiDTO.Migrations
 {
