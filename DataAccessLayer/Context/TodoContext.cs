@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace TodoApi.Models
+namespace TodoApi.DataAccessLayer.Context
 {
     public class TodoContext : DbContext
     {
