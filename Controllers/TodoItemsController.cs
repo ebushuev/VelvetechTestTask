@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApi.Models;
+using TodoApiDTO.LoggerService;
 
 namespace TodoApi.Controllers
 {
@@ -12,10 +13,12 @@ namespace TodoApi.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly TodoContext _context;
+        private ILoggerManager _logger;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(TodoContext context, ILoggerManager logger)
         {
             _context = context;
+            _logger = logger;   
         }
 
         [HttpGet]

@@ -5,7 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using NLog;
+using System.IO;
 using TodoApi.Models;
+using TodoApiDTO.LoggerService;
+using TodoApiDTO.Middlewares;
 
 namespace TodoApi
 {
@@ -13,6 +17,7 @@ namespace TodoApi
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -21,8 +26,8 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<TodoContext>(opt =>
-            //   opt.UseInMemoryDatabase("TodoList"));
+            services.AddSingleton<ILoggerManager, LoggerManager>();
+
             services.AddDbContext<TodoContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
@@ -42,7 +47,8 @@ namespace TodoApi
                 app.UseDeveloperExceptionPage();
             }
 
-            // Write useMiddleware for exception logging
+            // Custom middleware for handling exception logging
+            app.CustomExceptionMiddleware();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
