@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "TodoIData/1.0.0": {
+        "dependencies": {
+          "TodoEntities": "1.0.0",
+          "TodoModels": "1.0.0"
+        },
+        "runtime": {
+          "TodoIData.dll": {}
+        }
+      },
+      "TodoEntities/1.0.0": {
+        "runtime": {
+          "TodoEntities.dll": {}
+        }
+      },
+      "TodoModels/1.0.0": {
+        "runtime": {
+          "TodoModels.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TodoIData/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TodoEntities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TodoModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
