@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
@@ -25,11 +26,10 @@ namespace TodoApi
             services.AddControllers();
             services.ConfigureDbContext(configuration);
             services.ConfigureBll();
-            services.AddSwaggerGen();
 
             services.AddSwaggerGen(c =>
             {
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApi", Version = "v1" });
             });
 
             var config = new MapperConfiguration(cfg =>
@@ -59,6 +59,8 @@ namespace TodoApi
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");

@@ -17,35 +17,42 @@ namespace TodoApi.Controllers
             this.todoService = todoService;
         }
 
-        [HttpGet]
+        [HttpGet("items")]
         public async Task<IActionResult> GetItems()
         {
-            return Ok( await todoService.GetItemsAsync());
+            return Ok(await todoService.GetItemsAsync());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("item/{id:Guid}")]
         public async Task<IActionResult> GetItem(Guid id)
-        {            
-             if (id == null)
-             {
-                 return BadRequest("Id cannot be null");
-             }
+        {
+            if (id == null)
+            {
+                return BadRequest("Id cannot be null");
+            }
 
-            return Ok(await todoService.GetItemAsync(id));
+            var item = await todoService.GetItemAsync(id);
+
+            if (item is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(item);
         }
 
-        [HttpPost]
+        [HttpPatch("update")]
         public async Task<IActionResult> UpdateItem(ItemDto item)
         {
             if (item.Id == null)
             {
                 return BadRequest("Id cannot be null");
             }
-            
+
             return Ok(await todoService.UpdateItemAsync(item));
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<IActionResult> CreateItem(string name, bool isCompleted = false)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -56,7 +63,7 @@ namespace TodoApi.Controllers
             return Ok(await todoService.CreateItemAsync(name, isCompleted));
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id:Guid}")]
         public async Task<IActionResult> DeleteItem(Guid id)
         {
             if (id == null)
