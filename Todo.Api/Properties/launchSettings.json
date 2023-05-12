@@ -11,13 +11,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "https://localhost:44331/swagger/index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "TodoApiDTO": {
+    "Todo.ApiDTO": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "https://localhost:44331/swagger/index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
