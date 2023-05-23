@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Velvetech.TodoApp.Domain.Entities;
 
-namespace TodoApi.Models
+namespace Velvetech.TodoApp.Infrastructure.Data
 {
     public class TodoContext : DbContext
     {
@@ -9,6 +10,6 @@ namespace TodoApi.Models
         {
         }
 
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<TodoItemEntity> TodoItems { get; set; }
     }
 }

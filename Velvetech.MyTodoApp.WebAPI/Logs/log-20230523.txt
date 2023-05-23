@@ -1,0 +1,1 @@
+2023-05-23 18:31:52.287 +04:00 [Error] HTTP "DELETE" "/api/v1/TodoItems/3fa85f64-5717-4562-b3fc-2c963f66afa6" responded 500 in 1438.2005 ms
