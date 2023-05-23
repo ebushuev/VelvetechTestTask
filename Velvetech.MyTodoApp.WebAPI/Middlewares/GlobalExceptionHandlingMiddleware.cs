@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text.Json;
 
-namespace TodoAPI.Middlewares
+namespace Velvetech.MyTodoApp.WebAPI.Middlewares
 {
     public class GlobalExceptionHandlingMiddleware : IMiddleware
     {

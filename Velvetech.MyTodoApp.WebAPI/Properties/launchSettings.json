@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "TodoApi": {
+    "Velvetech.MyTodoApp.WebAPI": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

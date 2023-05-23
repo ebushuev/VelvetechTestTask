@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoAPI", "TodoApi\TodoAPI.csproj", "{0C7D78F1-A93F-4617-9D1E-ADB4888B5A0D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Velvetech.MyTodoApp.Application", "Velvetech.MyTodoApp.Application\Velvetech.MyTodoApp.Application.csproj", "{28CC11DB-280A-4279-9216-E6BB508662B5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Velvetech.TodoApp.Domain", "Velvetech.TodoApp.Domain\Velvetech.TodoApp.Domain.csproj", "{0C3B04A6-DEA0-4EE7-8B54-9F8B82AC5366}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Velvetech.TodoApp.Infrastructure", "Velvetech.TodoApp.Infrastructure\Velvetech.TodoApp.Infrastructure.csproj", "{096B63B5-9459-47E8-8AE5-C85E472EBDC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Velvetech.MyTodoApp.WebAPI", "Velvetech.MyTodoApp.WebAPI\Velvetech.MyTodoApp.WebAPI.csproj", "{914893BF-04DF-4C3D-82D7-D33E7819422F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0C7D78F1-A93F-4617-9D1E-ADB4888B5A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C7D78F1-A93F-4617-9D1E-ADB4888B5A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C7D78F1-A93F-4617-9D1E-ADB4888B5A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C7D78F1-A93F-4617-9D1E-ADB4888B5A0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28CC11DB-280A-4279-9216-E6BB508662B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28CC11DB-280A-4279-9216-E6BB508662B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28CC11DB-280A-4279-9216-E6BB508662B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{096B63B5-9459-47E8-8AE5-C85E472EBDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{096B63B5-9459-47E8-8AE5-C85E472EBDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{096B63B5-9459-47E8-8AE5-C85E472EBDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{914893BF-04DF-4C3D-82D7-D33E7819422F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{914893BF-04DF-4C3D-82D7-D33E7819422F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{914893BF-04DF-4C3D-82D7-D33E7819422F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{914893BF-04DF-4C3D-82D7-D33E7819422F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

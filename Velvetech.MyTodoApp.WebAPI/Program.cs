@@ -1,4 +1,4 @@
-using TodoAPI.Middlewares;
+using Velvetech.MyTodoApp.WebAPI.Middlewares;
 using Velvetech.TodoApp.Infrastructure.Config;
 using Serilog;
 using Serilog.Filters;

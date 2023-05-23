@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TodoAPI.Models
+namespace Velvetech.MyTodoApp.WebAPI.Models
 {
     public class ErrorDetails
     {

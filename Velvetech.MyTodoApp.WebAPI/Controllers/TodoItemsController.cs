@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Velvetech.MyTodoApp.Application.DTOs;
 using Velvetech.MyTodoApp.Application.Services.Abstractions;
 
-namespace TodoApi.Controllers
+namespace Velvetech.MyTodoApp.WebAPI.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
