@@ -1,13 +1,14 @@
 using TodoAPI.Middlewares;
 using Velvetech.TodoApp.Infrastructure.Config;
 using Serilog;
+using Serilog.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 
-builder.Services.AddInfrastructure(); // Adding services from Infrastructure layer
+builder.Services.AddInfrastructure(builder.Configuration); // Adding services from Infrastructure layer
 builder.Services.AddApplication(); // Adding services from Application layer
 
 builder.Services.AddControllers();
@@ -30,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
@@ -37,6 +40,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
+
+app.ApplyDbMigrations();
 
 app.MapControllers();
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LbkrRsjAK7kKzbtdiusMyzfl0WBmasm6AB8Jlr7atkgRnnzsAH4l8pKtSD2MWig9ybtrSpgQRFuhq4iMVVCn2Q==",
+  "dgSpecHash": "xPp0b091CFz9H5eUgrWHQ1BsNMuMurgvx+Uo12wbCLN+IcJCcK8QU26zn02pd5pcaWwHE+05drUce/MlEu9Uvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dachi\\Desktop\\VelveTech\\VelvetechTestTask\\Velvetech.MyTodoApp.Application\\Velvetech.MyTodoApp.Application.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\Dachi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Dachi\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Dachi\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\Dachi\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Dachi\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Dachi\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Dachi\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Dachi\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

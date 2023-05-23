@@ -21,6 +21,8 @@ namespace TodoAPI.Middlewares
             }
             catch (Exception)
             {
+                //_logger.LogInformation($"Exception happened whith the message \"{ex.Message}\" in the endpoint \"{context.Request.Path}\"");
+
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
                 ProblemDetails problem = new()

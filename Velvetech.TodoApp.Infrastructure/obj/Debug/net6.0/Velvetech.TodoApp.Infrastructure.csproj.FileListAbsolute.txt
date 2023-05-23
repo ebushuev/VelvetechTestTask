@@ -28,3 +28,5 @@ C:\Users\Dachi\Desktop\VelveTech\VelvetechTestTask\Velvetech.TodoApp.Infrastruct
 C:\Users\Dachi\Desktop\VelveTech\VelvetechTestTask\Velvetech.TodoApp.Infrastructure\obj\Debug\net6.0\refint\Velvetech.TodoApp.Infrastructure.dll
 C:\Users\Dachi\Desktop\VelveTech\VelvetechTestTask\Velvetech.TodoApp.Infrastructure\obj\Debug\net6.0\Velvetech.TodoApp.Infrastructure.pdb
 C:\Users\Dachi\Desktop\VelveTech\VelvetechTestTask\Velvetech.TodoApp.Infrastructure\obj\Debug\net6.0\ref\Velvetech.TodoApp.Infrastructure.dll
+C:\Users\Dachi\Desktop\VelveTech\VelvetechTestTask\Velvetech.TodoApp.Infrastructure\bin\Debug\net6.0\Velvetech.TodoApp.Infrastructure.runtimeconfig.json
+C:\Users\Dachi\Desktop\VelveTech\VelvetechTestTask\Velvetech.TodoApp.Infrastructure\obj\Debug\net6.0\Velvetech.TodoApp.Infrastructure.genruntimeconfig.cache
