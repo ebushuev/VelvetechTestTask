@@ -1,5 +1,12 @@
+using Application.Features.ToDo.CreateTodoItem;
+using Application.Features.ToDo.DeleteTodoItem;
+using Application.Features.ToDo.GetToDoItems;
+using Application.Features.ToDo.GetToDoItemsById;
+using Application.Features.ToDo.UpdateTodoItem;
+using Domain;
+using Infrastructure.DbContexts;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,35 +18,50 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private IMediator _mediator;
 
-        public TodoItemsController(TodoContext context)
-        {
-            _context = context;
+        public TodoItemsController(IMediator mediator)
+        {       
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
+        [ProducesResponseType(typeof(ICollection<TodoItem>), 200)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<ICollection<TodoItem>>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
-        }
+            var result = await _mediator.Send(new GetTodoItemsQuery());
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
-        {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
+            if (result == null || result.Count == 0)
             {
                 return NotFound();
             }
 
-            return ItemToDTO(todoItem);
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(TodoItemDTO), 200)]
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
+        {
+            var result = await _mediator.Send(new GetTodoItemsByIdQuery()
+            {
+                TodoItemId = id
+            });
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
         {
             if (id != todoItemDTO.Id)
@@ -47,64 +69,72 @@ namespace TodoApi.Controllers
                 return BadRequest();
             }
 
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _mediator.Send(new GetTodoItemsByIdQuery()
+            {
+                TodoItemId = id
+            });
+
             if (todoItem == null)
             {
                 return NotFound();
             }
 
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
-
-            try
+            await _mediator.Send(new UpdateTodoItemQuery()
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
-            {
-                return NotFound();
-            }
+                Id = id,
+                TodoItem = new TodoItem
+                {
+                    Name = todoItemDTO.Name,
+                    IsComplete = todoItemDTO.IsComplete
+                }
+            });
 
             return NoContent();
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(TodoItemDTO), 201)]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
-            var todoItem = new TodoItem
+            var todoItem = await _mediator.Send(new CreateTodoItemQuery()
             {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
-
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+                TodoItem = new TodoItem
+                {
+                    Name = todoItemDTO.Name,
+                    IsComplete = todoItemDTO.IsComplete
+                }
+            });            
 
             return CreatedAtAction(
-                nameof(GetTodoItem),
-                new { id = todoItem.Id },
-                ItemToDTO(todoItem));
+            nameof(GetTodoItem),
+            new { id = todoItem.Id },
+            ItemToDTO(todoItem));
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var result = await _mediator.Send(new GetTodoItemsByIdQuery()
+            {
+                TodoItemId = id
+            });
 
-            if (todoItem == null)
+            if (result == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
+            await _mediator.Send(new DeleteTodoItemQuery
+            {
+                TodoItemId = id
+            });
 
             return NoContent();
+
         }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
-
+      
         private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
             new TodoItemDTO
             {
