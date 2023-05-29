@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TodoApi.Models;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
+using TodoApi.Services.Configuration;
 
 namespace TodoApi
 {
@@ -47,6 +49,8 @@ namespace TodoApi
                     }
                 });
             });
+
+            services.AddAutoMapper(typeof(TodoItemProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
