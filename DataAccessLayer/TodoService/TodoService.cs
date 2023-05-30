@@ -44,16 +44,22 @@ namespace TodoApi.Services
         {
             todoItem.Name = todoItemDTO.Name;
             todoItem.IsComplete = todoItemDTO.IsComplete;
-            return await TrySaveContext();
+            return await TrySaveChanges();
         }
 
         public async Task<TodoServiceResult<IActionResult>> CreateTodoItem(TodoItem todoItem)
         {
             _repository.AddItem(todoItem);
-            return await TrySaveContext();
+            return await TrySaveChanges();
         }
 
-        public async Task<TodoServiceResult<IActionResult>> TrySaveContext()
+        public async Task<TodoServiceResult<IActionResult>> DeleteTodoItem(TodoItem todoItem)
+        {
+            _repository.RemoveItem(todoItem);
+            return await TrySaveChanges();
+        }
+
+        public async Task<TodoServiceResult<IActionResult>> TrySaveChanges()
         {
             try
             {
@@ -72,12 +78,6 @@ namespace TodoApi.Services
                 Success = true,
                 ResultStatus = HttpStatusCode.OK
             };
-        }
-
-        public async Task<TodoServiceResult<IActionResult>> DeleteTodoItem(TodoItem todoItem)
-        {
-            _repository.RemoveItem(todoItem);
-            return await TrySaveContext();
         }
     }
 }

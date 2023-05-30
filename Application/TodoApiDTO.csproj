@@ -23,9 +23,5 @@
     <ProjectReference Include="..\DataAccessLayer\TodoService\TodoService.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Configurations\AutoMapper\Profiles\" />
-  </ItemGroup>
-
 
 </Project>
