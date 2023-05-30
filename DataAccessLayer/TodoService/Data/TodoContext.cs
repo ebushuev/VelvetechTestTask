@@ -7,8 +7,11 @@ namespace TodoApi.Models
         public TodoContext(DbContextOptions<TodoContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public TodoContext() {}
+
+        public virtual DbSet<TodoItem> TodoItems { get; set; }
     }
 }
