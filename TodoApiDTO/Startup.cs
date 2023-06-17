@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using TodoApi.BLL.Implementation;
+using TodoApi.BLL.Interfaces;
 using TodoApi.DAL;
 using TodoApiDTO.Middleware;
 
@@ -30,6 +32,10 @@ namespace TodoApi
 
             services.AddDbContext<TodoContext>(opt =>
                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<ITodoItemsService, TodoItemsService>();
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
