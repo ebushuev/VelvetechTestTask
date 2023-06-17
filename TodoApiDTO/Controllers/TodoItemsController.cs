@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,10 +16,13 @@ namespace TodoApi.Controllers
     public class TodoItemsController : ControllerBase
     {
         private readonly TodoContext _context;
+        private readonly ILogger<TodoItemsController> _logger;
 
-        public TodoItemsController(TodoContext context)
+
+        public TodoItemsController(TodoContext context, ILogger<TodoItemsController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -35,6 +40,7 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
+                _logger.LogError($"Not Found TodoItem With Id {id}");
                 return NotFound();
             }
 
