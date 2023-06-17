@@ -10,9 +10,8 @@ using TodoApiDTO.Services.Interfaces;
 using TodoApiDTO.Services;
 using TodoApiDTO.Repositories;
 using TodoApiDTO.Repositories.Interfaces;
-// TODO: mapper
-//using AutoMapper;
-//using GeekStore.API.Core.Configurations;
+using AutoMapper;
+using GeekStore.API.Core.Configurations;
 
 namespace TodoApi
 {
@@ -37,14 +36,13 @@ namespace TodoApi
             services.AddDbContext<TodoContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("TodosDatabase")));
 
-            // TODO: mapper
-            //var mapperConfig = new MapperConfiguration(mc =>
-            //{
-            //    mc.AddProfile(new TodoProfile());
-            //});
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new TodoProfile());
+            });
 
-            //IMapper mapper = mapperConfig.CreateMapper();
-            //services.AddSingleton(mapper);
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddScoped<ITodoService, TodoService>();
             services.AddScoped<ITodoRepository, TodoRepository>();

@@ -23,18 +23,14 @@ namespace TodoApiDTO.Services
         public async Task<IEnumerable<TodoItemDTO>> GetAll()
         {
             var todos = await _repository.GetAll();
-            // TODO: mapper
-            //var dtos = todos.Select(todo => _mapper.Map<TodoItemDTO>(todo));
-            var dtos = todos.Select(todo => ItemToDTO(todo));
+            var dtos = todos.Select(todo => _mapper.Map<TodoItemDTO>(todo));
             return dtos;
         }
 
         public async Task<TodoItemDTO> Get(long id)
         {
             var todo = await _repository.Get(id);
-            // TODO: mapper
-            //return _mapper.Map<TodoItemDTO>(todo);
-            return ItemToDTO(todo);
+            return _mapper.Map<TodoItemDTO>(todo);
         }
 
         public async Task<bool> Update(long id, TodoItemDTO todoItemDTO)
@@ -42,25 +38,16 @@ namespace TodoApiDTO.Services
             var todoItem = await _repository.Get(id);
             if (todoItem == null)
                 return false;
-            // TODO: mapper
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
+            todoItem = _mapper.Map<TodoItem>(todoItemDTO);
             return await _repository.Update(id, todoItem);
         }
 
         public async Task<TodoItemDTO> Create(TodoItemDTO todoItemDTO)
         {
-            // TODO: mapper
-            var todoItem = new TodoItem
-            {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
+            var todoItem = _mapper.Map<TodoItem>(todoItemDTO);
 
-            // TODO: mapper
-            //return await _repository.Create(todoItem);
             var todo = await _repository.Create(todoItem);
-            return ItemToDTO(todo);
+            return _mapper.Map<TodoItemDTO>(todo);
         }
 
         public async Task<bool> Delete(long id)
@@ -75,14 +62,5 @@ namespace TodoApiDTO.Services
 
             return true;
         }
-
-        // TODO: remove
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-            new TodoItemDTO
-            {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };
     }
 }
