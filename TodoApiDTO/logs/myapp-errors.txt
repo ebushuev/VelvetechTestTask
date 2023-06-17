@@ -1,0 +1,320 @@
+2023-06-18 03:52:16.739 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 03:52:16.773 +06:00 [INF] Route matched with {action = "GetTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.BLL.Dto.TodoItemDTO]] GetTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 03:52:17.123 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 03:52:17.553 +06:00 [INF] Executed DbCommand (45ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 03:52:19.871 +06:00 [ERR] Not Found TodoItem With Id 5
+2023-06-18 03:52:21.254 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 03:52:21.260 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO) in 4482.8974ms
+2023-06-18 03:52:21.262 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 03:53:09.588 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 03:53:09.589 +06:00 [INF] Route matched with {action = "GetTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.BLL.Dto.TodoItemDTO]] GetTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 03:53:09.617 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 03:53:09.625 +06:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 03:53:11.148 +06:00 [ERR] Not Found TodoItem With Id 768
+2023-06-18 03:53:11.148 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 03:53:11.149 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO) in 1559.8201ms
+2023-06-18 03:53:11.149 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:10:50.016 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:10:50.046 +06:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.BLL.Dto.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:10:50.443 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:10:50.893 +06:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+2023-06-18 04:10:50.954 +06:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TodoApi.BLL.Dto.TodoItemDTO, TodoApi.BLL, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-18 04:10:50.963 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 912.5531ms
+2023-06-18 04:10:50.964 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:16:19.934 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:16:19.962 +06:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.BLL.Dto.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:18:58.086 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:18:58.116 +06:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.BLL.Dto.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:18:59.785 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:19:00.134 +06:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+2023-06-18 04:19:00.194 +06:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TodoApi.BLL.Dto.TodoItemDTO, TodoApi.BLL, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-18 04:19:00.203 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 2082.4108ms
+2023-06-18 04:19:00.203 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:23:17.000 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:23:17.030 +06:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.BLL.Dto.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:23:17.653 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:23:18.261 +06:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+2023-06-18 04:23:18.319 +06:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TodoApi.BLL.Dto.TodoItemDTO, TodoApi.BLL, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-18 04:23:18.326 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 1292.3416ms
+2023-06-18 04:23:18.327 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:23:23.802 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:23:23.815 +06:00 [INF] Route matched with {action = "GetTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.BLL.Dto.TodoItemDTO]] GetTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:23:23.855 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:23:23.953 +06:00 [INF] Executed DbCommand (30ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:23:23.955 +06:00 [INF] Executing ObjectResult, writing value of type 'TodoApi.BLL.Dto.TodoItemDTO'.
+2023-06-18 04:23:23.956 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO) in 140.5836ms
+2023-06-18 04:23:23.956 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:23:26.907 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:23:26.907 +06:00 [INF] Route matched with {action = "GetTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.BLL.Dto.TodoItemDTO]] GetTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:23:26.915 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:23:26.922 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:23:26.923 +06:00 [INF] Executing ObjectResult, writing value of type 'TodoApi.BLL.Dto.TodoItemDTO'.
+2023-06-18 04:23:26.924 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO) in 15.9346ms
+2023-06-18 04:23:26.924 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:23:29.551 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:23:29.551 +06:00 [INF] Route matched with {action = "GetTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.BLL.Dto.TodoItemDTO]] GetTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:23:29.553 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:23:29.559 +06:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:23:29.563 +06:00 [INF] Executing ObjectResult, writing value of type 'TodoApi.BLL.Dto.TodoItemDTO'.
+2023-06-18 04:23:29.564 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO) in 12.1527ms
+2023-06-18 04:23:29.564 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:23:30.938 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:23:30.939 +06:00 [INF] Route matched with {action = "GetTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.BLL.Dto.TodoItemDTO]] GetTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:23:30.940 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:23:30.946 +06:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:23:33.279 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:23:33.281 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO) in 2342.2093ms
+2023-06-18 04:23:33.281 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-18 04:35:44.975 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO)'
+2023-06-18 04:35:45.009 +06:00 [INF] Route matched with {action = "UpdateTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateTodoItem(Int64, TodoApi.BLL.Dto.TodoItemDTO) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:35:45.186 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO) in 172.8564ms
+2023-06-18 04:35:45.187 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO)'
+2023-06-18 04:35:45.262 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: id != todoItemDTO.Id
+   at TodoApi.BLL.Implementation.TodoItemsService.UpdateTodoItemAsync(Int64 id, TodoItemDTO todoItemDTO) in C:\Work\VelvetechTestTask\TodoApi.BLL\Implementation\TodoItemsService.cs:line 45
+   at TodoApi.Controllers.TodoItemsController.UpdateTodoItem(Int64 id, TodoItemDTO todoItemDTO) in C:\Work\VelvetechTestTask\TodoApiDTO\Controllers\TodoItemsController.cs:line 55
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-06-18 04:35:53.098 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO)'
+2023-06-18 04:35:53.099 +06:00 [INF] Route matched with {action = "UpdateTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateTodoItem(Int64, TodoApi.BLL.Dto.TodoItemDTO) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:35:53.145 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO) in 46.3616ms
+2023-06-18 04:35:53.146 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO)'
+2023-06-18 04:35:53.151 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: id != todoItemDTO.Id
+   at TodoApi.BLL.Implementation.TodoItemsService.UpdateTodoItemAsync(Int64 id, TodoItemDTO todoItemDTO) in C:\Work\VelvetechTestTask\TodoApi.BLL\Implementation\TodoItemsService.cs:line 45
+   at TodoApi.Controllers.TodoItemsController.UpdateTodoItem(Int64 id, TodoItemDTO todoItemDTO) in C:\Work\VelvetechTestTask\TodoApiDTO\Controllers\TodoItemsController.cs:line 55
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-06-18 04:36:07.210 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO)'
+2023-06-18 04:36:07.211 +06:00 [INF] Route matched with {action = "UpdateTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateTodoItem(Int64, TodoApi.BLL.Dto.TodoItemDTO) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:36:07.470 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:36:07.906 +06:00 [INF] Executed DbCommand (48ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:36:08.031 +06:00 [INF] Executed DbCommand (4ms) [Parameters=[@p3='?' (DbType = Int64), @p0='?' (DbType = Boolean), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [TodoItems] SET [IsComplete] = @p0, [Name] = @p1, [Secret] = @p2
+WHERE [Id] = @p3;
+SELECT @@ROWCOUNT;
+2023-06-18 04:36:08.055 +06:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2023-06-18 04:36:08.056 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO) in 845.032ms
+2023-06-18 04:36:08.056 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.UpdateTodoItem (TodoApiDTO)'
+2023-06-18 04:36:12.979 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:36:12.986 +06:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.BLL.Dto.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:36:13.008 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:36:13.018 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+2023-06-18 04:36:13.024 +06:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TodoApi.BLL.Dto.TodoItemDTO, TodoApi.BLL, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-18 04:36:13.027 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 40.731ms
+2023-06-18 04:36:13.027 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:39:56.687 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.CreateTodoItem (TodoApiDTO)'
+2023-06-18 04:39:56.722 +06:00 [INF] Route matched with {action = "CreateTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.BLL.Dto.TodoItemDTO]] CreateTodoItem(TodoApi.BLL.Dto.TodoItemDTO) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:39:57.071 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:39:57.461 +06:00 [INF] Executed DbCommand (45ms) [Parameters=[@p0='?' (DbType = Boolean), @p1='?' (Size = 4000), @p2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [TodoItems] ([IsComplete], [Name], [Secret])
+VALUES (@p0, @p1, @p2);
+SELECT [Id]
+FROM [TodoItems]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2023-06-18 04:39:57.518 +06:00 [INF] Executing ObjectResult, writing value of type 'TodoApi.BLL.Dto.TodoItemDTO'.
+2023-06-18 04:39:57.544 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.CreateTodoItem (TodoApiDTO) in 817.0716ms
+2023-06-18 04:39:57.544 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.CreateTodoItem (TodoApiDTO)'
+2023-06-18 04:40:03.008 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:40:03.015 +06:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.BLL.Dto.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:40:03.046 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:40:03.147 +06:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+2023-06-18 04:40:03.158 +06:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TodoApi.BLL.Dto.TodoItemDTO, TodoApi.BLL, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-18 04:40:03.159 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 143.1231ms
+2023-06-18 04:40:03.159 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:43:12.710 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:43:12.738 +06:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.BLL.Dto.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:13.078 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:13.422 +06:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+2023-06-18 04:43:13.481 +06:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TodoApi.BLL.Dto.TodoItemDTO, TodoApi.BLL, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-18 04:43:13.489 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 746.0809ms
+2023-06-18 04:43:13.489 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:43:19.658 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:19.673 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:19.709 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:19.802 +06:00 [INF] Executed DbCommand (27ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:19.872 +06:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [TodoItems]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2023-06-18 04:43:19.897 +06:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2023-06-18 04:43:19.897 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 223.7761ms
+2023-06-18 04:43:19.897 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:23.635 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:43:23.636 +06:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.BLL.Dto.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:23.642 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:23.647 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+2023-06-18 04:43:23.648 +06:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TodoApi.BLL.Dto.TodoItemDTO, TodoApi.BLL, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-18 04:43:23.649 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 12.7899ms
+2023-06-18 04:43:23.649 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-18 04:43:27.102 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:27.102 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:27.104 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:27.110 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:27.112 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:27.114 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 10.8156ms
+2023-06-18 04:43:27.114 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:29.234 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:29.234 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:29.235 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:29.240 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:29.241 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:29.242 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 7.5309ms
+2023-06-18 04:43:29.242 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:29.774 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:29.775 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:29.777 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:29.785 +06:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:29.787 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:29.788 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 12.6571ms
+2023-06-18 04:43:29.788 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:30.440 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:30.440 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:30.442 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:30.447 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:30.448 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:30.449 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 8.7765ms
+2023-06-18 04:43:30.449 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:30.928 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:30.928 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:30.934 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:30.938 +06:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:30.939 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:30.940 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 11.4382ms
+2023-06-18 04:43:30.940 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.126 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.126 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:31.127 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:31.130 +06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:31.131 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:31.131 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 4.7759ms
+2023-06-18 04:43:31.131 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.287 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.287 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:31.289 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:31.293 +06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:31.294 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:31.294 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 6.7979ms
+2023-06-18 04:43:31.294 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.421 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.421 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:31.422 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:31.425 +06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:31.425 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:31.426 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 4.1364ms
+2023-06-18 04:43:31.426 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.566 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.566 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:31.567 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:31.569 +06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:31.570 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:31.570 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 4.1379ms
+2023-06-18 04:43:31.570 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.701 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.702 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:31.703 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:31.707 +06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:31.707 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:31.708 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 6.1665ms
+2023-06-18 04:43:31.708 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.805 +06:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
+2023-06-18 04:43:31.805 +06:00 [INF] Route matched with {action = "DeleteTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-18 04:43:31.805 +06:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-18 04:43:31.808 +06:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-18 04:43:31.808 +06:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-18 04:43:31.809 +06:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO) in 3.9561ms
+2023-06-18 04:43:31.809 +06:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.DeleteTodoItem (TodoApiDTO)'
