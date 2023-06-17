@@ -1,19 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using Todo.BL.DTOs;
+using Todo.DAL.DbContexts;
 
-namespace TodoApi
+namespace Todo.Api
 {
     public class Startup
     {
@@ -22,21 +18,41 @@ namespace TodoApi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            services.AddSwaggerGen();
+
+            var enableInMemoryDb = Configuration.GetSection("SqlServer").GetValue<bool>("UseInMemoryDatabase");
+            if (enableInMemoryDb)
+            {
+                services.AddDbContext<TodoContext>(opt => {
+                    opt.UseInMemoryDatabase("TodoList");
+                });
+            }
+            else
+            {
+                services.AddDbContext<TodoContext>(opt =>
+                {
+                    var connectionString = Configuration.GetConnectionString("DbConnection");
+                    opt.UseSqlServer(connectionString);
+                });
+                // services.BuildServiceProvider().GetService<TodoContext>().Database.Migrate();
+            }
+            
             services.AddControllers();
+
+            services.AddMediatR(typeof(TodoItemDTO));
+            services.AddAutoMapper(typeof(TodoItemDTO));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
+                app.UseSwagger();
+                app.UseSwaggerUI();
                 app.UseDeveloperExceptionPage();
             }
 

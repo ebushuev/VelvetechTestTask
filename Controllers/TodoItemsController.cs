@@ -1,116 +1,59 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.Threading;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using MediatR;
+using Todo.BL.DTOs;
+using Todo.BL.UseCases.TodoItems.Commands.CreateTodoItem;
+using Todo.BL.UseCases.TodoItems.Commands.DeleteTodoItem;
+using Todo.BL.UseCases.TodoItems.Commands.UpdateTodoItem;
+using Todo.BL.UseCases.TodoItems.Queries.GetTodoItem;
+using Todo.BL.UseCases.TodoItems.Queries.GetTodoItems;
 
-namespace TodoApi.Controllers
+namespace Todo.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly IMediator _mediator;
 
-        public TodoItemsController(TodoContext context)
+        public TodoItemsController(IMediator mediator)
         {
-            _context = context;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems(CancellationToken cancellationToken)
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            return Ok(await _mediator.Send(new GetTodoItemsQuery(), cancellationToken));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
+        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id, CancellationToken cancellationToken)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            return ItemToDTO(todoItem);
+            return Ok(await _mediator.Send(new GetTodoItemQuery(id), cancellationToken));
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
+        [HttpPut]
+        public async Task<IActionResult> UpdateTodoItem([Required] TodoItemDTO request, CancellationToken cancellationToken)
         {
-            if (id != todoItemDTO.Id)
-            {
-                return BadRequest();
-            }
-
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            todoItem.Name = todoItemDTO.Name;
-            todoItem.IsComplete = todoItemDTO.IsComplete;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
-            {
-                return NotFound();
-            }
-
-            return NoContent();
+            await _mediator.Send(new UpdateTodoItemCommandRequest(request), cancellationToken);
+            return Ok();
         }
 
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
+        public async Task<ActionResult<TodoItemDTO>> CreateTodoItem([FromBody] CreateTodoItemDTO request, CancellationToken cancellationToken)
         {
-            var todoItem = new TodoItem
-            {
-                IsComplete = todoItemDTO.IsComplete,
-                Name = todoItemDTO.Name
-            };
-
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(
-                nameof(GetTodoItem),
-                new { id = todoItem.Id },
-                ItemToDTO(todoItem));
+            return Ok(await _mediator.Send(new CreateTodoItemCommandRequest(request), cancellationToken));
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoItem(long id)
+        [HttpDelete("{id:long}")]
+        public async Task<IActionResult> DeleteTodoItem(long id, CancellationToken cancellationToken)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
+            await _mediator.Send(new DeleteTodoItemCommandRequest(id), cancellationToken);
             return NoContent();
         }
-
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
-
-        private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
-            new TodoItemDTO
-            {
-                Id = todoItem.Id,
-                Name = todoItem.Name,
-                IsComplete = todoItem.IsComplete
-            };       
     }
 }
