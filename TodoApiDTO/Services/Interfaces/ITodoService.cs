@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using TodoApiDTO.DTOs;
 
 namespace TodoApiDTO.Services.Interfaces
 {
@@ -8,8 +8,8 @@ namespace TodoApiDTO.Services.Interfaces
     {
         public Task<IEnumerable<TodoItemDTO>> GetAll();
         public Task<TodoItemDTO> Get(long id);
-        public Task<bool> Update(long id, TodoItemDTO todoItemDTO);
-        public Task<TodoItemDTO> Create(TodoItemDTO todoItemDTO);
+        public Task<bool> Update(long id, CreateUpdateItemTodoDTO createUpdateItemTodo);
+        public Task<TodoItemDTO> Create(CreateUpdateItemTodoDTO createUpdateItemTodo);
         public Task<bool> Delete(long id);
     }
 }

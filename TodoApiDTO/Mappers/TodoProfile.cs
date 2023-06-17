@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TodoApi.Models;
+using TodoApiDTO.DTOs;
 
 namespace GeekStore.API.Core.Configurations
 {
@@ -10,6 +11,8 @@ namespace GeekStore.API.Core.Configurations
             CreateMap<TodoItemDTO, TodoItem>()
                 .ForMember(x => x.Secret, opt => opt.Ignore())
                 .ReverseMap();
+
+            CreateMap<CreateUpdateItemTodoDTO, TodoItem>();
         }
     }
 }   

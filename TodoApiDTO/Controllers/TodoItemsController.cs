@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TodoApi.Models;
+using TodoApiDTO.DTOs;
 using TodoApiDTO.Services.Interfaces;
 
 namespace TodoApi.Controllers
@@ -34,14 +34,9 @@ namespace TodoApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> Update(long id, TodoItemDTO todoItemDTO)
+        public async Task<ActionResult<bool>> Update(long id, CreateUpdateItemTodoDTO createUpdateDTO)
         {
-            if (id != todoItemDTO.Id)
-            {
-                return BadRequest();
-            }
-
-            var isFound = await _todoService.Update(id, todoItemDTO);
+            var isFound = await _todoService.Update(id, createUpdateDTO);
 
             if (isFound == false)
             {
@@ -52,9 +47,9 @@ namespace TodoApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> Create(TodoItemDTO todoItemDTO)
+        public async Task<ActionResult<TodoItemDTO>> Create(CreateUpdateItemTodoDTO createUpdateDTO)
         {
-            var todo = await _todoService.Create(todoItemDTO);
+            var todo = await _todoService.Create(createUpdateDTO);
 
             return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
         }
