@@ -28,7 +28,7 @@ namespace TodoApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+                opt.UseSqlServer(Configuration.GetConnectionString(Environment.MachineName)));
             services.AddControllers();
             services.AddSwaggerGen();
         }
@@ -36,6 +36,8 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            EnsureDbCreated(app);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -53,6 +55,13 @@ namespace TodoApi
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private static void EnsureDbCreated(IApplicationBuilder app)
+        {
+            using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+            var context = serviceScope.ServiceProvider.GetRequiredService<TodoContext>();
+            context.Database.EnsureCreated();
         }
     }
 }
