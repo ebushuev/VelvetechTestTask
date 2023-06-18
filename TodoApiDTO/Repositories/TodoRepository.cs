@@ -1,10 +1,9 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApi.Models;
-using TodoApiDTO.DTOs;
+using TodoApiDTO.ApiConstans;
 using TodoApiDTO.Repositories.Interfaces;
 
 namespace TodoApiDTO.Repositories
@@ -12,68 +11,65 @@ namespace TodoApiDTO.Repositories
     public class TodoRepository : ITodoRepository
     {
         private readonly TodoContext _context;
-        private readonly IMapper _mapper;
 
-        public TodoRepository(TodoContext context, IMapper mapper)
+        public TodoRepository(TodoContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<TodoItemDTO>> GetAll()
+        public async Task<IEnumerable<TodoItem>> GetAll()
         {
-            var todos = await _context.TodoItems.ToListAsync();
-            var dtos = todos.Select(todo => _mapper.Map<TodoItemDTO>(todo));
-            return dtos;
+            return await _context.TodoItems.ToListAsync();
         }
 
-        public async Task<TodoItemDTO> Get(long id)
+        public async Task<TodoItem> Get(long id)
         {
-            return _mapper.Map<TodoItemDTO>(await GetById(id));
+            return await _context.TodoItems.FindAsync(id);
         }
 
-        public async Task<bool> Update(long id, CreateUpdateItemTodoDTO createUpdateDTO)
+        public async Task<ApiResponseStatus> Update(long id, TodoItem model)
         {
             try
             {
-                var todoItem = await GetById(id);
+                var todoItem = await Get(id);
                 if (todoItem == null)
-                    return false;
-                _mapper.Map(createUpdateDTO, todoItem);
+                {
+                    return ApiResponseStatus.ItemDoesntExist;
+                }
+                todoItem.Name = model.Name;
+                todoItem.IsComplete = model.IsComplete;
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
             {
-                return false;
+                return ApiResponseStatus.ItemDoesntExist;
             }
-            return true;
+            return ApiResponseStatus.Success;
         }
-        public async Task<TodoItemDTO> Create(CreateUpdateItemTodoDTO createUpdateDTO)
+        public async Task<TodoItem> Create(TodoItem model)
         {
-            var todoItem = _mapper.Map<TodoItem>(createUpdateDTO);
-
-            _context.TodoItems.Add(todoItem);
+            _context.TodoItems.Add(model);
             await _context.SaveChangesAsync();
 
-            return _mapper.Map<TodoItemDTO>(todoItem);
+            return model;
         }
 
-        public async Task<bool> Delete(long id)
+        public async Task<ApiResponseStatus> Delete(long id)
         {
-            var todoItem = await GetById(id);
+            var todoItem = await Get(id);
 
             if (todoItem == null)
             {
-                return false;
+                return ApiResponseStatus.ItemDoesntExist;
             }
             
             _context.TodoItems.Remove(todoItem);
             await _context.SaveChangesAsync();
 
-            return true;
+            return ApiResponseStatus.Success;
         }
 
-        private async Task<TodoItem> GetById(long id) => await _context.TodoItems.FindAsync(id);
         private bool TodoItemExists(long id) => _context.TodoItems.Any(todo => todo.Id == id);
     }
 }

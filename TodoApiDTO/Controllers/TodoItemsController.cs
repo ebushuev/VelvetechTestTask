@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using TodoApiDTO.ApiConstans;
 using TodoApiDTO.DTOs;
+using TodoApiDTO.Extentions;
 using TodoApiDTO.Services.Interfaces;
 
 namespace TodoApi.Controllers
@@ -18,36 +19,36 @@ namespace TodoApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetAll() => Ok(await _todoService.GetAll());
+        public async Task<IActionResult> GetAll() => Ok(await _todoService.GetAll());
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItemDTO>> Get(long id)
+        public async Task<IActionResult> Get(long id)
         {
             var todoItem = await _todoService.Get(id);
 
             if (todoItem == null)
             {
-                return NotFound();
+                return NotFound(ApiResponseStatus.ItemDoesntExist.GetEnumDescription());
             }
 
-            return todoItem;
+            return Ok(todoItem);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> Update(long id, CreateUpdateItemTodoDTO createUpdateDTO)
+        public async Task<IActionResult> Update(long id, CreateUpdateItemTodoDTO createUpdateDTO)
         {
-            var isFound = await _todoService.Update(id, createUpdateDTO);
+            var response = await _todoService.Update(id, createUpdateDTO);
 
-            if (isFound == false)
+            if (response == ApiResponseStatus.ItemDoesntExist)
             {
-                return NotFound();
+                return NotFound(response.GetEnumDescription());
             }
 
             return NoContent();
         }
 
         [HttpPost]
-        public async Task<ActionResult<TodoItemDTO>> Create(CreateUpdateItemTodoDTO createUpdateDTO)
+        public async Task<IActionResult> Create(CreateUpdateItemTodoDTO createUpdateDTO)
         {
             var todo = await _todoService.Create(createUpdateDTO);
 
@@ -57,11 +58,11 @@ namespace TodoApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
-            var isFound = await _todoService.Delete(id);
+            var response = await _todoService.Delete(id);
 
-            if (isFound == false)
+            if (response == ApiResponseStatus.ItemDoesntExist)
             {
-                return NotFound();
+                return NotFound(response.GetEnumDescription());
             }
 
             return NoContent();

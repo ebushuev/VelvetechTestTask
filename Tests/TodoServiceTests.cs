@@ -33,13 +33,13 @@ namespace Tests
             // Arrange
             var dto = new CreateUpdateItemTodoDTO { Name = "update", IsComplete = false };
             _repository.Setup(r => r.Update(It.IsAny<long>(), It.IsAny<TodoItem>()))
-                .ReturnsAsync(ApiRequestStatus.Success);
+                .ReturnsAsync(ApiResponseStatus.Success);
                 
             // Act
             var result = _service.Update(123, dto);
 
             // Assert
-            Assert.AreEqual(ApiRequestStatus.Success, result.Result);
+            Assert.AreEqual(ApiResponseStatus.Success, result.Result);
         }
 
         [Test]
@@ -48,13 +48,13 @@ namespace Tests
             // Arrange
             var dto = new CreateUpdateItemTodoDTO { Name = "update", IsComplete = false };
             _repository.Setup(r => r.Update(It.IsAny<long>(), It.IsAny<TodoItem>()))
-                .ReturnsAsync(ApiRequestStatus.ItemDoesntExist);
+                .ReturnsAsync(ApiResponseStatus.ItemDoesntExist);
 
             // Act
             var result = _service.Update(123, null);
 
             // Assert
-            Assert.AreEqual(ApiRequestStatus.ItemDoesntExist, result.Result);
+            Assert.AreEqual(ApiResponseStatus.ItemDoesntExist, result.Result);
         }
 
         [Test]
