@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TodoApiDTO
+namespace TodoApiDTO.BLL.Exceptions
 {
     public class EntityNotFoundException : Exception
     {

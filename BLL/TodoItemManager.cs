@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApi.Models;
+using TodoApiDTO.BLL.Exceptions;
 using TodoApiDTO.DAL.Repositories;
 using TodoApiDTO.Models;
 
