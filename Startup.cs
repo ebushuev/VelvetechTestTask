@@ -11,7 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using TodoApiDTO;
+using TodoApiDTO.BLL;
+using TodoApiDTO.DAL;
+using TodoApiDTO.DAL.Repositories;
 
 namespace TodoApi
 {
@@ -31,6 +34,9 @@ namespace TodoApi
                 opt.UseSqlServer(Configuration.GetConnectionString(Environment.MachineName)));
             services.AddControllers();
             services.AddSwaggerGen();
+
+            services.AddTransient<ITodoItemRepository, TodoItemRepository>();
+            services.AddTransient<ITodoItemManager, TodoItemManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +56,8 @@ namespace TodoApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
