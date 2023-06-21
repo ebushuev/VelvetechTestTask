@@ -13,7 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using TodoApiDTO.Data;
+using TodoApiDTO.Services;
 
 namespace TodoApi
 {
@@ -31,6 +32,8 @@ namespace TodoApi
         {
             services.AddDbContext<TodoContext>(opt =>
                opt.UseSqlServer(Configuration.GetConnectionString("VelvetechDatabase")));
+
+            services.AddTransient<ITodoService, TodoService>();
 
             services.AddControllers();
         
