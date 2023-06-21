@@ -8,6 +8,7 @@ using TodoApi.Models;
 namespace TodoApi.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
@@ -18,6 +19,10 @@ namespace TodoApi.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Gets ToDoItems.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
@@ -26,6 +31,11 @@ namespace TodoApi.Controllers
                 .ToListAsync();
         }
 
+        /// <summary>
+        /// Gets a specific ToDoItem.
+        /// </summary>
+        /// <param name="id">Item ID</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
@@ -39,6 +49,12 @@ namespace TodoApi.Controllers
             return ItemToDTO(todoItem);
         }
 
+        /// <summary>
+        /// Updates a specific ToDoItem.
+        /// </summary>
+        /// <param name="id">Item ID</param>
+        /// <param name="todoItemDTO">Modified item</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItemDTO todoItemDTO)
         {
@@ -68,6 +84,11 @@ namespace TodoApi.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Creates a new ToDoItem.
+        /// </summary>
+        /// <param name="todoItemDTO">New item</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
@@ -86,6 +107,11 @@ namespace TodoApi.Controllers
                 ItemToDTO(todoItem));
         }
 
+        /// <summary>
+        /// Deletes a spefific ToDoItem.
+        /// </summary>
+        /// <param name="id">Item ID</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
