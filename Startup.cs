@@ -33,7 +33,7 @@ namespace TodoApi
             services.AddMvc();
 
             services.AddDbContext<TodoContext>(opt =>
-                opt.UseInMemoryDatabase("TodoList"));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
