@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using TodoApi.Models;
 
 namespace TodoApi
@@ -29,6 +30,10 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("Logs.txt", rollingInterval: RollingInterval.Minute)
+                .CreateLogger();
+
 
             services.AddMvc();
 
@@ -39,6 +44,11 @@ namespace TodoApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoDTO API", Version = "v1" });
+            });
+
+            services.AddLogging(logBuilder =>
+            {
+                logBuilder.AddSerilog(dispose:true);
             });
 
         }
@@ -62,11 +72,34 @@ namespace TodoApi
                 endpoints.MapControllers();
             });
 
+
+            #region Swagger
+            
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("v1/swagger.json", "TodoDTO API v1");
             });
+
+            #endregion
+
+            #region Logging
+
+
+            app.UseExceptionHandler("/error");
+            app.Use(async (context, next) =>
+            {
+                try
+                {
+                    await next.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "An unhandled exception occurred.");
+                    throw;
+                }
+            });
+            #endregion
         }
     }
 }
