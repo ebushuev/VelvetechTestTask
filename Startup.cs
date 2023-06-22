@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
-using TodoApi.Models;
+using TodoApiDTO.Data;
 
 namespace TodoApi
 {
