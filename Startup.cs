@@ -15,6 +15,8 @@ using Swashbuckle.AspNetCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using TodoApiDTO.Data;
+using TodoApiDTO.Services;
+using TodoApiDTO.Services.Interfaces;
 
 namespace TodoApi
 {
@@ -51,6 +53,8 @@ namespace TodoApi
                 logBuilder.AddSerilog(dispose:true);
             });
 
+            services.AddTransient<ITodoItemService, TodoItemService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +75,7 @@ namespace TodoApi
             {
                 endpoints.MapControllers();
             });
+
 
 
             #region Swagger
