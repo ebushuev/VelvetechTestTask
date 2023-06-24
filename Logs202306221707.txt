@@ -1,0 +1,39 @@
+2023-06-22 17:07:04.674 +04:00 [INF] User profile is available. Using 'C:\Users\David\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-22 17:07:05.234 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-06-22 17:07:05.243 +04:00 [INF] Hosting environment: Development
+2023-06-22 17:07:05.246 +04:00 [INF] Content root path: C:\Users\David\Source\Repos\VelvetechTestTask
+2023-06-22 17:07:05.273 +04:00 [INF] Request starting HTTP/2.0 GET https://localhost:44331/api/todoitems  
+2023-06-22 17:07:05.341 +04:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-22 17:07:05.410 +04:00 [INF] Route matched with {action = "GetTodoItems", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[TodoApi.Models.TodoItemDTO]]] GetTodoItems() on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-22 17:07:05.967 +04:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-22 17:07:06.537 +04:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+2023-06-22 17:07:06.616 +04:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[TodoApi.Models.TodoItemDTO, TodoApiDTO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-22 17:07:06.738 +04:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO) in 1322.1577ms
+2023-06-22 17:07:06.740 +04:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItems (TodoApiDTO)'
+2023-06-22 17:07:06.751 +04:00 [INF] Request finished in 1483.5408ms 200 application/json; charset=utf-8
+2023-06-22 17:07:12.178 +04:00 [INF] Request starting HTTP/2.0 GET https://localhost:44331/api/todoitems/1  
+2023-06-22 17:07:12.183 +04:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-22 17:07:12.196 +04:00 [INF] Route matched with {action = "GetTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.Models.TodoItemDTO]] GetTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-22 17:07:12.238 +04:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-22 17:07:12.318 +04:00 [INF] Executed DbCommand (39ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-22 17:07:12.321 +04:00 [INF] Executing ObjectResult, writing value of type 'TodoApi.Models.TodoItemDTO'.
+2023-06-22 17:07:12.323 +04:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO) in 126.6063ms
+2023-06-22 17:07:12.323 +04:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-22 17:07:12.323 +04:00 [INF] Request finished in 145.5845ms 200 application/json; charset=utf-8
+2023-06-22 17:07:15.623 +04:00 [INF] Request starting HTTP/2.0 GET https://localhost:44331/api/todoitems/6  
+2023-06-22 17:07:15.625 +04:00 [INF] Executing endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-22 17:07:15.625 +04:00 [INF] Route matched with {action = "GetTodoItem", controller = "TodoItems"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[TodoApi.Models.TodoItemDTO]] GetTodoItem(Int64) on controller TodoApi.Controllers.TodoItemsController (TodoApiDTO).
+2023-06-22 17:07:15.635 +04:00 [INF] Entity Framework Core 3.1.0 initialized 'TodoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2023-06-22 17:07:15.644 +04:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[IsComplete], [t].[Name], [t].[Secret]
+FROM [TodoItems] AS [t]
+WHERE [t].[Id] = @__p_0
+2023-06-22 17:07:15.649 +04:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-06-22 17:07:15.655 +04:00 [INF] Executed action TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO) in 29.833ms
+2023-06-22 17:07:15.655 +04:00 [INF] Executed endpoint 'TodoApi.Controllers.TodoItemsController.GetTodoItem (TodoApiDTO)'
+2023-06-22 17:07:15.656 +04:00 [INF] Request finished in 33.5163ms 404 application/problem+json; charset=utf-8
