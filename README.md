@@ -1,5 +1,11 @@
 # TodoService
 
+TASK DESCRIPTION:
+1) Add swagger
+2) Store list of tasks in SQL Server (initially InMemoryDB is used)
+3) Do refactoring: extract Data Access Layer, Business Layer
+4) Write unit tests for business operations
+
 Why I added CreateUpdateItemTodoDTO?
 - To avoid the scenario when user types different ids in body and route parameter, simply avoiding that
 
