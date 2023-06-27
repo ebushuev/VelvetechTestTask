@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -68,7 +67,6 @@ namespace TodoApiDTO.Services
         public async Task<bool> Update(long id, TodoItemDTO todoItemDTO)
         {
             var todoItem = await _context.TodoItems.FindAsync(id);
-
             if (todoItem is null)
             {
                 return false;

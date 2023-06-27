@@ -67,9 +67,9 @@ namespace TodoApi.Controllers
                 return BadRequest();
             }
 
-            var isUpdated = await _service.Update(id, todoItemDTO);
+            var wasUpdated = await _service.Update(id, todoItemDTO);
             
-            if (!isUpdated)
+            if (!wasUpdated)
             {
                 return NotFound();
             }
@@ -105,9 +105,9 @@ namespace TodoApi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var isDeleted = await _service.Delete(id);
+            var wasDeleted = await _service.Delete(id);
             
-            if (!isDeleted)
+            if (!wasDeleted)
             {
                 return NotFound();
             }
