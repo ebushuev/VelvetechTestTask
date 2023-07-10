@@ -25,15 +25,26 @@ namespace Todo.Api.Middlewares
             }
             catch (BusinessException ex)
             {
-                _logger.LogError(ex.Message);
-                context.Response.ContentType = "application/json";
-                context.Response.StatusCode = ex.StatusCode;
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorDetails
-                {
-                    StatusCode = context.Response.StatusCode,
-                    Message = ex.Message
-                }));
+                await HandleExceptionAsync(context, ex);
             }
+            catch (Exception ex)
+            {
+                await HandleExceptionAsync(context, ex);
+            }
+        }
+
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            _logger.LogError(exception.Message);
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = exception is BusinessException 
+                ? ((BusinessException)exception).StatusCode 
+                : StatusCodes.Status500InternalServerError;
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorDetails
+            {
+                StatusCode = context.Response.StatusCode,
+                Message = exception.Message
+            }));
         }
     }
 }
