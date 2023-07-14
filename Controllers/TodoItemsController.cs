@@ -1,42 +1,47 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApi.Models;
-
+using TodoApiDTO.IToDoServices;
 namespace TodoApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
-
-        public TodoItemsController(TodoContext context)
+        private IToDoService _toDoService;
+        private readonly IMapper _mapper;
+        protected readonly ILogger _logger;
+        public TodoItemsController(IToDoService toDoService, IMapper mapper, ILogger<TodoItemsController> logger)
         {
-            _context = context;
+            _toDoService = toDoService;
+            _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems
-                .Select(x => ItemToDTO(x))
-                .ToListAsync();
+            _logger.LogInformation("Hello From logging");
+            var result = _toDoService._todoRepository.FindAll().ToList();
+            return _mapper.Map<List<TodoItemDTO>>(result);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = _toDoService._todoRepository.FindByCondition(x => x.Id == id).First();
 
             if (todoItem == null)
             {
                 return NotFound();
             }
 
-            return ItemToDTO(todoItem);
+            return _mapper.Map<TodoItemDTO>(todoItem);
         }
 
         [HttpPut("{id}")]
@@ -47,7 +52,7 @@ namespace TodoApi.Controllers
                 return BadRequest();
             }
 
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = _toDoService._todoRepository.FindByCondition(x => x.Id == id).First();
             if (todoItem == null)
             {
                 return NotFound();
@@ -58,7 +63,9 @@ namespace TodoApi.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                _toDoService._todoRepository.Update(todoItem);
+                _toDoService.Save();
+
             }
             catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
             {
@@ -77,8 +84,8 @@ namespace TodoApi.Controllers
                 Name = todoItemDTO.Name
             };
 
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+            _toDoService._todoRepository.Create(todoItem);
+            _toDoService.Save();
 
             return CreatedAtAction(
                 nameof(GetTodoItem),
@@ -89,22 +96,29 @@ namespace TodoApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = _toDoService._todoRepository.FindByCondition(x => x.Id == id).First();
 
             if (todoItem == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
+            _toDoService._todoRepository.Delete(todoItem);
+            _toDoService.Save();
 
             return NoContent();
         }
 
-        private bool TodoItemExists(long id) =>
-             _context.TodoItems.Any(e => e.Id == id);
-
+        private bool TodoItemExists(long id)
+        {
+            var result = _toDoService._todoRepository.FindByCondition(x => x.Id == id).First();
+            
+            if(result != null)
+            {
+                return true;
+            }
+            return false;   
+        }
         private static TodoItemDTO ItemToDTO(TodoItem todoItem) =>
             new TodoItemDTO
             {

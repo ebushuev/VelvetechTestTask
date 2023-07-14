@@ -1,0 +1,54 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console" ],
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "System": "Information",
+        "Microsoft": "Information",
+        "Microsoft.EntityFrameworkCore.Database.Command": "Information",
+        "Microsoft.EntityFrameworkCore.Query": "Information"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Async",
+        "Args": {
+          "configure": [
+            {
+              "Name": "File",
+              "Args": {
+                "path": ".\\logs\\ToDo-.log",
+                "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} <{ThreadId}> [{Level:u3}] {Message:lj}{NewLine}{Exception}",
+                "fileSizeLimitBytes": 104857600, // 100 MB
+                "rollingInterval": "Day",
+                "rollOnFileSizeLimit": true
+              }
+            },
+            {
+              "Name": "Console",
+              "Args": {
+                "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} <{ThreadId}> [{Level:u3}] {Message:lj}{NewLine}{Exception}"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithEnvironmentUserName", "WithThreadId" ],
+    "Destructure": [
+      {
+        "Name": "ToMaximumDepth",
+        "Args": { "maximumDestructuringDepth": 4 }
+      },
+      {
+        "Name": "ToMaximumStringLength",
+        "Args": { "maximumStringLength": 100 }
+      },
+      {
+        "Name": "ToMaximumCollectionCount",
+        "Args": { "maximumCollectionCount": 10 }
+      }
+    ]
+  }
+}
