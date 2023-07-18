@@ -38,7 +38,7 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
-                return NotFound();
+                _logger.LogError("Не найдены список задач");
             }
 
             return _mapper.Map<TodoItemDTO>(todoItem);
@@ -49,12 +49,14 @@ namespace TodoApi.Controllers
         {
             if (id != todoItemDTO.Id)
             {
+                _logger.LogError("Айди не совпадают");
                 return BadRequest();
             }
 
             var todoItem = _toDoService._todoRepository.FindByCondition(x => x.Id == id).First();
             if (todoItem == null)
             {
+                _logger.LogError("Задача не найдена");
                 return NotFound();
             }
 
@@ -69,6 +71,7 @@ namespace TodoApi.Controllers
             }
             catch (DbUpdateConcurrencyException) when (!TodoItemExists(id))
             {
+                _logger.LogError("Задача не найдена");
                 return NotFound();
             }
 
@@ -100,6 +103,7 @@ namespace TodoApi.Controllers
 
             if (todoItem == null)
             {
+                _logger.LogError("Задача не найдена");
                 return NotFound();
             }
 
