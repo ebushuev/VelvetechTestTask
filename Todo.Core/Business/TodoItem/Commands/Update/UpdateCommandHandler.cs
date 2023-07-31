@@ -31,7 +31,7 @@ namespace Todo.Core.Business.TodoItem.Commands.Update
                 throw new NotFoundException($"Todo item { request.Id } not found");
             }
 
-            todoItem = _mapper.Map<Entities.TodoItem>(request);
+            _mapper.Map(request, todoItem);
 
             await _unitOfWork.CommitAsync(cancellationToken);
         }

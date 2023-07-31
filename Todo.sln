@@ -5,13 +5,15 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Web", "Todo.Web\Todo.Web.csproj", "{623124F9-F5BA-42DD-BC26-A1720774229C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Tests", "Todo.Tests\Todo.Tests.csproj", "{B2F32A23-2355-4090-9571-643C71D403E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Core.Tests", "Todo.Tests\Todo.Core.Tests.csproj", "{B2F32A23-2355-4090-9571-643C71D403E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Core", "Todo.Core\Todo.Core.csproj", "{4DE6F953-F931-47F9-BFE7-A38BBC16B2BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Core", "Todo.Core\Todo.Core.csproj", "{4DE6F953-F931-47F9-BFE7-A38BBC16B2BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.DataAccess", "Todo.DataAccess\Todo.DataAccess.csproj", "{E2B95358-D1BC-45FA-B8B1-67E4795F2A18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.DataAccess", "Todo.DataAccess\Todo.DataAccess.csproj", "{E2B95358-D1BC-45FA-B8B1-67E4795F2A18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.DbMigrations", "Todo.DbMigrations\Todo.DbMigrations.csproj", "{92C62E75-40D2-4850-AE53-296585764E47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.DbMigrations", "Todo.DbMigrations\Todo.DbMigrations.csproj", "{92C62E75-40D2-4850-AE53-296585764E47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EC7D5A5C-6671-446C-9B52-AE790095483A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B2F32A23-2355-4090-9571-643C71D403E1} = {EC7D5A5C-6671-446C-9B52-AE790095483A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60984BC9-01D1-4B40-9733-E459B1231F96}

@@ -13,6 +13,8 @@ using MediatR;
 using Todo.Core.Common;
 using FluentValidation;
 using Todo.DataAccess;
+using Todo.Core.Business.TodoItem.Commands.Create;
+using Todo.Core.Business.TodoItem.Mappings;
 
 namespace Todo.Web
 {
@@ -28,8 +30,13 @@ namespace Todo.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
-            services.AddControllers();
+            services.AddDbContext<TodoContext>(
+                options =>
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("AppDatabase"),
+                        x => x.MigrationsAssembly("Todo.DbMigrations")));
+
+            services.AddControllers();  
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -38,9 +45,10 @@ namespace Todo.Web
             });
 
             services.AddScoped<ITodoRepository, TodoRepository>();
-            services.AddMediatR(c => c.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddAutoMapper(typeof(TodoItemMappingProfile).GetTypeInfo().Assembly);
+            services.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(CreateCommand).GetTypeInfo().Assembly));
+            services.AddValidatorsFromAssemblyContaining<CreateCommandValidator>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
         }
 
