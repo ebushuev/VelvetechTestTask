@@ -10,3 +10,4 @@ Requirements were to refactor the code and apply best practices to design the ap
 - Introduced FluentValidation
 - Introduced Swagger docs
 - Introduced AutoMapper
+- Added tests for the business operations
