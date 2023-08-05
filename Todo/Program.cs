@@ -11,8 +11,9 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.ConfigureSwagger();
 builder.Services.AddControllers();
-
 var app = builder.Build();
+
+app.ConfigureExceptionHandler();
 
 if (app.Environment.IsProduction())
     app.UseHsts();

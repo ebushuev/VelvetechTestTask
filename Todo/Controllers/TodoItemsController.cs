@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Todo.BLL.Interfaces;
 using Todo.DAL.Entities;
 using Todo.Dtos;
+using Todo.Exceptions.TodoItem;
 
-namespace Todo.API.Controllers;
+namespace Todo.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -30,7 +31,7 @@ public class TodoItemsController : ControllerBase
     [HttpGet("{todoItemId:guid}", Name = "TodoItemById")]
     public async Task<ActionResult<TodoItemDto>> GetTodoItem(Guid todoItemId)
     {
-        var todoItem = await _service.GetTodoItemAsync(todoItemId, trackChanges: false);
+        var todoItem = await GetTodoItemAndCheckIfItExists(todoItemId);
 
         return Ok(_mapper.Map<TodoItemDto>(todoItem));
     }
@@ -48,7 +49,7 @@ public class TodoItemsController : ControllerBase
     [HttpPut("{todoItemId:guid}")]
     public async Task<IActionResult> UpdateTodoItem(Guid todoItemId, [FromBody] TodoItemForUpdateDto itemDto)
     {
-        var todoItem = await _service.GetTodoItemAsync(todoItemId, trackChanges: false);
+        var todoItem = await GetTodoItemAndCheckIfItExists(todoItemId);
         _mapper.Map(itemDto, todoItem);
 
         await _service.UpdateTodoItemAsync(todoItem);
@@ -59,9 +60,18 @@ public class TodoItemsController : ControllerBase
     [HttpDelete("{todoItemId:guid}")]
     public async Task<IActionResult> DeleteTodoItem(Guid todoItemId)
     {
-        var todoItem = await _service.GetTodoItemAsync(todoItemId, trackChanges: false);
+        var todoItem = await GetTodoItemAndCheckIfItExists(todoItemId);
         await _service.DeleteTodoItemAsync(todoItem);
 
         return NoContent();
+    }
+
+    private async Task<TodoItem> GetTodoItemAndCheckIfItExists(Guid id)
+    {
+        var todoItem = await _service.GetTodoItemAsync(id, trackChanges: false);
+        if (todoItem is null)
+            throw new TodoItemNotFoundException(id);
+
+        return todoItem;
     }
 }
