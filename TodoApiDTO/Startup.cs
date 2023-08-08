@@ -11,7 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using Microsoft.Extensions.Options;
+using TodoApi.BLL;
+using TodoApi.BLL.Interfaces;
+using TodoApi.DAL.EF;
+using TodoApi.DAL.Interfaces;
+using TodoApi.DAL.Repositories;
 
 namespace TodoApi
 {
@@ -28,8 +33,11 @@ namespace TodoApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+               opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddSwaggerGen();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ITodoService, TodoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +46,12 @@ namespace TodoApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    options.RoutePrefix = string.Empty;
+                });
             }
 
             app.UseHttpsRedirection();
