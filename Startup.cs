@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using TodoApi.Logger;
 using TodoApi.Models;
 
 namespace TodoApi
@@ -61,6 +62,8 @@ namespace TodoApi
                 settings.RoutePrefix = string.Empty;
 
             });
+
+            app.UseMiddleware<ExceptionHandler>();
         }
     }
 }
