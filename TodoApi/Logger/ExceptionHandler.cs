@@ -36,8 +36,6 @@ namespace TodoApi.Logger
             string stackTrace = exception.StackTrace;
             string message = exception.Message;
 
-            var isCustomError = false;
-
             var exceptionType = exception.GetType();
 
             if (exceptionType == typeof(ValidationException))

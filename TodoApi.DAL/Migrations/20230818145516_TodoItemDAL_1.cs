@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace TodoApiDTO.Migrations
+namespace TodoApi.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class TodoItemApi_1 : Migration
+    public partial class TodoItemDAL_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,9 +16,9 @@ namespace TodoApiDTO.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsComplete = table.Column<bool>(type: "bit", nullable: false),
-                    Secret = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Secret = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
