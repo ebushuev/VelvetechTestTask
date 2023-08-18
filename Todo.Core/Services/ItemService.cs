@@ -15,7 +15,8 @@ public class ItemService : IItemService
 
     public async Task Create(TodoItem item)
     {
-        await _repository.Create(item);
+        _repository.Create(item);
+        await _repository.SaveChanges();
     }
 
     public async Task<TodoItem> Read(long id)
@@ -25,12 +26,14 @@ public class ItemService : IItemService
 
     public async Task Update(TodoItem item)
     {
-        await _repository.Update(item);
+        _repository.Update(item);
+        await _repository.SaveChanges();
     }
 
     public async Task Delete(TodoItem item)
     {
-        await _repository.Delete(item);
+        _repository.Delete(item);
+        await _repository.SaveChanges();
     }
 
     public async Task<IEnumerable<TodoItem>> GetAll()

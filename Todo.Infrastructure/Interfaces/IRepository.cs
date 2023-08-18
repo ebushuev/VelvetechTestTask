@@ -5,13 +5,13 @@ namespace Todo.Infrastructure.Interfaces;
 public interface IRepository<T>
     where T : class
 {
-    Task Create(T entity);
+    void Create(T entity);
 
-    Task<T> Read(Func<T, bool> condition);
+    Task<T> Read(Expression<Func<T, bool>> condition);
 
-    Task Update(T entity);
+    void Update(T entity);
 
-    Task Delete(T entity);
+    void Delete(T entity);
 
     Task SaveChanges();
 

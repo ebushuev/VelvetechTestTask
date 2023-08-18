@@ -1,3 +1,6 @@
+using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
+using Todo.Infrastructure.DbContexts;
 using Todo.Infrastructure.Interfaces;
 
 namespace Todo.Infrastructure.Repositories;
@@ -5,33 +8,45 @@ namespace Todo.Infrastructure.Repositories;
 public class Repository<T> : IRepository<T>
     where T : class
 {
-    public async Task Create(T entity)
+    private readonly TodoDbContext _context;
+
+    public Repository(TodoDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public async Task<T> Read(Func<T, bool> condition)
+    public void Create(T entity)
     {
-        throw new NotImplementedException();
+        _context.Set<T>().Add(entity);
     }
 
-    public async Task Update(T entity)
+    public async Task<T> Read(Expression<Func<T, bool>> condition)
     {
-        throw new NotImplementedException();
+        return await _context.Set<T>()
+            .Where(condition)
+            .AsNoTracking()
+            .FirstOrDefaultAsync();
     }
 
-    public async Task Delete(T entity)
+    public void Update(T entity)
     {
-        throw new NotImplementedException();
+        _context.Set<T>().Update(entity);
+    }
+
+    public void Delete(T entity)
+    {
+        _context.Set<T>().Remove(entity);
     }
 
     public async Task SaveChanges()
     {
-        throw new NotImplementedException();
+        await _context.SaveChangesAsync();
     }
 
     public async Task<IEnumerable<T>> GetAll()
     {
-        throw new NotImplementedException();
+        return await _context.Set<T>()
+            .AsNoTracking()
+            .ToListAsync();
     }
 }
