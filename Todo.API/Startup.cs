@@ -27,6 +27,7 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen();
             services.AddDbContext<TodoContext>(opt =>
                opt.UseInMemoryDatabase("TodoList"));
             services.AddControllers();
@@ -49,6 +50,12 @@ namespace TodoApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Test1 Api v1");
             });
         }
     }
