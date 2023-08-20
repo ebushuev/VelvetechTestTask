@@ -5,7 +5,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Todo.Core.Exceptions;
 using Todo.Core.Interfaces;
-using Todo.Core.Models;
 using Todo.Core.Models.TodoItem;
 using Todo.Infrastructure.Entities;
 
@@ -43,50 +42,78 @@ namespace Todo.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
-            var item = await _itemService.Read(id);
+            try
+            {
+                var item = await _itemService.Read(id);
 
-            return Ok(_mapper.Map<TodoItemDTO>(item));
+                return Ok(_mapper.Map<TodoItemDTO>(item));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest();
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(long id, [FromBody] TodoItemDTOUpdate todoItemDTO)
         {
-            var item = await TodoItemExists(id);
-            _mapper.Map(todoItemDTO, item);
+            try
+            {
+                var item = await TodoItemExists(id);
+                _mapper.Map(todoItemDTO, item);
 
-            await _itemService.Update(item);
+                await _itemService.Update(item);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest();
+            }
         }
-
 
         [HttpPost]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem([FromBody] TodoItemDTOCreate todoItemDTO)
         {
-            var toEntity = _mapper.Map<TodoItem>(todoItemDTO);
-            await _itemService.Create(toEntity);
-            
-            var createdItem = _mapper.Map<TodoItemDTO>(toEntity);
+            try
+            {
+                var toEntity = _mapper.Map<TodoItem>(todoItemDTO);
+                await _itemService.Create(toEntity);
 
-            return CreatedAtRoute("TodoItemById", new { todoItemId = createdItem.Id }, createdItem);
+                var createdItem = _mapper.Map<TodoItemDTO>(toEntity);
 
+                return CreatedAtRoute("TodoItemById", new { todoItemId = createdItem.Id }, createdItem);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest();
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-            var item = await TodoItemExists(id);
-            await _itemService.Delete(item);
+            try
+            {
+                var item = await TodoItemExists(id);
 
-            return NoContent();
+                await _itemService.Delete(item);
+
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return BadRequest();
+            }
         }
 
         private async Task<TodoItem> TodoItemExists(long id)
         {
             var item = await _itemService.Read(id);
-
-            if (item is null)
-                throw new Exception();
 
             return item;
         }

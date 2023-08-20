@@ -59,11 +59,10 @@ namespace TodoApi
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                // You can define additional routes here
                 endpoints.MapControllerRoute(
                     name: "TodoItemById",
-                    pattern: "api/todo/{todoItemId}", // Define your custom route pattern here
-                    defaults: new { controller = "TodoItems", action = "GetTodoItem" }); // Controller and action names
+                    pattern: "api/todo/{todoItemId}",
+                    defaults: new { controller = "TodoItems", action = "GetTodoItem" });
             });
 
             app.UseSwagger();

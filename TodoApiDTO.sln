@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Core", "Todo.Core\Todo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Infrastructure", "Todo.Infrastructure\Todo.Infrastructure.csproj", "{9A288DEC-FCDC-4639-B301-F018AC43CE06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Test", "Todo.Test\Todo.Test.csproj", "{B74218DA-1686-45DD-873A-A05FA5DF38A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Test", "Todo.Test\Todo.Test.csproj", "{E8932F55-4A85-45E9-9CA6-EB122D3BB153}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{9A288DEC-FCDC-4639-B301-F018AC43CE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A288DEC-FCDC-4639-B301-F018AC43CE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A288DEC-FCDC-4639-B301-F018AC43CE06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B74218DA-1686-45DD-873A-A05FA5DF38A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B74218DA-1686-45DD-873A-A05FA5DF38A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B74218DA-1686-45DD-873A-A05FA5DF38A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B74218DA-1686-45DD-873A-A05FA5DF38A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8932F55-4A85-45E9-9CA6-EB122D3BB153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8932F55-4A85-45E9-9CA6-EB122D3BB153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8932F55-4A85-45E9-9CA6-EB122D3BB153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8932F55-4A85-45E9-9CA6-EB122D3BB153}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
