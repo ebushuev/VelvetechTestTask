@@ -22,10 +22,12 @@ public class Repository<T> : IRepository<T>
 
     public async Task<T> Read(Expression<Func<T, bool>> condition)
     {
-        return await _context.Set<T>()
+        T item = await _context.Set<T>()
             .Where(condition)
             .AsNoTracking()
             .FirstOrDefaultAsync();
+
+        return item ?? Activator.CreateInstance<T>(); // Return an empty instance if item is null
     }
 
     public void Update(T entity)
@@ -45,8 +47,10 @@ public class Repository<T> : IRepository<T>
 
     public async Task<IEnumerable<T>> GetAll()
     {
-        return await _context.Set<T>()
+        List<T> items = await _context.Set<T>()
             .AsNoTracking()
             .ToListAsync();
+
+        return items;
     }
 }

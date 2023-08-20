@@ -1,8 +1,10 @@
-namespace Todo.Core.Models;
+namespace Todo.Core.Models.TodoItem;
 
 public class TodoItemDTO
 {
     public long Id { get; set; }
+    
     public string Name { get; set; }
+    
     public bool IsComplete { get; set; }
 }
