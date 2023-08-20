@@ -1,17 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using TodoApi.Models;
+using Todo.Core.Interfaces;
+using Todo.Core.Mappings;
+using Todo.Core.Services;
+using Todo.Infrastructure.DbContexts;
+using Todo.Infrastructure.Entities;
+using Todo.Infrastructure.Interfaces;
+using Todo.Infrastructure.Repositories;
 
 namespace TodoApi
 {
@@ -27,8 +27,14 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            services.AddTransient<IRepository<TodoItem>, Repository<TodoItem>>();
+            services.AddTransient<IItemService, ItemService>();
+            services.AddSwaggerGen();
+            services.AddAutoMapper(typeof(MappingProfile));
+
+            services.AddDbContext<TodoDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("Sql")));
+
             services.AddControllers();
         }
 
@@ -49,7 +55,18 @@ namespace TodoApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "TodoItemById",
+                    pattern: "api/todo/{todoItemId}",
+                    defaults: new { controller = "TodoItems", action = "GetTodoItem" });
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Test1 Api v1"); });
         }
     }
 }
