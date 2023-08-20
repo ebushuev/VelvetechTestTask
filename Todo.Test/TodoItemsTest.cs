@@ -19,9 +19,9 @@ public class TodoItemsTest
         private readonly IReadOnlyList<TodoItem> todoItems =
             new List<TodoItem>
             {
-                new TodoItem { Id = 3, Name = "Buy groceries", IsComplete = false },
-                new TodoItem { Id = 1, Name = "Do homework", IsComplete = true },
-                new TodoItem { Id = 2, Name = "Read a book", IsComplete = false }
+                new TodoItem { Id = 3, Name = "Iphone", IsComplete = false },
+                new TodoItem { Id = 1, Name = "Samsung", IsComplete = true },
+                new TodoItem { Id = 2, Name = "LG", IsComplete = false }
             };
 
         private TodoItemsController todoItemsController;
