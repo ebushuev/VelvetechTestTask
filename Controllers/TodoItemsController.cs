@@ -90,10 +90,8 @@ namespace TodoApi.Controllers
 
                 throw new DbUpdateConcurrencyException();
             }
-            catch (DbUpdateConcurrencyException exception) when (!_todoService.TodoItemExists(id))
+            catch (DbUpdateConcurrencyException) when (!_todoService.TodoItemExists(id))
             {
-                _logger?.LogWarning(exception, "Error on updating todo item");
-
                 return NotFound();
             }
 
