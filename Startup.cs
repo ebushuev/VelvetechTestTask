@@ -11,6 +11,8 @@ using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using TodoApi.Data;
 using TodoApi.Models;
+using TodoApi.Services;
+using TodoApi.Services.Interfaces;
 
 namespace TodoApi
 {
@@ -28,6 +30,8 @@ namespace TodoApi
         {
             services.AddDbContext<AppDbContext>();
             services.AddControllers();
+            services.AddScoped(typeof(IRepository<>), typeof(ItemsRepository<>));
+            services.AddScoped<ITodoService, TodoService>();
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1",

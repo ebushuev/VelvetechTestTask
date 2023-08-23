@@ -17,10 +17,7 @@ namespace TodoApi.Data{
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var conStrBuilder = new SqlConnectionStringBuilder(
-                    _config.GetConnectionString("ConnectionToDb"));
-            conStrBuilder.Password = _config.GetValue<string>("DbPassword");
-            var connection = conStrBuilder.ConnectionString;
+            var connection = _config.GetConnectionString("ConnectionToDb");
             optionsBuilder.UseSqlServer(connection);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
