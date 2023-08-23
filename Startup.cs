@@ -1,19 +1,15 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
+using TodoApi.Data;
 using TodoApi.Models;
 
 namespace TodoApi
@@ -30,8 +26,7 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoContext>(opt =>
-               opt.UseInMemoryDatabase("TodoList"));
+            services.AddDbContext<AppDbContext>();
             services.AddControllers();
             services.AddSwaggerGen(options =>
             {
@@ -83,6 +78,17 @@ namespace TodoApi
             {
                 endpoints.MapControllers();
             });
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                var context = services.GetRequiredService<AppDbContext>();
+                if (context.Database.GetPendingMigrations().Any())
+                {
+                    System.Console.WriteLine("Migrating database");
+                    context.Database.Migrate();
+                }
+            };
         }
     }
 }
