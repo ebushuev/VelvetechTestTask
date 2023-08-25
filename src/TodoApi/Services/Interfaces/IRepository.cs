@@ -8,9 +8,9 @@ namespace TodoApi.Services.Interfaces
     {
         Task<IEnumerable<T>> GetItems();
         Task<T> GetItem(long id);
-        Task UpdateItem(T entity);
-        Task CreateItem(T entity);
-        Task DeleteTodoItem(long id);
+        Task<bool> UpdateItem(T entity);
+        Task<T> CreateItem(T entity);
+        Task<bool> DeleteTodoItem(long id);
         Task<bool> IEntityExists(long id);
     }
 }

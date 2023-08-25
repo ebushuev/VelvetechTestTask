@@ -6,9 +6,11 @@ using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using TodoApi.Data;
 using TodoApi.Models;
 using TodoApi.Services;
@@ -28,8 +30,20 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>();
+            services.AddDbContext<AppDbContext>((cfg) =>
+                {
+                    var connection = Configuration.GetConnectionString("ConnectionToDb"); 
+                    cfg.UseSqlServer(connection);
+                });
             services.AddControllers();
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("log.txt")
+                .CreateLogger();
+
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddSerilog();
+            });
             services.AddScoped(typeof(IRepository<>), typeof(ItemsRepository<>));
             services.AddScoped<ITodoService, TodoService>();
             services.AddSwaggerGen(options =>
